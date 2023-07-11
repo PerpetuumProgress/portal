@@ -74,6 +74,7 @@ export async function transformPublishFormToDdo(
     tags,
     author,
     termsAndConditions,
+    geojson,
     dockerImage,
     dockerImageCustom,
     dockerImageCustomTag,
@@ -108,7 +109,8 @@ export async function transformPublishFormToDdo(
     license: 'https://market.oceanprotocol.com/terms',
     links: linksTransformed,
     additionalInformation: {
-      termsAndConditions
+      termsAndConditions,
+      geojson
     },
     ...(type === 'algorithm' &&
       dockerImage !== '' && {

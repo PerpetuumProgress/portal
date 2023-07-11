@@ -88,6 +88,13 @@ export default function MetadataFields(): ReactElement {
         name="metadata.description"
         rows={7}
       />
+      {values.metadata.type === 'dataset' && (
+        <Field
+          {...getFieldContent('geojson', content.metadata.fields)}
+          component={Input}
+          name="metadata.geojson"
+        />
+      )}
       <Field
         {...getFieldContent('author', content.metadata.fields)}
         component={Input}
