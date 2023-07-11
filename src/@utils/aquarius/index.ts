@@ -8,6 +8,7 @@ import {
   SortTermOptions
 } from '../../@types/aquarius/SearchQuery'
 import { transformAssetToAssetSelection } from '../assetConvertor'
+import addressConfig from '../../../address.config'
 
 export interface UserSales {
   id: string
@@ -27,16 +28,40 @@ export function escapeEsReservedCharacters(value: string): string {
  * @param value the value of the filter
  * @returns json structure of the es filter
  */
+type TFilterValue = string | number | boolean | number[] | string[]
+type TFilterKey = 'terms' | 'term' | 'match' | 'match_phrase'
+
 export function getFilterTerm(
   filterField: string,
-  value: string | number | boolean | number[] | string[]
+  value: TFilterValue,
+  key: TFilterKey = 'term'
 ): FilterTerm {
   const isArray = Array.isArray(value)
+  const useKey = key === 'term' ? (isArray ? 'terms' : 'term') : key
   return {
-    [isArray ? 'terms' : 'term']: {
+    [useKey]: {
       [filterField]: value
     }
   }
+}
+
+export function getWhitelistShould(): // eslint-disable-next-line camelcase
+{ should: FilterTerm[]; minimum_should_match: 1 } | undefined {
+  const { whitelists } = addressConfig
+
+  const whitelistFilterTerms = Object.entries(whitelists)
+    .filter(([field, whitelist]) => whitelist.length > 0)
+    .map(([field, whitelist]) =>
+      whitelist.map((address) => getFilterTerm(field, address, 'match'))
+    )
+    .reduce((prev, cur) => prev.concat(cur), [])
+
+  return whitelistFilterTerms.length > 0
+    ? {
+        should: whitelistFilterTerms,
+        minimum_should_match: 1
+      }
+    : undefined
 }
 
 export function generateBaseQuery(
@@ -69,7 +94,8 @@ export function generateBaseQuery(
     query: {
       bool: {
         ...baseQueryParams.nestedQuery,
-        filter: filters
+        filter: filters,
+        ...getWhitelistShould()
       }
     }
   } as SearchQuery
