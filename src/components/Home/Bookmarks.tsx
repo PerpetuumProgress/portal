@@ -7,8 +7,9 @@ import Tooltip from '@shared/atoms/Tooltip'
 import AssetTitle from '@shared/AssetListTitle'
 import { getAssetsFromDids } from '@utils/aquarius'
 import { useCancelToken } from '@hooks/useCancelToken'
+import { getAccessDetailsForAssets } from '@utils/accessDetailsAndPricing'
+import { useWeb3 } from '@context/Web3'
 import { useMarketMetadata } from '@context/MarketMetadata'
-import { useAccount } from 'wagmi'
 
 const columns: TableOceanColumn<AssetExtended>[] = [
   {
@@ -31,14 +32,14 @@ const columns: TableOceanColumn<AssetExtended>[] = [
   },
   {
     name: 'Price',
-    selector: (row) => <Price price={row.stats.price} size="small" />,
+    selector: (row) => <Price accessDetails={row.accessDetails} size="small" />,
     right: true
   }
 ]
 
 export default function Bookmarks(): ReactElement {
   const { appConfig } = useMarketMetadata()
-  const { address: accountId } = useAccount()
+  const { accountId } = useWeb3()
   const { bookmarks } = useUserPreferences()
 
   const [pinned, setPinned] = useState<AssetExtended[]>()
@@ -65,7 +66,11 @@ export default function Bookmarks(): ReactElement {
         )
         if (!result?.length) return
 
-        setPinned(result)
+        const pinnedAssets: AssetExtended[] = await getAccessDetailsForAssets(
+          result,
+          accountId
+        )
+        setPinned(pinnedAssets)
       } catch (error) {
         LoggerInstance.error(`Bookmarks error:`, error.message)
       } finally {
@@ -91,7 +96,6 @@ export default function Bookmarks(): ReactElement {
           ? 'No network selected'
           : 'Your bookmarks will appear here.'
       }
-      noTableHead
     />
   )
 }
