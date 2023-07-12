@@ -24,6 +24,7 @@ export async function getDummySigner(chainId: number): Promise<Signer> {
   }
 }
 
+console.log('infuraProjectId', process.env.NEXT_PUBLIC_INFURA_PROJECT_ID)
 // Wagmi client
 export const wagmiClient = createClient(
   getDefaultClient({
