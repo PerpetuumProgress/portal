@@ -78,7 +78,6 @@
 
 .link {
   composes: text from '../@shared/atoms/Button/index.module.css';
-
   color: var(--menu-font-color);
   font-weight: var(--menu-link-font-weight);
   font-size: var(--menu-link-font-size);
