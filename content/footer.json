@@ -1,16 +1,37 @@
 {
-  "links": [
+  "subtitle": "",
+  "copyright": "Built by [Perpetuum Progress](https://perpetuum-progress.io) powered by [Ocean Protocol](https://oceanprotocol.com/)",
+  "privacyTitle": "Privacy",
+  "content": [
     {
-      "name": "Docs",
-      "url": "https://docs.oceanprotocol.com"
+      "title": "External",
+      "links": [
+        {
+          "name": "Log",
+          "link": "https://goerli.etherscan.io/"
+        }
+      ]
     },
     {
-      "name": "GitHub",
-      "url": "https://github.com/oceanprotocol"
-    },
-    {
-      "name": "Discord",
-      "url": "https://discord.gg/TnXjkR5"
+      "title": "Navigation",
+      "links": [
+        {
+          "name": "Bookmarks",
+          "link": "/bookmarks"
+        },
+        {
+          "name": "Catalogue",
+          "link": "/search?sort=nft.created&sortOrder=desc"
+        },
+        {
+          "name": "Profile",
+          "link": "/profile"
+        },
+        {
+          "name": "Publish",
+          "link": "/publish/1"
+        }
+      ]
     }
   ],
   "stats": {

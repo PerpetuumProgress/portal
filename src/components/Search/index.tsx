@@ -103,7 +103,7 @@ export default function SearchPage({
         )
         // find did only for dataset having geojson field
         const datasetwithgeojson = []
-        for (let i = 1; i < queryResult.results.length; i++) {
+        for (let i = 0; i < queryResult.results.length; i++) {
           if (
             queryResult.results[i].metadata.additionalInformation.geojson !==
               '' &&

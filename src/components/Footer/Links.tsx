@@ -14,36 +14,47 @@ export default function Links() {
   const cookies = useGdprMetadata()
 
   return (
-    <div className={styles.links}>
-      {content.links.map(({ name, url }) => (
-        <Fragment key={name}>
-          <Button style="text" size="small" href={url} target="_blank">
-            {name} <External />
-          </Button>
-          {' — '}
-        </Fragment>
+    <div className={styles.container}>
+      {content.content.map((section, i) => (
+        <div key={i} className={styles.section}>
+          <p className={styles.title}>{section.title}</p>
+          <div className={styles.links}>
+            {section.links.map((e, i) => (
+              <Button
+                key={i}
+                className={styles.link}
+                {...(e.link.startsWith('/')
+                  ? { to: e.link }
+                  : { href: e.link })}
+              >
+                {e.name}
+              </Button>
+            ))}
+          </div>
+        </div>
       ))}
-
-      <Link href="/imprint">Imprint</Link>
-      {' — '}
-      <Link href="/terms">Terms</Link>
-      {' — '}
-      <Link href={privacyPolicySlug}>Privacy</Link>
-      {appConfig?.privacyPreferenceCenter === 'true' && (
-        <>
-          {' — '}
-          <Button
-            style="text"
-            size="small"
-            className="link"
-            onClick={() => {
-              setShowPPC(true)
-            }}
-          >
-            {cookies.optionalCookies ? 'Cookie Settings' : 'Cookies'}
+      <div className={styles.section}>
+        <p className={styles.title}>{content?.privacyTitle}</p>
+        <div className={styles.links}>
+          <Button to="/imprint" className={styles.link}>
+            Imprint
           </Button>
-        </>
-      )}
+          <Button to={privacyPolicySlug} className={styles.link}>
+            Privacy
+          </Button>
+          {appConfig.privacyPreferenceCenter === 'true' && (
+            <Button
+              className={styles.link}
+              style="text"
+              onClick={() => {
+                setShowPPC(true)
+              }}
+            >
+              {cookies.optionalCookies ? 'Cookie Settings' : 'Cookies'}
+            </Button>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
