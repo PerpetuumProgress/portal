@@ -565,8 +565,6 @@ const Map = ({ dataLayer, datasetwithgeojson }) => {
   }
   console.log('itemList', itemList)
   console.log('datasetwithgeojson', datasetwithgeojson)
-  // console.log('itemList', itemList)
-  // console.log('datasetwithgeojson', datasetwithgeojson)
 
   const bounds = calculateBoundingBox(dataLayer)
   const newZoom = calculateZoom(bounds, { height: 400, width: 400 })
