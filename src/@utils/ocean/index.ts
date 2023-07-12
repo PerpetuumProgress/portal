@@ -1,5 +1,6 @@
 import { ConfigHelper, Config } from '@oceanprotocol/lib'
 import { ethers } from 'ethers'
+import appConfig from '../../../app.config'
 
 import abiDatatoken from '@oceanprotocol/contracts/artifacts/contracts/templates/ERC20TemplateEnterprise.sol/ERC20TemplateEnterprise.json'
 
@@ -14,7 +15,7 @@ export function getOceanConfig(network: string | number): Config {
       network === 'gaiaxtestnet' ||
       network === 2021000
       ? undefined
-      : process.env.NEXT_PUBLIC_INFURA_PROJECT_ID
+      : appConfig?.infuraProjectId
   ) as Config
   return config as Config
 }
