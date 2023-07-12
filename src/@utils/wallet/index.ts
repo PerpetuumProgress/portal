@@ -6,6 +6,7 @@ import { formatEther } from 'ethers/lib/utils'
 import { getDefaultClient } from 'connectkit'
 import { getNetworkDisplayName } from '@hooks/useNetworkMetadata'
 import { getOceanConfig } from '../ocean'
+import appConfig from '../../../app.config'
 
 export async function getDummySigner(chainId: number): Promise<Signer> {
   if (typeof chainId !== 'number') {
@@ -25,11 +26,12 @@ export async function getDummySigner(chainId: number): Promise<Signer> {
 }
 
 console.log('infuraProjectId', process.env.NEXT_PUBLIC_INFURA_PROJECT_ID)
+console.log('infuraProjectId', appConfig?.infuraProjectId)
 // Wagmi client
 export const wagmiClient = createClient(
   getDefaultClient({
     appName: 'Ocean Market',
-    infuraId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID,
+    infuraId: appConfig?.infuraProjectId,
     // TODO: mapping between appConfig.chainIdsSupported and wagmi chainId
     chains: [mainnet, polygon, goerli, polygonMumbai],
     walletConnectProjectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID
