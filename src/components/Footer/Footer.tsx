@@ -1,12 +1,10 @@
 import React, { ReactElement } from 'react'
 import styles from './Footer.module.css'
 import Markdown from '@shared/Markdown'
-import MarketStats from './MarketStats'
-import BuildId from './BuildId'
 import Links from './Links'
-import Button from '@shared/atoms/Button'
-import External from '@images/external.svg'
 import { useMarketMetadata } from '@context/MarketMetadata'
+import PeproLogo from '@images/perpetuumprogress.svg'
+import Container from '@components/@shared/atoms/Container'
 
 export default function Footer(): ReactElement {
   const { siteContent } = useMarketMetadata()
@@ -14,22 +12,23 @@ export default function Footer(): ReactElement {
 
   return (
     <footer className={styles.footer}>
-      <BuildId />
-      <MarketStats />
-
-      <div className={styles.grid}>
-        <Links />
-        <div className={styles.copyright}>
-          © {year} <Markdown text={siteContent?.copyright} />
-          <Button
-            style="text"
-            size="small"
-            href="https://oceanprotocol.com"
+      <Container className={styles.container}>
+        <div>
+          <p className={styles.siteTitle}></p>
+          <a
+            href="https://perpetuum-progress.io/"
             target="_blank"
+            rel="noopener noreferrer"
           >
-            Ocean Protocol <External className={styles.svg} />
-          </Button>
+            <div className={styles.main}>
+              <PeproLogo />
+            </div>
+          </a>
         </div>
+        <Links />
+      </Container>
+      <div className={styles.copyright}>
+        © {year} <Markdown text={siteContent?.copyright} />
       </div>
     </footer>
   )
