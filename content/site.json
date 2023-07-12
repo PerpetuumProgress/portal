@@ -14,12 +14,8 @@
       "link": "/publish/1"
     },
     {
-      "name": "Verify",
-      "link": "/verify"
-    },
-    {
       "name": "Log",
-      "link": "https://explorer.genx.minimal-gaia-x.eu/"
+      "link": "https://goerli.etherscan.io/"
     }
   ],
   "announcement": "",
@@ -28,7 +24,7 @@
   },
   "footer": {
     "subtitle": "",
-    "copyright": "Built by [Perpetuum Progress](https://perpetuum-progress.io) powered by [Ocean Protocol](https://oceanprotocol.com/) & [deltaDAO](https://www.delta-dao.com/)",
+    "copyright": "Built by [Perpetuum Progress](https://perpetuum-progress.io) powered by [Ocean Protocol](https://oceanprotocol.com/)",
     "privacyTitle": "Privacy",
     "content": [
       {
@@ -36,11 +32,7 @@
         "links": [
           {
             "name": "Log",
-            "link": "https://explorer.genx.minimal-gaia-x.eu/"
-          },
-          {
-            "name": "GEN-X Faucet",
-            "link": "https://faucet.genx.minimal-gaia-x.eu/"
+            "link": "https://goerli.etherscan.io/"
           }
         ]
       },
@@ -62,10 +54,6 @@
           {
             "name": "Publish",
             "link": "/publish/1"
-          },
-          {
-            "name": "Verify",
-            "link": "/verify"
           }
         ]
       }

@@ -1,3 +1,9 @@
+.searchWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(var(--spacer) * var(--line-height));
+}
+
 .section {
   margin-top: calc(var(--spacer) * 2);
 }
@@ -14,7 +20,6 @@
   font-weight: var(--font-weight-base);
 }
 
-.section [class*='button'],
-.allAssetsButton {
+.section [class*='button'] {
   margin-top: var(--spacer);
 }
