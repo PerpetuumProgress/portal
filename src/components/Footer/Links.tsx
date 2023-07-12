@@ -1,20 +1,21 @@
-import React, { ReactElement } from 'react'
 import { useUserPreferences } from '@context/UserPreferences'
 import { useGdprMetadata } from '@hooks/useGdprMetadata'
 import Button from '@shared/atoms/Button'
+import Link from 'next/link'
+import React, { Fragment } from 'react'
+import content from '../../../content/footer.json'
+import External from '@images/external.svg'
 import styles from './Links.module.css'
 import { useMarketMetadata } from '@context/MarketMetadata'
 
-export default function Links(): ReactElement {
-  const { appConfig, siteContent } = useMarketMetadata()
+export default function Links() {
+  const { appConfig } = useMarketMetadata()
   const { setShowPPC, privacyPolicySlug } = useUserPreferences()
   const cookies = useGdprMetadata()
 
-  const { content, privacyTitle } = siteContent.footer
-
   return (
     <div className={styles.container}>
-      {content?.map((section, i) => (
+      {content.content.map((section, i) => (
         <div key={i} className={styles.section}>
           <p className={styles.title}>{section.title}</p>
           <div className={styles.links}>
@@ -33,7 +34,7 @@ export default function Links(): ReactElement {
         </div>
       ))}
       <div className={styles.section}>
-        <p className={styles.title}>{privacyTitle}</p>
+        <p className={styles.title}>{content?.privacyTitle}</p>
         <div className={styles.links}>
           <Button to="/imprint" className={styles.link}>
             Imprint
