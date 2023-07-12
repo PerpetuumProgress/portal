@@ -36,7 +36,7 @@ export default function Menu(): ReactElement {
   return (
     <nav className={styles.menu}>
       <Link href="/" className={styles.logo}>
-        <Logo noWordmark />
+        <Logo />
       </Link>
 
       <ul className={styles.navigation}>
