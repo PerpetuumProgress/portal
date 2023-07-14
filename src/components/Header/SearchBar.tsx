@@ -11,6 +11,8 @@ import InputElement from '@shared/FormInput/InputElement'
 import styles from './SearchBar.module.css'
 import { addExistingParamsToUrl } from '../Search/utils'
 import { useRouter } from 'next/router'
+import { animated, useSpring } from 'react-spring'
+
 
 async function emptySearch() {
   const searchParams = new URLSearchParams(window?.location.href)
@@ -32,6 +34,8 @@ export default function SearchBar({
   const [value, setValue] = useState(initialValue || '')
   const parsed = router.query
   const { text, owner } = parsed
+  const isHome = window.location.pathname === '/'
+
 
   useEffect(() => {
     ;(text || owner) && setValue((text || owner) as string)
@@ -66,6 +70,12 @@ export default function SearchBar({
     e.preventDefault()
     await startSearch(e)
   }
+
+  const springStile = useSpring({
+    transform: isHome ? 'translateY(0%)' : 'translateY(-150%)',
+    config: { mass: 1, tension: 140, friction: 12 }
+  })
+
 
   return (
     <form className={styles.search}>
