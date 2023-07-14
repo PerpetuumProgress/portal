@@ -4,16 +4,13 @@ import React, {
   ChangeEvent,
   FormEvent,
   KeyboardEvent,
-  ReactElement,
-  useRef
+  ReactElement
 } from 'react'
 import SearchIcon from '@images/search.svg'
 import InputElement from '@shared/FormInput/InputElement'
 import styles from './SearchBar.module.css'
 import { addExistingParamsToUrl } from '../Search/utils'
 import { useRouter } from 'next/router'
-import { animated, useSpring } from 'react-spring'
-import { useSearchBarStatus } from '@context/SearchBarStatus'
 
 async function emptySearch() {
   const searchParams = new URLSearchParams(window?.location.href)
@@ -26,41 +23,19 @@ async function emptySearch() {
 
 export default function SearchBar({
   placeholder,
-  initialValue,
-  isSearchPage
+  initialValue
 }: {
   placeholder?: string
   initialValue?: string
-  isSearchPage?: boolean
 }): ReactElement {
   const router = useRouter()
   const [value, setValue] = useState(initialValue || '')
   const parsed = router.query
-  const isHome = window.location.pathname === '/'
-  const searchBarRef = useRef<HTMLInputElement>(null)
-  const {
-    isSearchBarVisible,
-    setSearchBarVisible,
-    homeSearchBarFocus,
-    setHomeSearchBarFocus
-  } = useSearchBarStatus()
+  const { text, owner } = parsed
 
   useEffect(() => {
-    if (parsed?.text || parsed?.owner)
-      setValue((parsed?.text || parsed?.owner) as string)
-  }, [parsed?.text, parsed?.owner])
-
-  useEffect(() => {
-    setSearchBarVisible(false)
-    setHomeSearchBarFocus(false)
-  }, [setSearchBarVisible, setHomeSearchBarFocus])
-
-  useEffect(() => {
-    if (!isSearchBarVisible && !homeSearchBarFocus) return
-    if (searchBarRef?.current) {
-      searchBarRef.current.focus()
-    }
-  }, [isSearchBarVisible, homeSearchBarFocus])
+    ;(text || owner) && setValue((text || owner) as string)
+  }, [text, owner])
 
   async function startSearch(e: FormEvent<HTMLButtonElement>) {
     e.preventDefault()
@@ -92,32 +67,22 @@ export default function SearchBar({
     await startSearch(e)
   }
 
-  const springStile = useSpring({
-    transform:
-      isHome || isSearchPage || isSearchBarVisible
-        ? 'translateY(0%)'
-        : 'translateY(-150%)',
-    config: { mass: 1, tension: 140, friction: 12 }
-  })
-
   return (
-    <form className={styles.search} autoComplete={!value ? 'off' : 'on'}>
-      <animated.div style={springStile} className={styles.springContainer}>
-        <InputElement
-          type="search"
-          name="search"
-          placeholder={placeholder || 'Search...'}
-          value={value}
-          onChange={handleChange}
-          required
-          size="small"
-          className={styles.input}
-          onKeyPress={handleKeyPress}
-        />
-        <button onClick={handleButtonClick} className={styles.button}>
-          <SearchIcon className={styles.searchIcon} />
-        </button>
-      </animated.div>
+    <form className={styles.search}>
+      <InputElement
+        type="search"
+        name="search"
+        placeholder={placeholder || 'Search...'}
+        value={value}
+        onChange={handleChange}
+        required
+        size="small"
+        className={styles.input}
+        onKeyPress={handleKeyPress}
+      />
+      <button onClick={handleButtonClick} className={styles.button}>
+        <SearchIcon className={styles.searchIcon} />
+      </button>
     </form>
   )
 }
