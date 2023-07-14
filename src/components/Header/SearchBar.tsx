@@ -13,6 +13,7 @@ import { addExistingParamsToUrl } from '../Search/utils'
 import { useRouter } from 'next/router'
 import { animated, useSpring } from 'react-spring'
 
+
 async function emptySearch() {
   const searchParams = new URLSearchParams(window?.location.href)
   const text = searchParams.get('text')
@@ -24,18 +25,17 @@ async function emptySearch() {
 
 export default function SearchBar({
   placeholder,
-  initialValue,
-  isSearchPage
+  initialValue
 }: {
   placeholder?: string
   initialValue?: string
-  isSearchPage?: boolean
 }): ReactElement {
   const router = useRouter()
   const [value, setValue] = useState(initialValue || '')
   const parsed = router.query
   const { text, owner } = parsed
   const isHome = window.location.pathname === '/'
+
 
   useEffect(() => {
     ;(text || owner) && setValue((text || owner) as string)
@@ -76,24 +76,23 @@ export default function SearchBar({
     config: { mass: 1, tension: 140, friction: 12 }
   })
 
+
   return (
-    <form className={styles.search} autoComplete={!value ? 'off' : 'on'}>
-      <animated.div style={springStile} className={styles.springContainer}>
-        <InputElement
-          type="search"
-          name="search"
-          placeholder={placeholder || 'Search...'}
-          value={value}
-          onChange={handleChange}
-          required
-          size="small"
-          className={styles.input}
-          onKeyPress={handleKeyPress}
-        />
-        <button onClick={handleButtonClick} className={styles.button}>
-          <SearchIcon className={styles.searchIcon} />
-        </button>
-      </animated.div>
+    <form className={styles.search}>
+      <InputElement
+        type="search"
+        name="search"
+        placeholder={placeholder || 'Search...'}
+        value={value}
+        onChange={handleChange}
+        required
+        size="small"
+        className={styles.input}
+        onKeyPress={handleKeyPress}
+      />
+      <button onClick={handleButtonClick} className={styles.button}>
+        <SearchIcon className={styles.searchIcon} />
+      </button>
     </form>
   )
 }
