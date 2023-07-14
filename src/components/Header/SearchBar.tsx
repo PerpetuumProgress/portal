@@ -4,8 +4,7 @@ import React, {
   ChangeEvent,
   FormEvent,
   KeyboardEvent,
-  ReactElement,
-  useRef
+  ReactElement
 } from 'react'
 import SearchIcon from '@images/search.svg'
 import InputElement from '@shared/FormInput/InputElement'
@@ -13,7 +12,6 @@ import styles from './SearchBar.module.css'
 import { addExistingParamsToUrl } from '../Search/utils'
 import { useRouter } from 'next/router'
 import { animated, useSpring } from 'react-spring'
-import { useSearchBarStatus } from '@context/SearchBarStatus'
 
 async function emptySearch() {
   const searchParams = new URLSearchParams(window?.location.href)
@@ -36,31 +34,12 @@ export default function SearchBar({
   const router = useRouter()
   const [value, setValue] = useState(initialValue || '')
   const parsed = router.query
+  const { text, owner } = parsed
   const isHome = window.location.pathname === '/'
-  const searchBarRef = useRef<HTMLInputElement>(null)
-  const {
-    isSearchBarVisible,
-    setSearchBarVisible,
-    homeSearchBarFocus,
-    setHomeSearchBarFocus
-  } = useSearchBarStatus()
 
   useEffect(() => {
-    if (parsed?.text || parsed?.owner)
-      setValue((parsed?.text || parsed?.owner) as string)
-  }, [parsed?.text, parsed?.owner])
-
-  useEffect(() => {
-    setSearchBarVisible(false)
-    setHomeSearchBarFocus(false)
-  }, [setSearchBarVisible, setHomeSearchBarFocus])
-
-  useEffect(() => {
-    if (!isSearchBarVisible && !homeSearchBarFocus) return
-    if (searchBarRef?.current) {
-      searchBarRef.current.focus()
-    }
-  }, [isSearchBarVisible, homeSearchBarFocus])
+    ;(text || owner) && setValue((text || owner) as string)
+  }, [text, owner])
 
   async function startSearch(e: FormEvent<HTMLButtonElement>) {
     e.preventDefault()
@@ -93,10 +72,7 @@ export default function SearchBar({
   }
 
   const springStile = useSpring({
-    transform:
-      isHome || isSearchPage || isSearchBarVisible
-        ? 'translateY(0%)'
-        : 'translateY(-150%)',
+    transform: isHome ? 'translateY(0%)' : 'translateY(-150%)',
     config: { mass: 1, tension: 140, friction: 12 }
   })
 
