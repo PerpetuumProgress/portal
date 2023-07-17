@@ -28,7 +28,12 @@ export default function Page({
     <>
       <Seo title={title} description={description} uri={uri} />
       <Container>
-        {!isHome && <SearchBar placeholder="Search for service offerings" />}
+        {!isHome && (
+          <SearchBar
+            placeholder="Search for service offerings"
+            isSearchPage={isSearch}
+          />
+        )}
         {title && !noPageHeader && (
           <PageHeader
             title={isHome ? title : <>{title.slice(0, 400)}</>}
