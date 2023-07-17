@@ -13,7 +13,6 @@ import { addExistingParamsToUrl } from '../Search/utils'
 import { useRouter } from 'next/router'
 import { animated, useSpring } from 'react-spring'
 
-
 async function emptySearch() {
   const searchParams = new URLSearchParams(window?.location.href)
   const text = searchParams.get('text')
@@ -35,7 +34,6 @@ export default function SearchBar({
   const parsed = router.query
   const { text, owner } = parsed
   const isHome = window.location.pathname === '/'
-
 
   useEffect(() => {
     ;(text || owner) && setValue((text || owner) as string)
@@ -75,7 +73,6 @@ export default function SearchBar({
     transform: isHome ? 'translateY(0%)' : 'translateY(-150%)',
     config: { mass: 1, tension: 140, friction: 12 }
   })
-
 
   return (
     <form className={styles.search}>
