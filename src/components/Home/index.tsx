@@ -11,6 +11,7 @@ import SectionQueryResult from './SectionQueryResult'
 import styles from './index.module.css'
 import Allocations from './Allocations'
 import MostViews from './MostViews'
+import HomeContent from './Content'
 
 export default function HomePage(): ReactElement {
   const { chainIds } = useUserPreferences()
@@ -111,8 +112,6 @@ export default function HomePage(): ReactElement {
 
       <SectionQueryResult title="Most Sales" query={queryMostSales} />
       {/* <MostViews /> */}
-      <TopSales title="Publishers With Most Sales" />
-      <TopTags title="Top Tags By Sales" />
 
       <SectionQueryResult
         title="Recently Published"
@@ -123,6 +122,9 @@ export default function HomePage(): ReactElement {
           </Button>
         }
       />
+      <TopSales title="Publishers With Most Sales" />
+      <TopTags title="Top Tags" />
+      <HomeContent />
     </>
   )
 }

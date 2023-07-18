@@ -2,13 +2,6 @@ import React, { FormEvent, ReactElement, useState } from 'react'
 import SearchIcon from '@images/search.svg'
 import styles from './SearchButton.module.css'
 
-interface SearchBarStatusValue {
-  isSearchBarVisible: boolean
-  setSearchBarVisible: (value: boolean) => void
-  homeSearchBarFocus: boolean
-  setHomeSearchBarFocus: (value: boolean) => void
-}
-
 export default function SearchButton(): ReactElement {
   const isHome = window.location.pathname === '/'
   const [isSearchBarVisible, setSearchBarVisible] = useState<boolean>(false)
