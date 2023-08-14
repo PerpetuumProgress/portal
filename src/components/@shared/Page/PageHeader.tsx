@@ -17,7 +17,7 @@ export default function PageHeader({
   title: string | ReactElement
   center?: boolean
   description?: string
-  isHome?: boolean
+  isHome?: true
   showSearch?: boolean
 }): ReactElement {
   const styleClasses = cx({
@@ -40,9 +40,8 @@ export default function PageHeader({
             href="https://www.ingolstadt.de/"
             target="_blank"
             rel="noreferrer noopener"
-            //      style={{ width: '5000px', height: '500px' }}
           >
-            <IngolstadtLogo />
+            <IngolstadtLogo style={{ width: '300px', height: '100px' }} />
           </a>
         </div>
       ) : (
