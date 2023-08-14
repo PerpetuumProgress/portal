@@ -17,7 +17,7 @@ export default function PageHeader({
   title: string | ReactElement
   center?: boolean
   description?: string
-  isHome?: true
+  isHome?: boolean
   showSearch?: boolean
 }): ReactElement {
   const styleClasses = cx({
