@@ -38,6 +38,12 @@ export default function MetadataFields(): ReactElement {
       name: assetTypeOptionsTitles[1].toLowerCase(),
       title: assetTypeOptionsTitles[1],
       checked: values.metadata.type === assetTypeOptionsTitles[1].toLowerCase(),
+      icon: <IconDataset />
+    },
+    {
+      name: assetTypeOptionsTitles[2].toLowerCase(),
+      title: assetTypeOptionsTitles[2],
+      checked: values.metadata.type === assetTypeOptionsTitles[2].toLowerCase(),
       icon: <IconAlgorithm />
     }
   ]

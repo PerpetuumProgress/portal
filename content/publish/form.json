@@ -20,7 +20,7 @@
         "name": "type",
         "label": "Asset Type",
         "type": "boxSelection",
-        "options": ["Dataset", "Algorithm"],
+        "options": ["Track", "Scenario", "Simulation"],
         "required": true
       },
       {
