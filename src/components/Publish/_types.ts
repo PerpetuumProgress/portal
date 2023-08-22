@@ -27,6 +27,7 @@ export interface FormPublishData {
     author: string
     termsAndConditions: boolean
     geojson: string
+    shacl: FileInfo[]
     tags?: string[]
     dockerImage?: string
     dockerImageCustom?: string

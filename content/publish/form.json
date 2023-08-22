@@ -17,10 +17,89 @@
         "required": true
       },
       {
+        "name": "shacl",
+        "label": "Upload SHACL shapes",
+        "type": "tabs",
+        "help": "This field should contain shacl shape files",
+        "fields": [
+          {
+            "value": "scenario",
+            "title": "Scenario (OSC)",
+            "label": "Scenario Name",
+            "placeholder": "",
+            "help": "",
+            "computeHelp": "",
+            "prominentHelp": true,
+            "type": "string",
+            "required": false,
+            "innerFields": [
+              {
+                "value": "Scenario_Owner",
+                "title": "Scneario Owner",
+                "label": "Scenario Owner",
+                "help": "",
+                "type": "string",
+                "required": false
+              },
+              {
+                "value": "Scenario_ID",
+                "title": "SCenario ID",
+                "label": "Scenario ID",
+                "placeholder": "",
+                "help": "",
+                "type": "string",
+                "required": false
+              }
+            ]
+          },
+          {
+            "value": "track",
+            "title": "Track (ODR)",
+            "label": "Track Name",
+            "placeholder": "",
+            "help": "",
+            "computeHelp": "",
+            "prominentHelp": true,
+            "type": "string",
+            "required": false,
+            "innerFields": [
+              {
+                "value": "Track_Owner",
+                "title": "Track Owner",
+                "label": "Track Owner",
+                "help": "",
+                "type": "string",
+                "required": false
+              },
+              {
+                "value": "Track_ID",
+                "title": "Track ID",
+                "label": "Track ID",
+                "placeholder": "",
+                "help": "",
+                "type": "string",
+                "required": false
+              }
+            ]
+          },
+          {
+            "value": "other",
+            "title": "Other Datasets",
+            "label": "Dataset Shacl form",
+            "placeholder": "",
+            "help": "",
+            "computeHelp": "",
+            "prominentHelp": true,
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      {
         "name": "type",
         "label": "Asset Type",
         "type": "boxSelection",
-        "options": ["Track", "Scenario", "Simulation"],
+        "options": ["Dataset", "Algorithm"],
         "required": true
       },
       {

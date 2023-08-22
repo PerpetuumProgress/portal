@@ -38,12 +38,6 @@ export default function MetadataFields(): ReactElement {
       name: assetTypeOptionsTitles[1].toLowerCase(),
       title: assetTypeOptionsTitles[1],
       checked: values.metadata.type === assetTypeOptionsTitles[1].toLowerCase(),
-      icon: <IconDataset />
-    },
-    {
-      name: assetTypeOptionsTitles[2].toLowerCase(),
-      title: assetTypeOptionsTitles[2],
-      checked: values.metadata.type === assetTypeOptionsTitles[2].toLowerCase(),
       icon: <IconAlgorithm />
     }
   ]
@@ -99,6 +93,13 @@ export default function MetadataFields(): ReactElement {
           {...getFieldContent('geojson', content.metadata.fields)}
           component={Input}
           name="metadata.geojson"
+        />
+      )}
+      {values.metadata.type === 'dataset' && (
+        <Field
+          {...getFieldContent('shacl', content.metadata.fields)}
+          component={Input}
+          name="metadata.shacl"
         />
       )}
       <Field
