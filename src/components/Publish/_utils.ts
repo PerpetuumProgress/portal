@@ -76,6 +76,7 @@ export async function transformPublishFormToDdo(
     author,
     termsAndConditions,
     geojson,
+    shacl,
     dockerImage,
     dockerImageCustom,
     dockerImageCustomTag,
@@ -111,7 +112,8 @@ export async function transformPublishFormToDdo(
     links: linksTransformed,
     additionalInformation: {
       termsAndConditions,
-      geojson
+      geojson,
+      shacl
     },
     ...(type === 'algorithm' &&
       dockerImage !== '' && {
