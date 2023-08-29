@@ -19,6 +19,7 @@ export interface FormPublishData {
     chainId: number
   }
   metadata: {
+    datasettype: 'scenario' | 'track' | 'environment model'
     nft: NftMetadata
     transferable: boolean
     type: 'dataset' | 'algorithm'
