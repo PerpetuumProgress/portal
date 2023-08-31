@@ -27,7 +27,7 @@
         "name": "datasettype",
         "label": "Dataset Type",
         "type": "boxSelection",
-        "options": ["Scenario", "Track", "Environment Model"],
+        "options": ["Scenario", "Track", "Environment Model", "Custom Shape"],
         "required": true
       },
       {
@@ -215,7 +215,7 @@
       {
         "name": "hdMapTrafficDirection",
         "label": "hdMapTrafficDirection",
-        "type": "textarea",
+        "type": "text",
         "help": "Map Traffic Direction",
         "required": true
       },
@@ -327,7 +327,7 @@
       {
         "name": "SubjectVehicleSpeed",
         "label": "Subject Vehicle Speeds",
-        "type": "textarea",
+        "type": "text",
         "help": "Speed Range of the vehicle",
         "placeholder": "e.g. 120 - 130",
         "required": true
@@ -335,7 +335,7 @@
       {
         "name": "TrafficAgentType",
         "label": "Traffic Agent Type",
-        "type": "textarea",
+        "type": "text",
         "help": "Type of Traffic Participant",
         "placeholder": "e.g. Car",
         "required": true
@@ -343,7 +343,7 @@
       {
         "name": "BehaviourMotion",
         "label": "Behaviour Motion",
-        "type": "textarea",
+        "type": "text",
         "help": "Type of Scenario",
         "placeholder": "e.g. Cut-in, Drive through",
         "required": true
@@ -351,11 +351,20 @@
       {
         "name": "Positioning",
         "label": "Positioning",
-        "type": "textarea",
+        "type": "text",
         "help": "Type of Positioning System",
         "placeholder": "e.g. Galileo, GPS, GlONASS",
         "required": true
       },
+      {
+        "name": "shacl",
+        "label": "Uplaod Shacl File",
+        "help": "Upload Shacl file",
+        "placeholder": "e.g. https://file.com/file.ttl",
+        "type": "files",
+        "required": true
+      },
+
       {
         "name": "name",
         "label": "Title",

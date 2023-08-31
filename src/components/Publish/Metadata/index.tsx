@@ -67,6 +67,12 @@ export default function MetadataFields(): ReactElement {
       title: datasettypeOptionsTitles[2],
       checked: values.metadata.datasettype === 'environment model',
       icon: <IconEnvironmentDataset />
+    },
+    {
+      name: datasettypeOptionsTitles[3].toLowerCase(),
+      title: datasettypeOptionsTitles[3],
+      checked: values.metadata.datasettype === 'custom shape',
+      icon: <IconDataset />
     }
   ]
 
@@ -117,12 +123,6 @@ export default function MetadataFields(): ReactElement {
         {...getFieldContent('name', content.metadata.fields)}
         component={Input}
         name="metadata.name"
-      />
-      <Field
-        {...getFieldContent('description', content.metadata.fields)}
-        component={Input}
-        name="metadata.description"
-        rows={7}
       />
       {values.metadata.type === 'dataset' &&
         values.metadata.datasettype === 'track' && (
@@ -437,7 +437,22 @@ export default function MetadataFields(): ReactElement {
             />
           </>
         )}
-
+      {values.metadata.type === 'dataset' &&
+        values.metadata.datasettype === 'custom shape' && (
+          <>
+            <Field
+              {...getFieldContent('shacl', content.metadata.fields)}
+              component={Input}
+              name="metadata.shacl"
+            />
+          </>
+        )}
+      <Field
+        {...getFieldContent('description', content.metadata.fields)}
+        component={Input}
+        name="metadata.description"
+        rows={7}
+      />
       <Field
         {...getFieldContent('author', content.metadata.fields)}
         component={Input}

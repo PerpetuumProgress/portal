@@ -15,6 +15,7 @@ import { checkJson } from '@utils/codemirror'
 import { isGoogleUrl } from '@utils/url/index'
 import isUrl from 'is-url-superb'
 import MethodInput from '../MethodInput'
+import { NamedNode, parse as parseRDF, Store } from 'rdflib'
 
 export default function FilesInput(props: InputProps): ReactElement {
   const [field, meta, helpers] = useField(props.name)
@@ -38,6 +39,28 @@ export default function FilesInput(props: InputProps): ReactElement {
     // File example 'https://oceanprotocol.com/tech-whitepaper.pdf'
     e?.preventDefault()
 
+    async function parseShaclFile(url: string) {
+      const response = await fetch(url)
+      const shaclText = await response.text()
+
+      const store = new Store()
+      const baseURI = url
+      const options = { base: baseURI }
+      const shaclData = parseRDF(shaclText, store, baseURI, 'text/turtle')
+      console.log(shaclData)
+      return shaclData
+    }
+
+    async function processFile(file: FileInfo) {
+      // Parse the SHACL file
+      const shaclData = await parseShaclFile(file.url)
+
+      // Generate Formik fields based on the SHACL data
+      // const formikFields = generateFormikFields(shaclData)
+
+      // Update the Formik state with the generated fields
+      // helpers.setFieldValue('formFields', formikFields)
+    }
     try {
       setIsLoading(true)
 
@@ -64,6 +87,8 @@ export default function FilesInput(props: InputProps): ReactElement {
         chain?.id,
         method
       )
+
+      await processFile(checkedFile[0])
 
       // error if something's not right from response
       if (!checkedFile)
@@ -198,4 +223,7 @@ export default function FilesInput(props: InputProps): ReactElement {
       )}
     </>
   )
+}
+function generateFormikFields(shaclData: any) {
+  throw new Error('Function not implemented.')
 }
