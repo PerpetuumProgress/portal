@@ -70,7 +70,8 @@ export const initialValues: FormPublishData = {
     dockerImage: '',
     dockerImageCustom: '',
     dockerImageCustomTag: '',
-    dockerImageCustomEntrypoint: ''
+    dockerImageCustomEntrypoint: '',
+    datasettype: 'scenario'
   },
   services: [
     {
