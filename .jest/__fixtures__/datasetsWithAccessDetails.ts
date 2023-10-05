@@ -125,7 +125,8 @@ export const assets: AssetExtended[] = [
         'nft'
       ],
       type: 'dataset',
-      updated: '2022-10-06T23:05:51Z'
+      updated: '2022-10-06T23:05:51Z',
+      datasettype: 'scenario'
     },
     nft: {
       address: '0x866e4ED7b001f40c4067d0a37d6d401a0B13EfD6',

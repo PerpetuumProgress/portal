@@ -66,12 +66,13 @@ export const initialValues: FormPublishData = {
     tags: [],
     termsAndConditions: false,
     geojson: '',
-    shacl: [{ url: '', type: 'url' }],
+    shaclfile: [{ url: '', type: 'url' }],
     dockerImage: '',
     dockerImageCustom: '',
     dockerImageCustomTag: '',
     dockerImageCustomEntrypoint: '',
-    datasettype: 'scenario'
+    datasettype: 'scenario',
+    hdMapAccuracyLaneModel2D: 0
   },
   services: [
     {

@@ -357,7 +357,7 @@
         "required": true
       },
       {
-        "name": "shacl",
+        "name": "shaclfile",
         "label": "Uplaod Shacl File",
         "help": "Upload Shacl file",
         "placeholder": "e.g. https://file.com/file.ttl",

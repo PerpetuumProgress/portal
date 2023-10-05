@@ -28,7 +28,8 @@ export interface FormPublishData {
     author: string
     termsAndConditions: boolean
     geojson: string
-    shacl: FileInfo[]
+    shaclfile: FileInfo[]
+    hdMapAccuracyLaneModel2D: number
     tags?: string[]
     dockerImage?: string
     dockerImageCustom?: string

@@ -441,9 +441,9 @@ export default function MetadataFields(): ReactElement {
         values.metadata.datasettype === 'custom shape' && (
           <>
             <Field
-              {...getFieldContent('shacl', content.metadata.fields)}
+              {...getFieldContent('shaclfile', content.metadata.fields)}
               component={Input}
-              name="metadata.shacl"
+              name="metadata.shaclfile"
             />
           </>
         )}

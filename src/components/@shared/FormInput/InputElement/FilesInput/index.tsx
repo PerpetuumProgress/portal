@@ -61,11 +61,9 @@ export default function FilesInput(props: InputProps): ReactElement {
 
     async function processFile(file: string) {
       // Parse the SHACL file
-      const shaclData = await parseShaclFile(file)
-
+      // const shaclData = await parseShaclFile(file)
       // Generate Formik fields based on the SHACL data
       // const formikFields = generateFormikFields(shaclData)
-
       // Update the Formik state with the generated fields
       // helpers.setFieldValue('formFields', formikFields)
     }

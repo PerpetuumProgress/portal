@@ -86,6 +86,10 @@ export default function AssetContent({
                   datasetwithgeojson={[]}
                 />
               )}
+            {asset?.metadata?.type === 'dataset' &&
+              asset?.metadata?.datasettype === 'track' && (
+                <MetaMain asset={asset} nftPublisher={nftPublisher} />
+              )}
             <MetaFull ddo={asset} />
             <EditHistory receipts={receipts} setReceipts={setReceipts} />
             {debug === true && <DebugOutput title="DDO" output={asset} />}

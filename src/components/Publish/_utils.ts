@@ -75,7 +75,9 @@ export async function transformPublishFormToDdo(
     author,
     termsAndConditions,
     geojson,
-    shacl,
+    datasettype,
+    shaclfile,
+    hdMapAccuracyLaneModel2D,
     dockerImage,
     dockerImageCustom,
     dockerImageCustomTag,
@@ -104,6 +106,7 @@ export async function transformPublishFormToDdo(
     updated: currentTime,
     type,
     name,
+    datasettype,
     description,
     tags: transformTags(tags),
     author,
@@ -112,7 +115,10 @@ export async function transformPublishFormToDdo(
     additionalInformation: {
       termsAndConditions,
       geojson,
-      shacl
+      shaclfile
+    },
+    shaclinfo: {
+      hdMapAccuracyLaneModel2D
     },
     ...(type === 'algorithm' &&
       dockerImage !== '' && {
