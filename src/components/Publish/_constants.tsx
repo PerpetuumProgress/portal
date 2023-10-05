@@ -66,7 +66,6 @@ export const initialValues: FormPublishData = {
     tags: [],
     termsAndConditions: false,
     geojson: '',
-    shacl: [{ url: '', type: 'url' }],
     dockerImage: '',
     dockerImageCustom: '',
     dockerImageCustomTag: '',

@@ -19,7 +19,6 @@ export interface FormPublishData {
     chainId: number
   }
   metadata: {
-    datasettype: 'scenario' | 'track' | 'environment model'
     nft: NftMetadata
     transferable: boolean
     type: 'dataset' | 'algorithm'
@@ -28,7 +27,6 @@ export interface FormPublishData {
     author: string
     termsAndConditions: boolean
     geojson: string
-    shacl: FileInfo[]
     tags?: string[]
     dockerImage?: string
     dockerImageCustom?: string
