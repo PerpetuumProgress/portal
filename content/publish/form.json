@@ -24,6 +24,348 @@
         "required": true
       },
       {
+        "name": "datasettype",
+        "label": "Dataset Type",
+        "type": "boxSelection",
+        "options": ["Scenario", "Track", "Environment Model", "Custom Shape"],
+        "required": true
+      },
+      {
+        "name": "hdMapAccuracyLaneModel2D",
+        "label": "hdMapAccuracyLaneModel2D",
+        "type": "number",
+        "help": "Accuracy of Lane Model 2D",
+        "required": true
+      },
+      {
+        "name": "hdMapAccuracyLaneModelHeight",
+        "label": "hdMapAccuracyLaneModelHeight",
+        "type": "number",
+        "help": "Accuracy of Lane Model Height",
+        "required": true
+      },
+      {
+        "name": "hdMapAccuracyObjects",
+        "label": "hdMapAccuracyObjects",
+        "type": "number",
+        "help": "Accuracy of Objects",
+        "required": true
+      },
+      {
+        "name": "hdMapAccuracySignals",
+        "label": "hdMapAccuracySignals",
+        "type": "number",
+        "help": "Accuracy of Signals",
+        "required": true
+      },
+      {
+        "name": "hdMapElevationRange",
+        "label": "hdMapElevationRange",
+        "type": "number",
+        "help": "Elevation Range",
+        "required": true
+      },
+      {
+        "name": "hdMapGNSS",
+        "label": "hdMapGNSS",
+        "type": "boolean",
+        "help": "GNSS Information",
+        "required": true
+      },
+      {
+        "name": "hdMapGeodeticDatum",
+        "label": "hdMapGeodeticDatum",
+        "type": "text",
+        "help": "Geodetic Datum",
+        "required": true
+      },
+      {
+        "name": "hdMapHeightSystem",
+        "label": "hdMapHeightSystem",
+        "type": "text",
+        "help": "Height System",
+        "required": true
+      },
+      {
+        "name": "hdMapLaneTypes",
+        "label": "hdMapLaneTypes",
+        "type": "text",
+        "help": "Lane Types",
+        "required": true
+      },
+      {
+        "name": "hdMapLength",
+        "label": "hdMapLength",
+        "type": "number",
+        "help": "Length of Map",
+        "required": true
+      },
+      {
+        "name": "hdMapLevelOfDetail",
+        "label": "hdMapLevelOfDetail",
+        "type": "text",
+        "help": "Level of Detail",
+        "required": true
+      },
+      {
+        "name": "hdMapLight",
+        "label": "hdMapLight",
+        "type": "boolean",
+        "help": "Light Information",
+        "required": true
+      },
+      {
+        "name": "hdMapMeasurementSystem",
+        "label": "hdMapMeasurementSystem",
+        "type": "text",
+        "help": "Measurement System",
+        "required": true
+      },
+      {
+        "name": "hdMapNumberIntersections",
+        "label": "hdMapNumberIntersections",
+        "type": "integer",
+        "help": "Number of Intersections",
+        "required": true
+      },
+      {
+        "name": "hdMapNumberObjects",
+        "label": "hdMapNumberObjects",
+        "type": "integer",
+        "help": "Number of Objects",
+        "required": true
+      },
+      {
+        "name": "hdMapNumberOutlines",
+        "label": "hdMapNumberOutlines",
+        "type": "integer",
+        "help": "Number of Outlines",
+        "required": true
+      },
+      {
+        "name": "hdMapNumberTrafficLights",
+        "label": "hdMapNumberTrafficLights",
+        "type": "integer",
+        "help": "Number of Traffic Lights",
+        "required": true
+      },
+      {
+        "name": "hdMapNumberTrafficSigns",
+        "label": "hdMapNumberTrafficSigns",
+        "type": "integer",
+        "help": "Number of Traffic Signs",
+        "required": true
+      },
+      {
+        "name": "hdMapOrigin",
+        "label": "hdMapOrigin",
+        "type": "text",
+        "help": "Origin of Map",
+        "required": true
+      },
+      {
+        "name": "hdMapPrecision",
+        "label": "hdMapPrecision",
+        "type": "number",
+        "help": "Precision of Map",
+        "required": true
+      },
+      {
+        "name": "hdMapProjectionType",
+        "label": "hdMapProjectionType",
+        "type": "text",
+        "help": "Projection Type",
+        "required": true
+      },
+      {
+        "name": "hdMapRadar",
+        "label": "hdMapRadar",
+        "type": "boolean",
+        "help": "Radar Information",
+        "required": true
+      },
+      {
+        "name": "hdMapRangeOfModeling",
+        "label": "hdMapRangeOfModeling",
+        "type": "number",
+        "help": "Range of Modeling",
+        "required": true
+      },
+      {
+        "name": "hdMapRecordingTime",
+        "label": "hdMapRecordingTime",
+        "type": "datetime",
+        "help": "Recording Time",
+        "required": true
+      },
+      {
+        "name": "hdMapRoadTypes",
+        "label": "hdMapRoadTypes",
+        "type": "text",
+        "help": "Road Types",
+        "required": true
+      },
+      {
+        "name": "hdMapSpeedLimit",
+        "label": "hdMapSpeedLimit",
+        "type": "integer",
+        "help": "Speed Limit",
+        "required": true
+      },
+      {
+        "name": "hdMapTrafficDirection",
+        "label": "hdMapTrafficDirection",
+        "type": "text",
+        "help": "Map Traffic Direction",
+        "required": true
+      },
+      {
+        "name": "hdMapUsedDataSources",
+        "label": "hdMapUsedDataSources",
+        "type": "text",
+        "help": "Used Data Sources",
+        "required": true
+      },
+      {
+        "name": "MapLevel",
+        "label": "Traffic Direction",
+        "type": "textarea",
+        "help": "Map Traffic Direction",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentSoftwareName",
+        "label": "3D Environment Software Name",
+        "type": "text",
+        "help": "Name of the visual system",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentSoftwareVendor",
+        "label": "3D Environment Software Vendor",
+        "type": "text",
+        "help": "Name of the software vendor",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentSoftwareVersion",
+        "label": "3D Environment Software Version",
+        "type": "text",
+        "help": "Version of the visual system",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentFormat",
+        "label": "3D Environment Format",
+        "type": "text",
+        "help": "Data format type",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentFormatVersion",
+        "label": "3D Environment Format Version",
+        "type": "text",
+        "help": "Data format version",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentDataSource",
+        "label": "Data Sources",
+        "type": "text",
+        "help": "Which data source was used",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentTileCount",
+        "label": "3D Environment Tile Count",
+        "type": "text",
+        "help": "Number of tiles as row and column",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentTileSize",
+        "label": "3D Environment Tile Size",
+        "type": "number",
+        "help": "Tile size in meter",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentTextureMaterialCount",
+        "label": "3D Environment Texture/Material Count",
+        "type": "integer",
+        "help": "Number of textures/materials",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentTriangleCount",
+        "label": "3D Environment Triangle Count",
+        "type": "text",
+        "help": "Total number of all triangles, instances are considered only once",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentDetailLevel",
+        "label": "3D Environment Detail Level",
+        "type": "text",
+        "help": "Category of the level of detail (High - highest level of detail with additional object enrichment, Med - directly from data sources, Low - topological representation).",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentTextureResolution",
+        "label": "3D Environment Texture Resolution",
+        "type": "number",
+        "help": "Real texture resolution in meter (max?)",
+        "required": true
+      },
+      {
+        "name": "3DEnvironmentPBRMaterials",
+        "label": "3D Environment PBR Materials",
+        "type": "boolean",
+        "help": "Usage of Physically Based Rendering material layers",
+        "required": true
+      },
+      {
+        "name": "SubjectVehicleSpeed",
+        "label": "Subject Vehicle Speeds",
+        "type": "text",
+        "help": "Speed Range of the vehicle",
+        "placeholder": "e.g. 120 - 130",
+        "required": true
+      },
+      {
+        "name": "TrafficAgentType",
+        "label": "Traffic Agent Type",
+        "type": "text",
+        "help": "Type of Traffic Participant",
+        "placeholder": "e.g. Car",
+        "required": true
+      },
+      {
+        "name": "BehaviourMotion",
+        "label": "Behaviour Motion",
+        "type": "text",
+        "help": "Type of Scenario",
+        "placeholder": "e.g. Cut-in, Drive through",
+        "required": true
+      },
+      {
+        "name": "Positioning",
+        "label": "Positioning",
+        "type": "text",
+        "help": "Type of Positioning System",
+        "placeholder": "e.g. Galileo, GPS, GlONASS",
+        "required": true
+      },
+      {
+        "name": "shaclfile",
+        "label": "Uplaod Shacl File",
+        "help": "Upload Shacl file",
+        "placeholder": "e.g. https://file.com/file.ttl",
+        "type": "files",
+        "required": true
+      },
+
+      {
         "name": "name",
         "label": "Title",
         "placeholder": "e.g. Shapes of Desert Plants",
@@ -47,7 +389,7 @@
         "name": "tags",
         "label": "Tags",
         "type": "tags",
-        "placeholder": "e.g. logistics"
+        "placeholder": "e.g. OpenSCENARIO, OpenDRIVE, OpenSceneGraph"
       },
       {
         "name": "dockerImage",
