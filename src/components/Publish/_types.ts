@@ -28,7 +28,9 @@ export interface FormPublishData {
     termsAndConditions: boolean
     geojson: string
     datasettype: 'scenario' | 'track' | 'environment model' | 'custom shape'
+    shaclmetadata: any
     hdMapAccuracyLaneModel2D: number
+    hdMapAccuracyLaneModelHeight: number
     tags?: string[]
     dockerImage?: string
     dockerImageCustom?: string

@@ -77,7 +77,9 @@ export async function transformPublishFormToDdo(
     termsAndConditions,
     geojson,
     datasettype,
+    shaclmetadata,
     hdMapAccuracyLaneModel2D,
+    hdMapAccuracyLaneModelHeight,
     dockerImage,
     dockerImageCustom,
     dockerImageCustomTag,
@@ -116,6 +118,8 @@ export async function transformPublishFormToDdo(
       termsAndConditions,
       geojson
     },
+    hdMapAccuracyLaneModel2D,
+    hdMapAccuracyLaneModelHeight,
     ...(type === 'algorithm' &&
       dockerImage !== '' && {
         algorithm: {

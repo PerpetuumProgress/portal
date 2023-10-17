@@ -26,7 +26,7 @@ export default function MetaInfo({
       />
       <DatasetType
         type={asset?.metadata.datasettype}
-        className={styles.assetType}
+        className={styles.datasettype}
       />
       <div className={styles.byline}>
         <p>

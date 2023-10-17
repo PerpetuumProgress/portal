@@ -88,7 +88,41 @@ export default function AssetContent({
               )}
             {asset?.metadata?.type === 'dataset' &&
               asset?.metadata?.datasettype === 'track' && (
-                <MetaMain asset={asset} nftPublisher={nftPublisher} />
+                <>
+                  <div className={styles.description}>SHACL Metadata</div>
+                  <div className={styles.description}>
+                    HD Map Accuracy (Lane Model 2D):{' '}
+                    {asset?.metadata?.hdMapAccuracyLaneModel2D}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Accuracy (Lane Model Height):{' '}
+                    {asset?.metadata?.hdMapAccuracyLaneModelHeight}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Accuracy (Objects):{' '}
+                    {asset?.metadata?.hdMapAccuracyObjects}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Accuracy (Signals):{' '}
+                    {asset?.metadata?.hdMapAccuracySignals}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Elevation Range:{' '}
+                    {asset?.metadata?.hdMapElevationRange}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map GNSS: {asset?.metadata?.hdMapGNSS ? 'Yes' : 'No'}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Geodetic Datum: {asset?.metadata?.hdMapGeodeticDatum}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Height System: {asset?.metadata?.hdMapHeightSystem}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Lane Types: {asset?.metadata?.hdMapLaneTypes}
+                  </div>
+                </>
               )}
             <MetaFull ddo={asset} />
             <EditHistory receipts={receipts} setReceipts={setReceipts} />
