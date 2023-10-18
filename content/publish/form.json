@@ -228,8 +228,8 @@
       },
       {
         "name": "MapLevel",
-        "label": "Traffic Direction",
-        "type": "textarea",
+        "label": "Map Level",
+        "type": "text",
         "help": "Map Traffic Direction",
         "required": true
       },

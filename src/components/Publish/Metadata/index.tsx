@@ -275,6 +275,74 @@ export default function MetadataFields(): ReactElement {
               name="metadata.hdMapPrecision"
             />
             <Field
+              {...getFieldContent(
+                'hdMapProjectionType',
+                content.metadata.fields
+              )}
+              component={Input}
+              name="metadata.hdMapProjectionType"
+            />
+
+            <Field
+              {...getFieldContent('hdMapRadar', content.metadata.fields)}
+              component={Input}
+              name="metadata.hdMapRadar"
+            />
+
+            <Field
+              {...getFieldContent(
+                'hdMapRangeOfModeling',
+                content.metadata.fields
+              )}
+              component={Input}
+              name="metadata.hdMapRangeOfModeling"
+            />
+
+            <Field
+              {...getFieldContent(
+                'hdMapRecordingTime',
+                content.metadata.fields
+              )}
+              component={Input}
+              name="metadata.hdMapRecordingTime"
+            />
+
+            <Field
+              {...getFieldContent('hdMapRoadTypes', content.metadata.fields)}
+              component={Input}
+              name="metadata.hdMapRoadTypes"
+            />
+
+            <Field
+              {...getFieldContent('hdMapSpeedLimit', content.metadata.fields)}
+              component={Input}
+              name="metadata.hdMapSpeedLimit"
+            />
+
+            <Field
+              {...getFieldContent(
+                'hdMapTrafficDirection',
+                content.metadata.fields
+              )}
+              component={Input}
+              name="metadata.hdMapTrafficDirection"
+            />
+
+            <Field
+              {...getFieldContent(
+                'hdMapUsedDataSources',
+                content.metadata.fields
+              )}
+              component={Input}
+              name="metadata.hdMapUsedDataSources"
+            />
+
+            <Field
+              {...getFieldContent('MapLevel', content.metadata.fields)}
+              component={Input}
+              name="metadata.MapLevel"
+            />
+            <Field
               {...getFieldContent('geojson', content.metadata.fields)}
               component={Input}
               name="metadata.geojson"

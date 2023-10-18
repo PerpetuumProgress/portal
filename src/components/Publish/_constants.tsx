@@ -72,8 +72,7 @@ export const initialValues: FormPublishData = {
     dockerImageCustomEntrypoint: '',
     datasettype: 'scenario',
     hdMapAccuracyLaneModel2D: 0,
-    hdMapAccuracyLaneModelHeight: 10,
-    shaclmetadata: undefined
+    hdMapAccuracyLaneModelHeight: 10
   },
   services: [
     {

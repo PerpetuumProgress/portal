@@ -27,6 +27,7 @@ export const datasetAquarius: Asset = {
     additionalInformation: {
       termsAndConditions: true
     },
+    shaclmetadata: {},
     datasettype: 'scenario'
   },
   services: [
