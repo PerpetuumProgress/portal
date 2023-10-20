@@ -31,7 +31,8 @@ export const assets: AssetExtended[] = [
       license: 'CC0: PublicDomain',
       name: 'Branin dataset',
       type: 'dataset',
-      updated: '2022-09-19T10:55:11Z'
+      updated: '2022-09-19T10:55:11Z',
+      datasettype: 'scenario'
     },
     nft: {
       address: '0xE07B0a3403fAD9568cd970C04C3D08A9c1Ab93d0',
@@ -125,7 +126,8 @@ export const assets: AssetExtended[] = [
         'nft'
       ],
       type: 'dataset',
-      updated: '2022-10-06T23:05:51Z'
+      updated: '2022-10-06T23:05:51Z',
+      datasettype: 'scenario'
     },
     nft: {
       address: '0x866e4ED7b001f40c4067d0a37d6d401a0B13EfD6',
