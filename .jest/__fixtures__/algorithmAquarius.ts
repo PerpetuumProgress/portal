@@ -37,8 +37,7 @@ export const algorithmAquarius: Asset = {
         image: 'https://docker.com/test.img',
         checksum: ''
       }
-    },
-    datasettype: 'scenario'
+    }
   },
   services: [
     {
