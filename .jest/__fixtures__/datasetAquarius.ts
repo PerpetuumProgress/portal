@@ -26,8 +26,7 @@ export const datasetAquarius: Asset = {
     license: 'https://market.oceanprotocol.com/terms',
     additionalInformation: {
       termsAndConditions: true
-    },
-    datasettype: 'scenario'
+    }
   },
   services: [
     {
