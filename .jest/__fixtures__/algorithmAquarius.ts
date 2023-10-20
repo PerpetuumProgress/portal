@@ -28,6 +28,7 @@ export const algorithmAquarius: Asset = {
     additionalInformation: {
       termsAndConditions: true
     },
+    shaclmetadata: {},
     algorithm: {
       language: 'json',
       version: '0.1',
@@ -37,7 +38,8 @@ export const algorithmAquarius: Asset = {
         image: 'https://docker.com/test.img',
         checksum: ''
       }
-    }
+    },
+    datasettype: 'scenario'
   },
   services: [
     {
