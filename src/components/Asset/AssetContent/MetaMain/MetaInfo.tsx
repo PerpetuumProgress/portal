@@ -4,6 +4,7 @@ import Publisher from '@shared/Publisher'
 import { getServiceByName } from '@utils/ddo'
 import React, { ReactElement } from 'react'
 import styles from './MetaInfo.module.css'
+import DatasetType from '@components/@shared/AssetType/datasettype'
 
 export default function MetaInfo({
   asset,
@@ -22,6 +23,10 @@ export default function MetaInfo({
         type={asset?.metadata.type}
         accessType={accessType}
         className={styles.assetType}
+      />
+      <DatasetType
+        type={asset?.metadata.datasettype}
+        className={styles.datasettype}
       />
       <div className={styles.byline}>
         <p>
