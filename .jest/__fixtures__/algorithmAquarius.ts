@@ -28,7 +28,6 @@ export const algorithmAquarius: Asset = {
     additionalInformation: {
       termsAndConditions: true
     },
-    shaclmetadata: {},
     algorithm: {
       language: 'json',
       version: '0.1',
