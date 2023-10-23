@@ -17,5 +17,4 @@ src/@types/graph.types.ts
 tsconfig.tsbuildinfo
 __snapshots__
 storybook-static
-.cosine/
-.gitignore
+.cosine
