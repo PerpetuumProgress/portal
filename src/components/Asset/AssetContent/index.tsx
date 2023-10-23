@@ -87,118 +87,200 @@ export default function AssetContent({
                 />
               )}
             {asset?.metadata?.type === 'dataset' &&
-              asset?.metadata?.datasettype === 'track' && (
+              asset?.metadata?.additionalInformation?.datasettype ===
+                'track' && (
                 <>
-                  <div className={styles.description}>SHACL Metadata</div>
                   <div className={styles.description}>
-                    HD Map Accuracy (Lane Model 2D):{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapAccuracyLaneModel2D}
+                    <strong>SHACL Metadata</strong>
                   </div>
                   <div className={styles.description}>
                     HD Map Accuracy (Lane Model Height):{' '}
                     {
-                      asset?.metadata?.shaclmetadata
+                      asset?.metadata?.additionalInformation?.shaclmetadata
                         ?.hdMapAccuracyLaneModelHeight
                     }
                   </div>
                   <div className={styles.description}>
                     HD Map Accuracy (Objects):{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapAccuracyObjects}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapAccuracyObjects
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Accuracy (Signals):{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapAccuracySignals}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapAccuracySignals
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Elevation Range:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapElevationRange}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapElevationRange
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map GNSS:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapGNSS ? 'Yes' : 'No'}
+                    {asset?.metadata?.additionalInformation?.shaclmetadata
+                      ?.hdMapGNSS
+                      ? 'Yes'
+                      : 'No'}
                   </div>
                   <div className={styles.description}>
                     HD Map Geodetic Datum:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapHeightSystem}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapHeightSystem
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Lane Types:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapLaneTypes}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLaneTypes
+                    }
                   </div>
                   <div className={styles.description}>
-                    HD Map Length: {asset?.metadata?.shaclmetadata?.hdMapLength}
+                    HD Map Length:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLength
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Level Of Detail:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapLevelOfDetail}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLevelOfDetail
+                    }
                   </div>
                   <div className={styles.description}>
-                    HD Map Light: {asset?.metadata?.shaclmetadata?.hdMapLight}
+                    HD Map Light:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLight
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Measurement System:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapMeasurementSystem}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapMeasurementSystem
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Number Intersections:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapNumberIntersections}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberIntersections
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Number Objects:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapNumberObjects}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberObjects
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Number Outlines:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapNumberOutlines}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberOutlines
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Number Traffic Lights:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapNumberTrafficLights}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberTrafficLights
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Number Traffic Signs:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapNumberTrafficSigns}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberTrafficSigns
+                    }
                   </div>
                   <div className={styles.description}>
-                    HD Map Origin: {asset?.metadata?.shaclmetadata?.hdMapOrigin}
+                    HD Map Origin:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapOrigin
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Precision:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapPrecision}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapPrecision
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Projection Type:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapProjectionType}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapProjectionType
+                    }
                   </div>
                   <div className={styles.description}>
-                    HD Map Radar: {asset?.metadata?.shaclmetadata?.hdMapRadar}
+                    HD Map Radar:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRadar
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Range Of Modeling:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapRangeOfModeling}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRangeOfModeling
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Recording Time:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapRecordingTime}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRecordingTime
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Road Types:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapRoadTypes}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRoadTypes
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Speed Limit:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapSpeedLimit}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapSpeedLimit
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Traffic Direction:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapTrafficDirection}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapTrafficDirection
+                    }
                   </div>
                   <div className={styles.description}>
                     HD Map Used Data Sources:{' '}
-                    {asset?.metadata?.shaclmetadata?.hdMapUsedDataSources}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapUsedDataSources
+                    }
                   </div>
                   <div className={styles.description}>
-                    Map Level: {asset?.metadata?.shaclmetadata?.MapLevel}
+                    Map Level:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.MapLevel
+                    }
                   </div>
                 </>
               )}
