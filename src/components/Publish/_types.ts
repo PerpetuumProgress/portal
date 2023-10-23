@@ -19,6 +19,7 @@ export interface FormPublishData {
     chainId: number
   }
   metadata: {
+    datasettype: string
     nft: NftMetadata
     transferable: boolean
     type: 'dataset' | 'algorithm'
@@ -33,6 +34,34 @@ export interface FormPublishData {
     dockerImageCustomTag?: string
     dockerImageCustomEntrypoint?: string
     dockerImageCustomChecksum?: string
+    hdMapAccuracyLaneModel2D: number
+    hdMapAccuracyLaneModelHeight: number
+    hdMapAccuracyObjects: number
+    hdMapAccuracySignals: number
+    hdMapElevationRange: number
+    hdMapGNSS: boolean
+    hdMapHeightSystem: string
+    hdMapLaneTypes: string
+    hdMapLength: number
+    hdMapLevelOfDetail: string
+    hdMapLight: boolean
+    hdMapMeasurementSystem: string
+    hdMapNumberIntersections: number
+    hdMapNumberObjects: number
+    hdMapNumberOutlines: number
+    hdMapNumberTrafficLights: number
+    hdMapNumberTrafficSigns: number
+    hdMapOrigin: string
+    hdMapPrecision: number
+    hdMapProjectionType: string
+    hdMapRadar: boolean
+    hdMapRangeOfModeling: number
+    hdMapRecordingTime: Date
+    hdMapRoadTypes: string
+    hdMapSpeedLimit: number
+    hdMapTrafficDirection: string
+    hdMapUsedDataSources: string
+    MapLevel: string
   }
   services: FormPublishService[]
   pricing: PricePublishOptions
