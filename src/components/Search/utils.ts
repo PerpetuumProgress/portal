@@ -66,7 +66,12 @@ export function getSearchQuery(
       'metadata.name^10',
       'metadata.author',
       'metadata.description',
-      'metadata.tags'
+      'metadata.tags',
+      'metadata.additionalInformation.shaclmetadata.hdMapHeightSystem',
+      'metadata.additionalInformation.shaclmetadata.hdMapLaneTypes',
+      'metadata.additionalInformation.shaclmetadata.hdMapLevelOfDetail',
+      'metadata.additionalInformation.shaclmetadata.hdMapMeasurementSystem',
+      'metadata.additionalInformation.shaclmetadata.hdMapOrigin'
     ]
 
     nestedQuery = {

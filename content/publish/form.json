@@ -33,7 +33,7 @@
       {
         "name": "hdMapAccuracyLaneModel2D",
         "label": "hdMapAccuracyLaneModel2D",
-        "type": "number",
+        "type": "text",
         "help": "Accuracy of Lane Model 2D",
         "required": true
       },
