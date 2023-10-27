@@ -18,3 +18,4 @@ tsconfig.tsbuildinfo
 __snapshots__
 storybook-static
 .cosine
+.vscode
