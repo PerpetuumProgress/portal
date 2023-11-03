@@ -58,15 +58,6 @@ export function getSearchQuery(
         ? '*' + searchTerm + '*'
         : '**'
     const words = searchTerm.split(' ')
-    const wordQueries = words.map((word) => ({
-      query_string: {
-        query: `*${word}*`,
-        fields: searchFields,
-        minimum_should_match: '2<75%',
-        phrase_slop: 2,
-        boost: 5
-      }
-    }))
     const searchFields = [
       'id',
       'nft.owner',
@@ -83,6 +74,15 @@ export function getSearchQuery(
       'metadata.additionalInformation.shaclmetadata.hdMapMeasurementSystem',
       'metadata.additionalInformation.shaclmetadata.hdMapOrigin'
     ]
+    const wordQueries = words.map((word) => ({
+      query_string: {
+        query: `*${word}*`,
+        fields: searchFields,
+        minimum_should_match: '2<75%',
+        phrase_slop: 2,
+        boost: 5
+      }
+    }))
 
     nestedQuery = {
       must: [
