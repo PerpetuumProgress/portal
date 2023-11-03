@@ -57,6 +57,16 @@ export function getSearchQuery(
         : !emptySearchTerm && searchTerm
         ? '*' + searchTerm + '*'
         : '**'
+    const words = searchTerm.split(' ')
+    const wordQueries = words.map((word) => ({
+      query_string: {
+        query: `*${word}*`,
+        fields: searchFields,
+        minimum_should_match: '2<75%',
+        phrase_slop: 2,
+        boost: 5
+      }
+    }))
     const searchFields = [
       'id',
       'nft.owner',
@@ -79,6 +89,7 @@ export function getSearchQuery(
         {
           bool: {
             should: [
+              ...wordQueries,
               {
                 query_string: {
                   query: `${modifiedSearchTerm}`,
@@ -97,7 +108,7 @@ export function getSearchQuery(
                 }
               },
               {
-                match_phrase: {
+                match: {
                   content: {
                     query: `${searchTerm}`,
                     boost: 10
