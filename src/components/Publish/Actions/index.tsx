@@ -47,6 +47,114 @@ export default function Actions({
     e.preventDefault()
     handleAction('next')
   }
+  const handleGenerateJson = (e: FormEvent) => {
+    e.preventDefault()
+
+    const { metadata } = values
+
+    // Transform the metadata into the new format
+    const formattedJson = {
+      '@context': {
+        openlabel: 'https://openlabel.asam.net/V1-0-0/ontologies/',
+        dct: 'http://purl.org/dc/terms/',
+        plcgit: 'https://github.com/GAIA-X4PLC-AAD/map-and-scenario-data/'
+        // ... other context definitions
+      },
+      '@id': 'did:example:map1', // This might be dynamically generated or entered by the user
+      '@type': 'plcgit:HDMap',
+      'plcgit:hDMapAccuracyLaneModelHeight': {
+        '@value': metadata.hdMapAccuracyLaneModelHeight.toString(),
+        '@type': 'xsd:float'
+      },
+      // ... other properties
+      'plcgit:hDMapGNSS': metadata.hdMapGNSS
+      // ... continue for all other properties
+    }
+
+    // Assuming `values` is the form state that you want to convert to JSON
+    const jsonDocument = JSON.stringify(formattedJson, null, 2)
+    const blob = new Blob([jsonDocument], { type: 'application/json' })
+    const downloadLink = document.createElement('a')
+    downloadLink.href = URL.createObjectURL(blob)
+    downloadLink.download = 'claimFile.json'
+
+    // Append the link to the document body and simulate a click event to trigger the download
+    document.body.appendChild(downloadLink)
+    downloadLink.click()
+
+    // Clean up the link
+    document.body.removeChild(downloadLink)
+  }
+  function generateClaim(formData: FormData): string {
+    const jsonData = formData
+
+    // Extract form data and convert it to JSON
+    for (const [key, value] of Object.entries(formData)) {
+      jsonData[key] = value
+    }
+    const claimFile = {
+      '@context': {
+        openlabel: 'https://openlabel.asam.net/V1-0-0/ontologies/',
+        dct: 'http://purl.org/dc/terms/',
+        plcgit: 'https://github.com/GAIA-X4PLC-AAD/map-and-scenario-data/',
+        sh: 'http://www.w3.org/ns/shacl#',
+        rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+        gaxtrustframework: 'http://w3id.org/gaia-x/gax-trust-framework#',
+        plc: 'https://www.msg.group/ontologies/gxplcaad/v1.0/',
+        xsd: 'http://www.w3.org/2001/XMLSchema#',
+        foaf: 'http://xmlns.com/foaf/0.1/'
+      },
+      '@id': 'did:example:map1',
+      '@type': 'plcgit:HDMap'
+    }
+
+    // Add properties from the input JSON data to the claim file
+    for (const key in jsonData) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (jsonData.hasOwnProperty(key)) {
+        if (typeof jsonData[key] === 'boolean') {
+          claimFile[
+            `plcgit:hDMap${key.charAt(0).toUpperCase() + key.slice(1)}`
+          ] = jsonData[key]
+        } else if (!isNaN(jsonData[key])) {
+          claimFile[
+            `plcgit:hDMap${key.charAt(0).toUpperCase() + key.slice(1)}`
+          ] = {
+            '@value': String(jsonData[key]),
+            '@type':
+              'xsd:' +
+              (Number.isInteger(jsonData[key]) ? 'unsignedInt' : 'float')
+          }
+        } else {
+          claimFile[
+            `plcgit:hDMap${key.charAt(0).toUpperCase() + key.slice(1)}`
+          ] = {
+            '@value': String(jsonData[key]),
+            '@type': 'xsd:string'
+          }
+        }
+      }
+    }
+
+    // Create a Blob from the claim file
+    const blob = new Blob([JSON.stringify(claimFile, null, 2)], {
+      type: 'application/json'
+    })
+
+    // Create a downloadable link
+    const downloadLink = document.createElement('a')
+    downloadLink.href = URL.createObjectURL(blob)
+    downloadLink.download = 'claimFile.json'
+
+    // Append the link to the document body and simulate a click event to trigger the download
+    document.body.appendChild(downloadLink)
+    downloadLink.click()
+
+    // Clean up the link
+    document.body.removeChild(downloadLink)
+
+    return ''
+  }
 
   function handlePrevious(e: FormEvent) {
     e.preventDefault()
@@ -79,6 +187,16 @@ export default function Actions({
           {values.user.stepCurrent > 1 && (
             <Button onClick={handlePrevious} disabled={isSubmitting}>
               Back
+            </Button>
+          )}
+
+          {values.user.stepCurrent === 1 && (
+            <Button
+              style="primary"
+              onClick={handleGenerateJson}
+              disabled={isContinueDisabled}
+            >
+              Generate Claims
             </Button>
           )}
 
