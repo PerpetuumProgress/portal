@@ -47,6 +47,51 @@ export default function Actions({
     e.preventDefault()
     handleAction('next')
   }
+  const generateClaim = (e: FormEvent) => {
+    e.preventDefault()
+
+    const { metadata } = values
+
+    const formattedJson = {
+      '@context': {
+        openlabel: 'https://openlabel.asam.net/V1-0-0/ontologies/',
+        dct: 'http://purl.org/dc/terms/',
+        plcgit: 'https://github.com/GAIA-X4PLC-AAD/map-and-scenario-data/',
+        sh: 'http://www.w3.org/ns/shacl#',
+        rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+        gaxtrustframework: 'http://w3id.org/gaia-x/gax-trust-framework#',
+        plc: 'https://www.msg.group/ontologies/gxplcaad/v1.0/',
+        xsd: 'http://www.w3.org/2001/XMLSchema#',
+        foaf: 'http://xmlns.com/foaf/0.1/'
+      },
+      '@id': 'did:example:map1', // This might be dynamically generated or entered by the user
+      '@type': 'plcgit:HDMap'
+    }
+
+    // Loop through metadata and add new fields to formattedJson
+    for (const key in metadata) {
+      if (metadata[key] !== undefined) {
+        formattedJson[`plcgit:${key}`] = {
+          '@value': metadata[key].toString(),
+          '@type': 'xsd:float' // Adjust this based on the actual type of metadata[key]
+        }
+      }
+    }
+
+    // Assuming `values` is the form state that you want to convert to JSON
+    const jsonDocument = JSON.stringify(formattedJson, null, 2)
+    const blob = new Blob([jsonDocument], { type: 'application/json' })
+    const downloadLink = document.createElement('a')
+    downloadLink.href = URL.createObjectURL(blob)
+    downloadLink.download = 'claimFile.json'
+
+    // Append the link to the document body and simulate a click event to trigger the download
+    document.body.appendChild(downloadLink)
+    downloadLink.click()
+
+    // Clean up the link
+    document.body.removeChild(downloadLink)
+  }
 
   function handlePrevious(e: FormEvent) {
     e.preventDefault()
@@ -79,6 +124,16 @@ export default function Actions({
           {values.user.stepCurrent > 1 && (
             <Button onClick={handlePrevious} disabled={isSubmitting}>
               Back
+            </Button>
+          )}
+
+          {values.user.stepCurrent === 1 && (
+            <Button
+              style="primary"
+              onClick={generateClaim}
+              disabled={isContinueDisabled}
+            >
+              Generate Claims
             </Button>
           )}
 
