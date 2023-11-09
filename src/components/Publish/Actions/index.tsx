@@ -11,6 +11,7 @@ import AvailableNetworks from '@components/Publish/AvailableNetworks'
 import Info from '@images/info.svg'
 import Loader from '@shared/atoms/Loader'
 import useNetworkMetadata from '@hooks/useNetworkMetadata'
+import IPFS from 'ipfs'
 
 export default function Actions({
   scrollToRef,
@@ -47,7 +48,7 @@ export default function Actions({
     e.preventDefault()
     handleAction('next')
   }
-  const generateClaim = (e: FormEvent) => {
+  const generateClaim = async (e: FormEvent) => {
     e.preventDefault()
 
     const { metadata } = values
@@ -84,6 +85,12 @@ export default function Actions({
     const downloadLink = document.createElement('a')
     downloadLink.href = URL.createObjectURL(blob)
     downloadLink.download = 'claimFile.json'
+
+    const buffer = Buffer.from(jsonDocument)
+    const ipfs = IPFS.create()
+    const result = await (await ipfs).add(buffer)
+    console.log('File stored on IPFS with CID:', result.path)
+    window.alert('File stored on IPFS with content identifier: ' + result.path)
 
     // Append the link to the document body and simulate a click event to trigger the download
     document.body.appendChild(downloadLink)
