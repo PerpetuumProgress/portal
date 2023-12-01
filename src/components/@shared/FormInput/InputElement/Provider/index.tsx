@@ -5,12 +5,17 @@ import { InputProps } from '@shared/FormInput'
 import FileInfo from '../FilesInput/Info'
 import styles from './index.module.css'
 import Button from '@shared/atoms/Button'
-import { LoggerInstance, ProviderInstance } from '@oceanprotocol/lib'
+import {
+  LoggerInstance,
+  ProviderInstance,
+  getErrorMessage
+} from '@oceanprotocol/lib'
 import { FormPublishData } from '@components/Publish/_types'
 import { getOceanConfig } from '@utils/ocean'
 import axios from 'axios'
 import { useCancelToken } from '@hooks/useCancelToken'
 import { useNetwork } from 'wagmi'
+import { toast } from 'react-toastify'
 
 export default function CustomProvider(props: InputProps): ReactElement {
   const { chain } = useNetwork()
@@ -31,10 +36,17 @@ export default function CustomProvider(props: InputProps): ReactElement {
       // No way to detect a failed request with ProviderInstance.isValidProvider,
       // making this error show up for multiple cases it shouldn't, like network
       // down.
-      if (!isValid)
-        throw Error(
+      if (!isValid) {
+        setFieldError(
+          `${field.name}.url`,
           '✗ No valid provider detected. Check your network, your URL and try again.'
         )
+        LoggerInstance.error(
+          '[Custom Provider]:',
+          '✗ No valid provider detected. Check your network, your URL and try again.'
+        )
+        return
+      }
 
       // Check if valid provider is for same chain user is on
       const providerResponse = await axios.get(field.value.url, {
@@ -48,16 +60,25 @@ export default function CustomProvider(props: InputProps): ReactElement {
         providerChain === userChainId
           ? true
           : !!(providerChain.length > 0 && providerChain.includes(userChainId))
-      if (!isCompatible)
-        throw Error(
+
+      if (!isCompatible) {
+        setFieldError(
+          `${field.name}.url`,
           '✗ This provider is incompatible with the network your wallet is connected to.'
         )
+        LoggerInstance.error(
+          '[Custom Provider]:',
+          '✗ This provider is incompatible with the network your wallet is connected to.'
+        )
+        return
+      }
 
       // if all good, add provider to formik state
       helpers.setValue({ url: field.value.url, valid: isValid, custom: true })
     } catch (error) {
-      setFieldError(`${field.name}.url`, error.message)
-      LoggerInstance.error(error.message)
+      const message = getErrorMessage(error.message)
+      setFieldError(`${field.name}.url`, message)
+      LoggerInstance.error('[Custom Provider]:', message)
     } finally {
       setIsLoading(false)
     }

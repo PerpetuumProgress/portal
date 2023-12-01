@@ -9,7 +9,8 @@ import {
   Service,
   ProviderInstance,
   ComputeEnvironment,
-  ComputeJob
+  ComputeJob,
+  getErrorMessage
 } from '@oceanprotocol/lib'
 import { CancelToken } from 'axios'
 import { gql } from 'urql'
@@ -26,6 +27,7 @@ import { AssetSelectionAsset } from '@shared/FormInput/InputElement/AssetSelecti
 import { transformAssetToAssetSelection } from './assetConvertor'
 import { ComputeEditForm } from '../components/Asset/Edit/_types'
 import { getFileDidInfo } from './provider'
+import { toast } from 'react-toastify'
 
 const getComputeOrders = gql`
   query ComputeOrders($user: String!) {
@@ -146,7 +148,12 @@ export async function getComputeEnviroment(
     if (!computeEnvs[asset.chainId][0]) return null
     return computeEnvs[asset.chainId][0]
   } catch (e) {
-    LoggerInstance.error('[compute] Fetch compute enviroment: ', e.message)
+    const message = getErrorMessage(e.message)
+    LoggerInstance.error(
+      '[Compute to Data] Fetch compute environment:',
+      message
+    )
+    toast.error(message)
   }
 }
 
@@ -160,7 +167,10 @@ export function getQueryString(
   const baseParams = {
     chainIds: [chainId],
     sort: { sortBy: SortTermOptions.Created },
-    filters: [getFilterTerm('metadata.type', 'algorithm')]
+    filters: [getFilterTerm('metadata.type', 'algorithm')],
+    esPaginationOptions: {
+      size: 3000
+    }
   } as BaseQueryParams
   algorithmDidList?.length > 0 &&
     baseParams.filters.push(getFilterTerm('_id', algorithmDidList))
@@ -193,7 +203,6 @@ export async function getAlgorithmsForAsset(
     ),
     token
   )
-
   const algorithms: Asset[] = gueryResults?.results
   return algorithms
 }
@@ -222,8 +231,6 @@ async function getJobs(
   assets: Asset[]
 ): Promise<ComputeJobMetaData[]> {
   const computeJobs: ComputeJobMetaData[] = []
-  // commented loop since we decide how to filter jobs
-  // for await (const providerUrl of providerUrls) {
   try {
     const providerComputeJobs = (await ProviderInstance.computeStatus(
       providerUrls[0],
@@ -256,9 +263,10 @@ async function getJobs(
       })
     }
   } catch (err) {
-    LoggerInstance.error(err.message)
+    const message = getErrorMessage(err.message)
+    LoggerInstance.error('[Compute to Data] Error:', message)
+    toast.error(message)
   }
-  // }
   return computeJobs
 }
 

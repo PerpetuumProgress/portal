@@ -5,6 +5,8 @@ import {
   TokenPriceQuery_token as TokenPrice
 } from '../@types/subgraph/TokenPriceQuery'
 import {
+  AssetPrice,
+  getErrorMessage,
   LoggerInstance,
   ProviderFees,
   ProviderInstance
@@ -13,9 +15,11 @@ import { getFixedBuyPrice } from './ocean/fixedRateExchange'
 import Decimal from 'decimal.js'
 import {
   consumeMarketOrderFee,
-  publisherMarketOrderFee
+  publisherMarketOrderFee,
+  customProviderUrl
 } from '../../app.config'
 import { Signer } from 'ethers'
+import { toast } from 'react-toastify'
 
 const tokenPriceQuery = gql`
   query TokenPriceQuery($datatokenId: ID!, $account: String) {
@@ -82,7 +86,6 @@ function getAccessDetailsFromTokenPrice(
   timeout?: number
 ): AccessDetails {
   const accessDetails = {} as AccessDetails
-
   // Return early when no supported pricing schema found.
   if (
     tokenPrice?.dispensers?.length === 0 &&
@@ -109,7 +112,10 @@ function getAccessDetailsFromTokenPrice(
     // the last valid order should be the last reuse order tx id if there is one
     accessDetails.validOrderTx = reusedOrder?.tx || order?.tx
   }
-  accessDetails.templateId = tokenPrice.templateId
+  accessDetails.templateId =
+    typeof tokenPrice.templateId === 'string'
+      ? parseInt(tokenPrice.templateId)
+      : tokenPrice.templateId
   // TODO: fetch order fee from sub query
   accessDetails.publisherMarketOrderFee = tokenPrice?.publishMarketFeeAmount
 
@@ -174,17 +180,23 @@ export async function getOrderPriceAndFees(
     },
     opcFee: '0'
   } as OrderPriceAndFees
-
   // fetch provider fee
-  const initializeData =
-    !providerFees &&
-    (await ProviderInstance.initialize(
-      asset?.id,
-      asset?.services[0].id,
-      0,
-      accountId,
-      asset?.services[0].serviceEndpoint
-    ))
+  let initializeData
+  try {
+    initializeData =
+      !providerFees &&
+      (await ProviderInstance.initialize(
+        asset?.id,
+        asset?.services[0].id,
+        0,
+        accountId,
+        customProviderUrl || asset?.services[0].serviceEndpoint
+      ))
+  } catch (error) {
+    const message = getErrorMessage(error.message)
+    LoggerInstance.error('[Initialize Provider] Error:', message)
+    toast.error(message)
+  }
   orderPriceAndFee.providerFee = providerFees || initializeData.providerFee
 
   // fetch price and swap fees
@@ -242,4 +254,15 @@ export async function getAccessDetails(
   } catch (error) {
     LoggerInstance.error('Error getting access details: ', error.message)
   }
+}
+
+export function getAvailablePrice(asset: AssetExtended): AssetPrice {
+  const price: AssetPrice = asset?.stats?.price?.value
+    ? asset?.stats?.price
+    : {
+        value: Number(asset?.accessDetails?.price),
+        tokenSymbol: asset?.accessDetails?.baseToken?.symbol,
+        tokenAddress: asset?.accessDetails?.baseToken?.address
+      }
+  return price
 }

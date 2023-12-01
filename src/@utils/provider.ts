@@ -12,11 +12,17 @@ import {
   ProviderComputeInitializeResults,
   ProviderInstance,
   UrlFile,
-  AbiItem
+  AbiItem,
+  UserCustomParameters,
+  getErrorMessage
 } from '@oceanprotocol/lib'
-import { QueryHeader } from '@shared/FormInput/InputElement/Headers'
+// if customProviderUrl is set, we need to call provider using this custom endpoint
+import { customProviderUrl } from '../../app.config'
+import { KeyValuePair } from '@shared/FormInput/InputElement/KeyValueInput'
 import { Signer } from 'ethers'
 import { getValidUntilTime } from './compute'
+import { toast } from 'react-toastify'
+import { tr } from 'date-fns/locale'
 
 export async function initializeProviderForCompute(
   dataset: AssetExtended,
@@ -47,11 +53,13 @@ export async function initializeProviderForCompute(
       computeAlgo,
       computeEnv?.id,
       validUntil,
-      dataset.services[0].serviceEndpoint,
+      customProviderUrl || dataset.services[0].serviceEndpoint,
       accountId
     )
   } catch (error) {
-    LoggerInstance.error(`Error initializing provider for the compute job!`)
+    const message = getErrorMessage(error.message)
+    LoggerInstance.error('[Initialize Provider] Error:', message)
+    toast.error(message)
     return null
   }
 }
@@ -64,10 +72,16 @@ export async function getEncryptedFiles(
 ): Promise<string> {
   try {
     // https://github.com/oceanprotocol/provider/blob/v4main/API.md#encrypt-endpoint
-    const response = await ProviderInstance.encrypt(files, chainId, providerUrl)
+    const response = await ProviderInstance.encrypt(
+      files,
+      chainId,
+      customProviderUrl || providerUrl
+    )
     return response
   } catch (error) {
-    console.error('Error parsing json: ' + error.message)
+    const message = getErrorMessage(error.message)
+    LoggerInstance.error('[Provider Encrypt] Error:', message)
+    toast.error(message)
   }
 }
 
@@ -81,12 +95,15 @@ export async function getFileDidInfo(
     const response = await ProviderInstance.checkDidFiles(
       did,
       serviceId,
-      providerUrl,
+      customProviderUrl || providerUrl,
       withChecksum
     )
     return response
   } catch (error) {
-    LoggerInstance.error(error.message)
+    const message = getErrorMessage(error.message)
+    LoggerInstance.error('[Initialize check file did] Error:', message)
+    toast.error(`[Initialize check file did] Error: ${message}`)
+    throw new Error(`[Initialize check file did] Error: ${message}`)
   }
 }
 
@@ -95,97 +112,141 @@ export async function getFileInfo(
   providerUrl: string,
   storageType: string,
   query?: string,
-  headers?: QueryHeader[],
+  headers?: KeyValuePair[],
   abi?: string,
   chainId?: number,
   method?: string
 ): Promise<FileInfo[]> {
-  try {
-    let response
-    const headersProvider = {}
-    if (headers?.length > 0) {
-      headers.map((el) => {
-        headersProvider[el.key] = el.value
-        return el
-      })
+  let response
+  const headersProvider = {}
+  if (headers?.length > 0) {
+    headers.map((el) => {
+      headersProvider[el.key] = el.value
+      return el
+    })
+  }
+
+  switch (storageType) {
+    case 'ipfs': {
+      const fileIPFS: Ipfs = {
+        type: storageType,
+        hash: file
+      }
+      try {
+        response = await ProviderInstance.getFileInfo(
+          fileIPFS,
+          customProviderUrl || providerUrl
+        )
+      } catch (error) {
+        const message = getErrorMessage(error.message)
+        LoggerInstance.error('[Provider Get File info] Error:', message)
+        toast.error(message)
+      }
+      break
     }
-
-    switch (storageType) {
-      case 'ipfs': {
-        const fileIPFS: Ipfs = {
-          type: storageType,
-          hash: file
-        }
-        response = await ProviderInstance.getFileInfo(fileIPFS, providerUrl)
-        break
+    case 'arweave': {
+      const fileArweave: Arweave = {
+        type: storageType,
+        transactionId: file
       }
-      case 'arweave': {
-        const fileArweave: Arweave = {
-          type: storageType,
-          transactionId: file
-        }
-        response = await ProviderInstance.getFileInfo(fileArweave, providerUrl)
-        break
+      try {
+        response = await ProviderInstance.getFileInfo(
+          fileArweave,
+          customProviderUrl || providerUrl
+        )
+      } catch (error) {
+        const message = getErrorMessage(error.message)
+        LoggerInstance.error('[Provider Get File info] Error:', message)
+        toast.error(message)
       }
-      case 'graphql': {
-        const fileGraphql: GraphqlQuery = {
-          type: storageType,
-          url: file,
-          headers: headersProvider,
-          query
-        }
-
-        response = await ProviderInstance.getFileInfo(fileGraphql, providerUrl)
-        break
+      break
+    }
+    case 'graphql': {
+      const fileGraphql: GraphqlQuery = {
+        type: storageType,
+        url: file,
+        headers: headersProvider,
+        query
       }
-      case 'smartcontract': {
-        // clean obj
-        const fileSmartContract: Smartcontract = {
-          chainId,
-          type: storageType,
-          address: file,
-          abi: JSON.parse(abi) as AbiItem
-        }
-
+      try {
+        response = await ProviderInstance.getFileInfo(
+          fileGraphql,
+          customProviderUrl || providerUrl
+        )
+      } catch (error) {
+        const message = getErrorMessage(error.message)
+        LoggerInstance.error('[Provider Get File info] Error:', message)
+        toast.error(message)
+      }
+      break
+    }
+    case 'smartcontract': {
+      // clean obj
+      const fileSmartContract: Smartcontract = {
+        chainId,
+        type: storageType,
+        address: file,
+        abi: JSON.parse(abi) as AbiItem
+      }
+      try {
         response = await ProviderInstance.getFileInfo(
           fileSmartContract,
-          providerUrl
+          customProviderUrl || providerUrl
         )
-        break
+      } catch (error) {
+        const message = getErrorMessage(error.message)
+        LoggerInstance.error('[Provider Get File info] Error:', message)
+        toast.error(message)
       }
-      default: {
-        const fileUrl: UrlFile = {
-          type: 'url',
-          index: 0,
-          url: file,
-          headers: headersProvider,
-          method
-        }
-
-        response = await ProviderInstance.getFileInfo(fileUrl, providerUrl)
-        break
-      }
+      break
     }
-    return response
-  } catch (error) {
-    LoggerInstance.error(error.message)
+    default: {
+      const fileUrl: UrlFile = {
+        type: 'url',
+        index: 0,
+        url: file,
+        headers: headersProvider,
+        method
+      }
+      try {
+        response = await ProviderInstance.getFileInfo(
+          fileUrl,
+          customProviderUrl || providerUrl
+        )
+      } catch (error) {
+        const message = getErrorMessage(error.message)
+        LoggerInstance.error('[Provider Get File info] Error:', message)
+        toast.error(message)
+      }
+      break
+    }
   }
+  return response
 }
 
 export async function downloadFile(
   signer: Signer,
   asset: AssetExtended,
   accountId: string,
-  validOrderTx?: string
+  validOrderTx?: string,
+  userCustomParameters?: UserCustomParameters
 ) {
-  const downloadUrl = await ProviderInstance.getDownloadUrl(
-    asset.id,
-    asset.services[0].id,
-    0,
-    validOrderTx || asset.accessDetails.validOrderTx,
-    asset.services[0].serviceEndpoint,
-    signer
-  )
+  let downloadUrl
+  try {
+    downloadUrl = await ProviderInstance.getDownloadUrl(
+      asset.id,
+      asset.services[0].id,
+      0,
+      validOrderTx || asset.accessDetails.validOrderTx,
+      customProviderUrl || asset.services[0].serviceEndpoint,
+      signer,
+      userCustomParameters
+    )
+  } catch (error) {
+    const message = getErrorMessage(error.message)
+    LoggerInstance.error('[Provider Get download url] Error:', message)
+    toast.error(message)
+  }
   await downloadFileBrowser(downloadUrl)
 }
 
@@ -196,6 +257,8 @@ export async function checkValidProvider(
     const response = await ProviderInstance.isValidProvider(providerUrl)
     return response
   } catch (error) {
-    LoggerInstance.error(error.message)
+    const message = getErrorMessage(error.message)
+    LoggerInstance.error('[Provider Check] Error:', message)
+    toast.error(message)
   }
 }
