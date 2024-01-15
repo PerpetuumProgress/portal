@@ -69,7 +69,9 @@ export const initialValues: FormPublishData = {
     dockerImage: '',
     dockerImageCustom: '',
     dockerImageCustomTag: '',
-    dockerImageCustomEntrypoint: ''
+    dockerImageCustomEntrypoint: '',
+    usesConsumerParameters: false,
+    consumerParameters: []
   },
   services: [
     {
@@ -83,7 +85,9 @@ export const initialValues: FormPublishData = {
         valid: true,
         custom: false
       },
-      computeOptions
+      computeOptions,
+      usesConsumerParameters: false,
+      consumerParameters: []
     }
   ],
   pricing: {

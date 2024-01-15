@@ -148,7 +148,7 @@ export async function getComputeEnviroment(
     if (!computeEnvs[asset.chainId][0]) return null
     return computeEnvs[asset.chainId][0]
   } catch (e) {
-    const message = getErrorMessage(JSON.parse(e.message))
+    const message = getErrorMessage(e.message)
     LoggerInstance.error(
       '[Compute to Data] Fetch compute environment:',
       message
@@ -167,7 +167,10 @@ export function getQueryString(
   const baseParams = {
     chainIds: [chainId],
     sort: { sortBy: SortTermOptions.Created },
-    filters: [getFilterTerm('metadata.type', 'algorithm')]
+    filters: [getFilterTerm('metadata.type', 'algorithm')],
+    esPaginationOptions: {
+      size: 3000
+    }
   } as BaseQueryParams
   algorithmDidList?.length > 0 &&
     baseParams.filters.push(getFilterTerm('_id', algorithmDidList))
@@ -200,7 +203,6 @@ export async function getAlgorithmsForAsset(
     ),
     token
   )
-
   const algorithms: Asset[] = gueryResults?.results
   return algorithms
 }
@@ -261,7 +263,7 @@ async function getJobs(
       })
     }
   } catch (err) {
-    const message = getErrorMessage(JSON.parse(err.message))
+    const message = getErrorMessage(err.message)
     LoggerInstance.error('[Compute to Data] Error:', message)
     toast.error(message)
   }
