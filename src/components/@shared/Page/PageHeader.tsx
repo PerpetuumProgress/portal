@@ -3,7 +3,6 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
-import IngolstadtLogo from '@images/stadt_ingolstadt.svg'
 
 const cx = classNames.bind(styles)
 
@@ -36,13 +35,6 @@ export default function PageHeader({
               </span>
             ))}
           </h1>
-          <a
-            href="https://www.ingolstadt.de/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <IngolstadtLogo style={{ width: '300px', height: '100px' }} />
-          </a>
         </div>
       ) : (
         <h1 className={styles.title}>{title}</h1>
