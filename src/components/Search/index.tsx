@@ -92,12 +92,11 @@ export default function SearchPage({
         console.log('queryResult is not undefined')
         // get all metadata elements from the queryResult
         const metadata = queryResult?.results?.map((asset) => asset.metadata)
+        console.log('metadata', metadata)
         // get data did of all datasets
         const datasetdid = queryResult?.results?.map((asset) => asset.id)
-        console.log('datasetsdid', datasetdid)
         setDatasetdid(datasetdid)
         // Filter those metadata elements that have a geojson field
-        console.log('metadata', metadata)
         const geojson = metadata.filter(
           (assetMetadata) => assetMetadata?.additionalInformation?.geojson
         )
@@ -111,19 +110,15 @@ export default function SearchPage({
               undefined
           ) {
             datasetwithgeojson.push(queryResult.results[i].id)
-            console.log('datasetwithgeojson', datasetwithgeojson)
           } else {
             console.log('geojson not defined')
           }
         }
-        console.log('datasetwithgeojson1', datasetwithgeojson)
         setdatasetwithgeojson(datasetwithgeojson)
         // Get the geojson field from the filtered metadata elements
-        console.log('geojson', geojson)
         const geojsonField = geojson.map((filteredAsset) =>
           JSON.parse(filteredAsset.additionalInformation.geojson)
         )
-        console.log('geojsonField', geojsonField)
         setGeojsonField(geojsonField)
       }
       setLoading(false)

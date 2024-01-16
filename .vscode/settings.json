@@ -13,5 +13,6 @@
   "search.exclude": {
     "**/.next": true,
     "**/out": true
-  }
+  },
+  "compile-hero.disable-compile-files-on-did-save-code": true
 }
