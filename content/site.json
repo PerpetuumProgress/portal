@@ -1,8 +1,8 @@
 {
-  "siteTitle": "Ingolstadt Dataspace",
-  "siteTagline": "",
-  "siteUrl": "https://oval.pepro.io",
-  "siteImage": "../public/images/ctd_benefits.png",
+  "siteTitle": "O V A L",
+  "siteTagline": "**O**pen **VAL**idation - a distributed ecosystem for ADAS AD development.",
+  "siteUrl": "https://dev.oval.pepro.io",
+  "siteImage": "/share.png",
   "copyright": "All Rights Reserved. Powered by [Ocean Protocol](https://oceanprotocol.com). Built by [Perpetuum Progress](https://perpetuum-progress.io).",
   "menu": [
     {
