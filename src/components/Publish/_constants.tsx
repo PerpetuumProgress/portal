@@ -70,6 +70,8 @@ export const initialValues: FormPublishData = {
     dockerImageCustom: '',
     dockerImageCustomTag: '',
     dockerImageCustomEntrypoint: '',
+    usesConsumerParameters: false,
+    consumerParameters: [],
     datasettype: 'scenario',
     hdMapAccuracyLaneModel2D: 0,
     hdMapAccuracyLaneModelHeight: 0,
@@ -112,7 +114,9 @@ export const initialValues: FormPublishData = {
         valid: true,
         custom: false
       },
-      computeOptions
+      computeOptions,
+      usesConsumerParameters: false,
+      consumerParameters: []
     }
   ],
   pricing: {

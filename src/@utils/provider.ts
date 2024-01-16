@@ -13,11 +13,12 @@ import {
   ProviderInstance,
   UrlFile,
   AbiItem,
+  UserCustomParameters,
   getErrorMessage
 } from '@oceanprotocol/lib'
 // if customProviderUrl is set, we need to call provider using this custom endpoint
 import { customProviderUrl } from '../../app.config'
-import { QueryHeader } from '@shared/FormInput/InputElement/Headers'
+import { KeyValuePair } from '@shared/FormInput/InputElement/KeyValueInput'
 import { Signer } from 'ethers'
 import { getValidUntilTime } from './compute'
 import { toast } from 'react-toastify'
@@ -56,7 +57,7 @@ export async function initializeProviderForCompute(
       accountId
     )
   } catch (error) {
-    const message = getErrorMessage(JSON.parse(error.message))
+    const message = getErrorMessage(error.message)
     LoggerInstance.error('[Initialize Provider] Error:', message)
     toast.error(message)
     return null
@@ -78,7 +79,7 @@ export async function getEncryptedFiles(
     )
     return response
   } catch (error) {
-    const message = getErrorMessage(JSON.parse(error.message))
+    const message = getErrorMessage(error.message)
     LoggerInstance.error('[Provider Encrypt] Error:', message)
     toast.error(message)
   }
@@ -99,9 +100,10 @@ export async function getFileDidInfo(
     )
     return response
   } catch (error) {
-    const message = getErrorMessage(JSON.parse(error.message))
+    const message = getErrorMessage(error.message)
     LoggerInstance.error('[Initialize check file did] Error:', message)
-    toast.error(message)
+    toast.error(`[Initialize check file did] Error: ${message}`)
+    throw new Error(`[Initialize check file did] Error: ${message}`)
   }
 }
 
@@ -110,7 +112,7 @@ export async function getFileInfo(
   providerUrl: string,
   storageType: string,
   query?: string,
-  headers?: QueryHeader[],
+  headers?: KeyValuePair[],
   abi?: string,
   chainId?: number,
   method?: string
@@ -136,7 +138,7 @@ export async function getFileInfo(
           customProviderUrl || providerUrl
         )
       } catch (error) {
-        const message = getErrorMessage(JSON.parse(error.message))
+        const message = getErrorMessage(error.message)
         LoggerInstance.error('[Provider Get File info] Error:', message)
         toast.error(message)
       }
@@ -153,7 +155,7 @@ export async function getFileInfo(
           customProviderUrl || providerUrl
         )
       } catch (error) {
-        const message = getErrorMessage(JSON.parse(error.message))
+        const message = getErrorMessage(error.message)
         LoggerInstance.error('[Provider Get File info] Error:', message)
         toast.error(message)
       }
@@ -172,7 +174,7 @@ export async function getFileInfo(
           customProviderUrl || providerUrl
         )
       } catch (error) {
-        const message = getErrorMessage(JSON.parse(error.message))
+        const message = getErrorMessage(error.message)
         LoggerInstance.error('[Provider Get File info] Error:', message)
         toast.error(message)
       }
@@ -192,7 +194,7 @@ export async function getFileInfo(
           customProviderUrl || providerUrl
         )
       } catch (error) {
-        const message = getErrorMessage(JSON.parse(error.message))
+        const message = getErrorMessage(error.message)
         LoggerInstance.error('[Provider Get File info] Error:', message)
         toast.error(message)
       }
@@ -212,7 +214,7 @@ export async function getFileInfo(
           customProviderUrl || providerUrl
         )
       } catch (error) {
-        const message = getErrorMessage(JSON.parse(error.message))
+        const message = getErrorMessage(error.message)
         LoggerInstance.error('[Provider Get File info] Error:', message)
         toast.error(message)
       }
@@ -226,7 +228,8 @@ export async function downloadFile(
   signer: Signer,
   asset: AssetExtended,
   accountId: string,
-  validOrderTx?: string
+  validOrderTx?: string,
+  userCustomParameters?: UserCustomParameters
 ) {
   let downloadUrl
   try {
@@ -236,10 +239,11 @@ export async function downloadFile(
       0,
       validOrderTx || asset.accessDetails.validOrderTx,
       customProviderUrl || asset.services[0].serviceEndpoint,
-      signer
+      signer,
+      userCustomParameters
     )
   } catch (error) {
-    const message = getErrorMessage(JSON.parse(error.message))
+    const message = getErrorMessage(error.message)
     LoggerInstance.error('[Provider Get download url] Error:', message)
     toast.error(message)
   }
@@ -253,7 +257,7 @@ export async function checkValidProvider(
     const response = await ProviderInstance.isValidProvider(providerUrl)
     return response
   } catch (error) {
-    const message = getErrorMessage(JSON.parse(error.message))
+    const message = getErrorMessage(error.message)
     LoggerInstance.error('[Provider Check] Error:', message)
     toast.error(message)
   }
