@@ -85,7 +85,7 @@ export default function Actions({
     const downloadLink = document.createElement('a')
     downloadLink.href = URL.createObjectURL(blob)
     downloadLink.download = 'claimFile.json'
-
+    // Add the file to IPFS
     const buffer = Buffer.from(jsonDocument)
     const ipfs = IPFS.create()
     const result = await (await ipfs).add(buffer)
@@ -98,6 +98,49 @@ export default function Actions({
 
     // Clean up the link
     document.body.removeChild(downloadLink)
+    console.log('JSON document:', jsonDocument)
+
+    // Send the JSON document to the API
+    const apiEndpoint = 'https://sd-creator.gxfs.gx4fm.org/self-description'
+    // const apiEndpoint = 'https://jsonplaceholder.typicode.com/'
+
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: jsonDocument
+      })
+
+      if (!response.ok) {
+        throw new Error('API request failed')
+      }
+      const responseData = await response.json()
+      console.log('sd', responseData)
+    } catch (error) {
+      console.error('API call error:', error)
+      throw error // Handle the error as needed
+    }
+  }
+
+  const generateSD = async (jsonDocument) => {
+    const url = 'http://sd-creator.gxfs.gx4fm.org/'
+
+    fetch(url, {
+      method: 'POST', // or 'PUT', 'PATCH'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: jsonDocument
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
   }
 
   function handlePrevious(e: FormEvent) {
@@ -140,7 +183,7 @@ export default function Actions({
               onClick={generateClaim}
               disabled={isContinueDisabled}
             >
-              Generate Claims
+              Generate Claims and SD
             </Button>
           )}
 
