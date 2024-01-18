@@ -42,6 +42,22 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <>
+      {/* Google Analytics-Tracking-Code */}
+      <Head>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=G-J1GY1WVQKC`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-J1GY1WVQKC');
+          `,
+          }}
+        />
+      </Head>
       <WagmiConfig client={wagmiClient}>
         <ConnectKitProvider
           options={{ initialChainId: 0 }}
