@@ -17,8 +17,7 @@ import { connectKitTheme, wagmiClient } from '@utils/wallet'
 import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 import { useRouter } from 'next/router'
-import Head from 'next/head';
-
+import Head from 'next/head'
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== 'undefined') {
@@ -44,7 +43,6 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <>
-      {/* Google Analytics-Tracking-Code */}
       <Head>
         <script 
           async
@@ -59,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
               }
               gtag('js', new Date());
               gtag('config', 'G-J1GY1WVQKC');
-            `,
+            `
           }}
         />
       </Head>
