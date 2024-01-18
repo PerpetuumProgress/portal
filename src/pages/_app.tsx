@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
   return (
     <>
       <Head>
-        <script 
+        <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=G-J1GY1WVQKC`}
         />
