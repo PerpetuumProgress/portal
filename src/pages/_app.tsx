@@ -46,17 +46,20 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
     <>
       {/* Google Analytics-Tracking-Code */}
       <Head>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=G-J1GY1WVQKC`} />
+        <script 
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-J1GY1WVQKC`}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-              dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'G-J1GY1WVQKC');
-          `,
+              window.dataLayer = window.dataLayer || [];
+              function gtag() {
+                dataLayer.push(arguments);
+              }
+              gtag('js', new Date());
+              gtag('config', 'G-J1GY1WVQKC');
+            `,
           }}
         />
       </Head>
