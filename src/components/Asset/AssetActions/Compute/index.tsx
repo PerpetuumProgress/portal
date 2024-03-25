@@ -498,7 +498,7 @@ export default function Compute({
           <Price
             price={price}
             orderPriceAndFees={datasetOrderPriceAndFees}
-            conversion
+            conversion={false}
             size="large"
           />
         )}
