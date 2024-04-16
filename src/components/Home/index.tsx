@@ -100,7 +100,7 @@ export default function HomePage(): ReactElement {
       <section className={styles.section}>
         {/* <h3>Bookmarks</h3>
         <Bookmarks /> */}
-        <Map dataLayer={[geoData2]} datasetwithgeojson={asset} />
+        <Map dataLayer={[]} datasetwithgeojson={asset} />
       </section>
 
       <Allocations />
