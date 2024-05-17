@@ -16,6 +16,10 @@
     {
       "name": "Log",
       "link": "https://goerli.etherscan.io/"
+    },
+    {
+      "name": "Onboarding",
+      "link": "/onboarding"
     }
   ],
   "announcement": "",

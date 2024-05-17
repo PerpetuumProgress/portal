@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
-import IngolstadtLogo from '@images/stadt_ingolstadt.svg'
+import IngolstadtLogo from '@images/thi_ainin_logo.svg'
 
 const cx = classNames.bind(styles)
 
@@ -37,7 +37,7 @@ export default function PageHeader({
             ))}
           </h1>
           <a
-            href="https://www.ingolstadt.de/"
+            href="https://www.ainin.de"
             target="_blank"
             rel="noreferrer noopener"
           >

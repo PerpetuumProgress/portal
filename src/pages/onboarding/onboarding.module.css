@@ -1,0 +1,224 @@
+.onboardingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* CSS für die Animation */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* CSS für die Sectionen */
+.section {
+  width: 1000px; /* Automatische Breite basierend auf dem Inhalt */
+  max-width: 1000px; /* Maximale Breite für ästhetisches Aussehen */
+  margin: 20px 0; /* Vertikaler Abstand zwischen den Abschnitten */
+  padding: 20px; /* Füge Innenabstand hinzu */
+  border: 2px solid #ccc; /* Dickerer Rand */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  /* Animationseffekt */
+  animation: slideInFromLeft 1s ease-out; /* Fügt die Animation hinzu */
+}
+
+.section img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.step {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.step img {
+  width: 80%;
+  height: auto;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: #0056b3;
+}
+
+.timelineContainer {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #ddd;
+}
+
+.timelineEvent {
+  position: relative;
+  width: 50%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.timelineEvent:nth-child(odd) {
+  left: 0;
+}
+
+.timelineEvent:nth-child(even) {
+  left: 50%;
+}
+
+.timelineEventContent {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timelinePoint {
+  position: absolute;
+  top: 10px;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #333;
+}
+
+.timelineEvent:nth-child(even) .timelinePoint {
+  left: auto;
+  right: -6px;
+}
+
+/* Ergänze die vorhandenen CSS-Regeln um die folgenden Stile */
+
+.bookContainer {
+  position: relative; /* Ändere die Position des bookContainers auf relativ */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zentriert den Inhalt horizontal */
+  width: 100%;
+  max-width: 800px;
+  background: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Automatisch zentriert, oben und unten 20px Abstand */
+  border-radius: 10px;
+}
+
+
+.stepPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.nextButton {
+  position: absolute; /* Ändere die Position auf 'absolute' */
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+
+.nextButton:hover {
+  background-color: #0056b3;
+}
+
+.nextButton:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.prevButton {
+  position: absolute; /* Ändere die Position auf 'absolute' */
+  left: 20px;
+  bottom: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+
+.prevButton:hover {
+  background-color: #0056b3;
+}
+
+.prevButton:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column; /* Ändere die Richtung auf 'column', um die Elemente untereinander anzuzeigen */
+  align-items: center; /* Zentriert den Inhalt horizontal */
+  margin: 20px 0;
+}
+
+.subsection h2 {
+  margin-right: 20px; /* Fügt Abstand zwischen Titel und Bild hinzu */
+}
+
+.subsection p {
+  flex: 1; /* Nimmt den verfügbaren Platz ein */
+}
+
+.subsection img {
+  width: 80px; /* Passe die Breite des Bildes nach Bedarf an */
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px; /* Fügt Abstand zwischen Bild und Text hinzu */
+}

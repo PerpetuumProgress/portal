@@ -1,0 +1,110 @@
+{
+  "sections": [
+    {
+      "id": "web-versions",
+      "title": "WEB 1, 2 & 3",
+      "content": "Informationen zu verschiedenen Webversionen.",
+      "subsections": [],
+      "timelineEvents": [
+        {
+          "date": "1990",
+          "description": "**Einführung in Web 1.0 – Das statische Internetzeitalter** Web 1.0 markiert die Anfänge des Internets, wie wir es kennen, charakterisiert durch statische Webseiten, die primär aus HTML bestehen. In dieser Ära wurden Inhalte überwiegend von Unternehmen erstellt und veröffentlicht. Nutzer fungierten als passive Konsumenten, deren Hauptaktivität das Abrufen und Lesen von Informationen war. Dieses Format bot eine grundlegende Plattform für die ersten digitalen Interaktionen und legte das Fundament für die Weiterentwicklungen des Webs.",
+          "subsectionId": "web1"
+        },
+        {
+          "date": "2000",
+          "description": "**Beginn des Web 2.0 – Das interaktive und soziale Web** Web 2.0 leitete eine Ära ein, in der das Internet zunehmend interaktiv und sozial wurde und die Benutzerinteraktion in den Mittelpunkt stellte. Diese Phase kennzeichnete sich durch die Entwicklung von Plattformen, die zur aktiven Teilnahme und Kollaboration der Nutzer anregten. Social Media-Plattformen, Blogs, Wikis und soziale Netzwerke sind herausragende Beispiele für die Innovationen dieser Zeit. Ein wesentliches Merkmal von Web 2.0 ist der weit verbreitete User Generated Content (UGC), bei dem Inhalte von den Nutzern selbst erstellt und geteilt werden, was das Internet dynamischer und vielseitiger machte.",
+          "subsectionId": "web2"
+        },
+        {
+          "date": "2010",
+          "description": "**Aufkommen des Web 3.0 – Das dezentrale Web** Mit dem Aufkommen des Web 3.0 erleben wir den Übergang zu einem dezentralen Internet, das wesentlich durch Blockchain-Technologien ermöglicht wird. Diese neue Ära zeichnet sich durch dezentrale Datenhaltung und Governance aus, was einen signifikanten Unterschied zur zentralisierten Struktur von Plattformen im Web 2.0 darstellt. Im Web 3.0 erhalten Inhalte durch digitale Besitznachweise, wie beispielsweise Non-Fungible Tokens (NFTs), eine verifizierte Eigentumsstruktur. Zudem wird Daten ein inhärenter Wert zugeschrieben, der Nutzern größere Kontrolle und Transparenz über ihre eigenen Informationen bietet.",
+          "subsectionId": "web3"
+        }
+      ]
+    },
+    {
+      "id": "setup-wallet",
+      "title": "How to Create a Wallet with MetaMask",
+      "content": "Schrittweise Anleitung zum Einrichten einer Wallet mit MetaMask...",
+      "steps": [
+        {
+          "title": "Schritt 1: MetaMask installieren",
+          "content": "Bitte besuchen Sie die offizielle MetaMask-Website, um die Browser-Erweiterung herunterzuladen und zu installieren.",
+          "image": "/images/metamask-install.png",
+          "link": "https://metamask.io/"
+        },
+        {
+          "title": "Schritt 2: MetaMask-Erweiterung hinzufügen",
+          "content": "Fügen Sie die MetaMask-Erweiterung Ihrem Browser hinzu und öffnen Sie diese.",
+          "image": "/images/metamask-chrome.png",
+          "link": ""
+        },
+        {
+          "title": "Schritt 3: Wallet erstellen",
+          "content": "Klicken Sie auf 'Erstellen einer Wallet' und folgen Sie den Anweisungen zur Erstellung eines sicheren Passworts. Notieren Sie sich die Seed-Phrase an einem sicheren Ort. Diese Phrase ist entscheidend für die Wiederherstellung des Zugangs zu Ihrer Wallet.",
+          "image": "/images/metamask-create-wallet.png",
+          "link": ""
+        },
+        {
+          "title": "Schritt 4: Wallet verwenden",
+          "content": "Nach der Einrichtung können Sie Ihre Wallet verwenden, um Ethereum und andere Token zu senden und zu empfangen sowie mit der Ecosystem OVAL zu interagieren.",
+          "image": "/images/metamask-wallet.png",
+          "link": ""
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "download-dataset",
+      "title": "How to Download Dataset",
+      "content": "Schrittweise Anleitung zum Herunterladen eines Datasets.",
+      "image": "",
+      "subsections": [
+        {
+          "title": "Schritt 1: Suche nach einem Dataset",
+          "content": "Nutzen Sie die Suchleiste auf der Webseite, um gezielt nach einem bestimmten Dataset zu suchen. Durchsuchen Sie die Ergebnisse und wählen Sie das gewünschte Dataset aus. Klicken Sie auf das erworbene Dataset, um weitere Details anzuzeigen.",
+          "image": "/images/dataset-search.png"
+        },
+        {
+          "title": "Schritt 2: Kauf des Datasets",
+          "content": "Klicken Sie auf das gewünschte Dataset, um detaillierte Informationen zu erhalten. Überprüfen Sie die Metadaten des Datasets und klicken Sie auf die Schaltfläche 'Kaufen', um den Kaufprozess zu starten. Befolgen Sie die Anweisungen zur Bestätigung des Kaufs und zur Zahlung des Preises über MetaMask.",
+          "image": "/images/dataset-buy.png"
+        },
+        {
+          "title": "Schritt 3: Herunterladen des Datasets",
+          "content": "Auf der Detailseite des Datasets finden Sie eine Schaltfläche oder Option zum Herunterladen. Klicken Sie auf den 'Download'-Button, um das Dataset herunterzuladen. Wählen Sie den Speicherort auf Ihrem Gerät aus und bestätigen Sie den Download.",
+          "image": "/images/dataset-download.png"
+        }
+      ]
+    },
+    {
+      "id": "c2d",
+      "title": "How to Start Comopute to Data",
+      "content": "Schrittweise Anleitung zum Herunterladen eines Datasets, ähnlich wie bei Ocean Market...",
+      "image": "",
+      "subsections": [
+        {
+          "title": "Schritt 1: Suche nach einem Dataset",
+          "content": "Nutzen Sie die Suchleiste auf der Webseite, um gezielt nach einem bestimmten Dataset zu suchen. Durchsuchen Sie die Ergebnisse und wählen Sie das gewünschte Dataset aus. Klicken Sie auf das erworbene Dataset, um weitere Details anzuzeigen.",
+          "image": "/images/.png"
+        },
+        {
+          "title": "Schritt 2: Kauf des Datasets",
+          "content": "",
+          "image": "/images/.png"
+        },
+        {
+          "title": "Schritt 3: Starten des Compute to Data",
+          "content": "",
+          "image": "/images/.png"
+        },
+        {
+          "title": "Schritt 4: Auswerten der Ergebnisse ",
+          "content": "",
+          "image": "/images/.png"
+        }
+      ]
+    }
+  ]
+}
