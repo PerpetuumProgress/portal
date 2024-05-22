@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
-import IngolstadtLogo from '@images/thi_ainin_logo.svg'
+import AininLogo from '@images/thi_ainin_logo.svg'
 
 const cx = classNames.bind(styles)
 
@@ -41,7 +41,7 @@ export default function PageHeader({
             target="_blank"
             rel="noreferrer noopener"
           >
-            <IngolstadtLogo style={{ width: '300px', height: '100px' }} />
+            <AininLogo style={{ width: '200px', height: '60px' }} />
           </a>
         </div>
       ) : (

@@ -29,7 +29,15 @@
 
   /* Animationseffekt */
   animation: slideInFromLeft 1s ease-out; /* Fügt die Animation hinzu */
+
 }
+
+/* Aktive Section mit Animation */
+.section.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 
 .section img {
   width: 100%;
@@ -217,8 +225,8 @@
 }
 
 .subsection img {
-  width: 80px; /* Passe die Breite des Bildes nach Bedarf an */
+  max-width: 70%; /* Das Bild wird maximal die Breite seines Containers einnehmen */
   height: auto;
   border-radius: 8px;
-  margin-right: 20px; /* Fügt Abstand zwischen Bild und Text hinzu */
+  margin: 0 auto 10px; /* Zentriert das Bild horizontal und fügt unten einen Abstand hinzu */
 }

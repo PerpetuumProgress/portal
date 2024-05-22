@@ -1,29 +1,6 @@
 {
   "sections": [
     {
-      "id": "web-versions",
-      "title": "WEB 1, 2 & 3",
-      "content": "Informationen zu verschiedenen Webversionen.",
-      "subsections": [],
-      "timelineEvents": [
-        {
-          "date": "1990",
-          "description": "**Einführung in Web 1.0 – Das statische Internetzeitalter** Web 1.0 markiert die Anfänge des Internets, wie wir es kennen, charakterisiert durch statische Webseiten, die primär aus HTML bestehen. In dieser Ära wurden Inhalte überwiegend von Unternehmen erstellt und veröffentlicht. Nutzer fungierten als passive Konsumenten, deren Hauptaktivität das Abrufen und Lesen von Informationen war. Dieses Format bot eine grundlegende Plattform für die ersten digitalen Interaktionen und legte das Fundament für die Weiterentwicklungen des Webs.",
-          "subsectionId": "web1"
-        },
-        {
-          "date": "2000",
-          "description": "**Beginn des Web 2.0 – Das interaktive und soziale Web** Web 2.0 leitete eine Ära ein, in der das Internet zunehmend interaktiv und sozial wurde und die Benutzerinteraktion in den Mittelpunkt stellte. Diese Phase kennzeichnete sich durch die Entwicklung von Plattformen, die zur aktiven Teilnahme und Kollaboration der Nutzer anregten. Social Media-Plattformen, Blogs, Wikis und soziale Netzwerke sind herausragende Beispiele für die Innovationen dieser Zeit. Ein wesentliches Merkmal von Web 2.0 ist der weit verbreitete User Generated Content (UGC), bei dem Inhalte von den Nutzern selbst erstellt und geteilt werden, was das Internet dynamischer und vielseitiger machte.",
-          "subsectionId": "web2"
-        },
-        {
-          "date": "2010",
-          "description": "**Aufkommen des Web 3.0 – Das dezentrale Web** Mit dem Aufkommen des Web 3.0 erleben wir den Übergang zu einem dezentralen Internet, das wesentlich durch Blockchain-Technologien ermöglicht wird. Diese neue Ära zeichnet sich durch dezentrale Datenhaltung und Governance aus, was einen signifikanten Unterschied zur zentralisierten Struktur von Plattformen im Web 2.0 darstellt. Im Web 3.0 erhalten Inhalte durch digitale Besitznachweise, wie beispielsweise Non-Fungible Tokens (NFTs), eine verifizierte Eigentumsstruktur. Zudem wird Daten ein inhärenter Wert zugeschrieben, der Nutzern größere Kontrolle und Transparenz über ihre eigenen Informationen bietet.",
-          "subsectionId": "web3"
-        }
-      ]
-    },
-    {
       "id": "setup-wallet",
       "title": "How to Create a Wallet with MetaMask",
       "content": "Schrittweise Anleitung zum Einrichten einer Wallet mit MetaMask...",
@@ -60,7 +37,7 @@
       "title": "How to Download Dataset",
       "content": "Schrittweise Anleitung zum Herunterladen eines Datasets.",
       "image": "",
-      "subsections": [
+      "steps": [
         {
           "title": "Schritt 1: Suche nach einem Dataset",
           "content": "Nutzen Sie die Suchleiste auf der Webseite, um gezielt nach einem bestimmten Dataset zu suchen. Durchsuchen Sie die Ergebnisse und wählen Sie das gewünschte Dataset aus. Klicken Sie auf das erworbene Dataset, um weitere Details anzuzeigen.",
@@ -83,26 +60,31 @@
       "title": "How to Start Comopute to Data",
       "content": "Schrittweise Anleitung zum Herunterladen eines Datasets, ähnlich wie bei Ocean Market...",
       "image": "",
-      "subsections": [
+      "steps": [
         {
           "title": "Schritt 1: Suche nach einem Dataset",
-          "content": "Nutzen Sie die Suchleiste auf der Webseite, um gezielt nach einem bestimmten Dataset zu suchen. Durchsuchen Sie die Ergebnisse und wählen Sie das gewünschte Dataset aus. Klicken Sie auf das erworbene Dataset, um weitere Details anzuzeigen.",
-          "image": "/images/.png"
+          "content": "Verwenden Sie die Suchleiste auf der Webseite, um gezielt nach einem bestimmten Dataset zu suchen. Durchsuchen Sie die Ergebnisse und wählen Sie das gewünschte Dataset aus. Klicken Sie auf das ausgewählte Dataset, um weitere Details anzuzeigen. Wenn es sich um ein Dataset für 'Compute to Data' handelt, werden auf der Detailseite verschiedene Algorithmen angezeigt, die auf den Daten laufen dürfen.",
+          "image": "/images/dataset-search.png"
         },
         {
-          "title": "Schritt 2: Kauf des Datasets",
-          "content": "",
-          "image": "/images/.png"
+          "title": "Schritt 2: Kauf des Datasets und starten des Compute to Data",
+          "content": "Klicken Sie auf das gewünschte Dataset, um detaillierte Informationen zu erhalten. Überprüfen Sie die Metadaten des Datasets und wählen Sie den passenden Algorithmus aus.",
+          "image": "/images/dataset-compute-to-data.png"
         },
         {
-          "title": "Schritt 3: Starten des Compute to Data",
-          "content": "",
-          "image": "/images/.png"
+          "title": "Schritt 3: Compute to Data",
+          "content": "Klicken Sie dann auf die Schaltfläche 'Buy', um den Kaufprozess zu starten. Befolgen Sie die Anweisungen zur Bestätigung des Kaufs und zur Zahlung des Preises über MetaMask.",
+          "image": "/images/dataset-start-compute.png"
         },
         {
-          "title": "Schritt 4: Auswerten der Ergebnisse ",
-          "content": "",
-          "image": "/images/.png"
+          "title": "Schritt 4: Status der Bearbeitung ",
+          "content": "Nachdem der Compute-Job gestartet wurde, befindet sich unterhalb des 'Buy'-Buttons ein Dropdown-Menü, in dem Sie Ihre bisherigen Compute-Jobs finden können. In der ganz linken Spalte sehen Sie den Status der Bearbeitung. Sobald dieser auf 'Job Finished' wechselt, können Sie unter 'Show Details' weitere Informationen und Ergebnisse einsehen.",
+          "image": "/images/dataset-status-compute.png"
+        },
+        {
+          "title": "Schritt 5: Auswerten der Ergebnisse ",
+          "content": "Unter 'Job Finished' werden sowohl Logs als auch Dateien abgelegt, die während der Ausführung des Algorithmus erzeugt wurden. Im Bereich 'Algorithm Logs' werden die Ausgaben des Algorithmus gespeichert. Die 'Configuration Logs' enthalten die Ausgaben aus der Konfiguration des Containers vor der Ausführung der Compute-Jobs. Im 'Publish Logs'-Bereich werden alle Informationen gespeichert, die während des Veröffentlichungsprozesses der verschiedenen Daten gesammelt wurden.",
+          "image": "/images/dataset-end-compute.png"
         }
       ]
     }

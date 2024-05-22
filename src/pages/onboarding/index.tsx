@@ -1,22 +1,60 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './onboarding.module.css'
 import content from '../../../content/pages/onboarding/onboarding.json'
 
 const Onboarding: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(0)
+  const [stepIndices, setStepIndices] = useState<number[]>(() =>
+    content.sections.map(() => 0)
+  )
 
-  const nextStep = () => {
-    setCurrentStep(currentStep + 1)
+  useEffect(() => {
+    const sections = document.querySelectorAll(`.${styles.section}`)
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(styles.active)
+        } else {
+          entry.target.classList.remove(styles.active)
+        }
+      })
+    }, options)
+
+    sections.forEach((section) => {
+      observer.observe(section)
+    })
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  const nextStep = (index: number) => {
+    setStepIndices((prev) =>
+      prev.map((step, i) => (i === index ? step + 1 : step))
+    )
   }
 
-  const prevStep = () => {
-    setCurrentStep(currentStep - 1)
+  const prevStep = (index: number) => {
+    setStepIndices((prev) =>
+      prev.map((step, i) => (i === index ? step - 1 : step))
+    )
   }
 
   return (
     <div className={styles.onboardingContainer}>
-      {content.sections.map((section) => (
-        <section key={section.id} className={styles.section}>
+      {content.sections.map((section, index) => (
+        <section
+          key={index}
+          className={`${styles.section} ${
+            stepIndices[index] === 0 ? styles.active : ''
+          }`}
+        >
           <h1>{section.title}</h1>
           <p>{section.content}</p>
           {section.image && (
@@ -27,60 +65,35 @@ const Onboarding: React.FC = () => {
             />
           )}
 
-          {section.id === 'setup-wallet' ? (
+          {section.steps && section.steps.length > 0 && (
             <div className={styles.bookContainer}>
-              {section.steps && section.steps[currentStep] && (
+              {section.steps[stepIndices[index]] && (
                 <div className={styles.stepPage}>
-                  <h2>{section.steps[currentStep].title}</h2>
-                  <p>{section.steps[currentStep].content}</p>
-                  {section.steps[currentStep].image && (
+                  <h2>{section.steps[stepIndices[index]].title}</h2>
+                  <p>{section.steps[stepIndices[index]].content}</p>
+                  {section.steps[stepIndices[index]].image && (
                     <img
-                      src={section.steps[currentStep].image}
-                      alt={section.steps[currentStep].title}
+                      src={section.steps[stepIndices[index]].image}
+                      alt={section.steps[stepIndices[index]].title}
                       className={styles.stepImage}
                     />
                   )}
-                  {currentStep > 0 && (
-                    <button onClick={prevStep} className={styles.prevButton}>
+                  {stepIndices[index] > 0 && (
+                    <button
+                      onClick={() => prevStep(index)}
+                      className={styles.prevButton}
+                    >
                       Zurück
                     </button>
                   )}
-                  {currentStep < section.steps.length - 1 && (
-                    <button onClick={nextStep} className={styles.nextButton}>
+                  {stepIndices[index] < section.steps.length - 1 && (
+                    <button
+                      onClick={() => nextStep(index)}
+                      className={styles.nextButton}
+                    >
                       Nächster Schritt
                     </button>
                   )}
-                </div>
-              )}
-            </div>
-          ) : (
-            <div>
-              {section.subsections &&
-                section.subsections.map((subsection, index) => (
-                  <div key={index} className={styles.subsection}>
-                    <h2>{subsection.title}</h2>
-                    <p>{subsection.content}</p>
-                    {subsection.image && (
-                      <img
-                        src={subsection.image}
-                        alt={subsection.title}
-                        className={styles.image}
-                      />
-                    )}
-                  </div>
-                ))}
-              {section.id === 'web-versions' && (
-                <div className={styles.timelineContainer}>
-                  <div className={styles.timelineLine}></div>
-                  {section.timelineEvents.map((event, index) => (
-                    <div key={index} className={styles.timelineEvent}>
-                      <div className={styles.timelinePoint}></div>
-                      <div className={styles.timelineEventContent}>
-                        <h3>{event.date}</h3>
-                        <p>{event.description}</p>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               )}
             </div>
