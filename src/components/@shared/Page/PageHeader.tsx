@@ -36,13 +36,6 @@ export default function PageHeader({
               </span>
             ))}
           </h1>
-          <a
-            href="https://www.ainin.de"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <AininLogo style={{ width: '200px', height: '70px' }} />
-          </a>
         </div>
       ) : (
         <h1 className={styles.title}>{title}</h1>
@@ -52,13 +45,6 @@ export default function PageHeader({
       )}
       {showSearch && (
         <div className={styles.search}>
-          <a
-            href="https://www.ingolstadt.de/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <AininLogo style={{ width: '200px', height: '70px' }} />
-          </a>
           <SearchBar placeholder="Search for service offerings" />
         </div>
       )}
