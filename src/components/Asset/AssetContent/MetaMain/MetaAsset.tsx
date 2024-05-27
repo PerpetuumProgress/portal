@@ -6,6 +6,7 @@ import Publisher from '@shared/Publisher'
 import React, { ReactElement } from 'react'
 import { useAccount } from 'wagmi'
 import styles from './MetaAsset.module.css'
+import accountNames from '../../../../../peproAdresses.json'
 
 export default function MetaAsset({
   asset,
@@ -19,10 +20,17 @@ export default function MetaAsset({
 
   const dataTokenSymbol = asset?.datatokens[0]?.symbol
 
+  // This function attempts to find a user-friendly name for an account ID.
+  // If a name is defined in `accountNames`, it's used. Otherwise, it tries to use `accountEns`.
+  // If neither is found, it defaults to a truncated account ID.
+  function getAccountName(address: string): string {
+    return accountNames[address] || address
+  }
+
   return (
     <div className={styles.wrapper}>
       <span className={styles.owner}>
-        Owned by <Publisher account={asset?.nft?.owner} />
+        Owned by {getAccountName(asset?.nft?.owner)}
       </span>
       <span>
         <ExplorerLink

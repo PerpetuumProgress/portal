@@ -293,7 +293,7 @@ export default function Download({
                 className={styles.price}
                 price={price}
                 orderPriceAndFees={orderPriceAndFees}
-                conversion
+                conversion={false}
                 size="large"
               />
             )}

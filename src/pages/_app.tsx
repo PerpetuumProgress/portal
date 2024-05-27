@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
       <Head>
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-J1GY1WVQKC`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-8XM1BHKYZ2`}
         />
         <script
           dangerouslySetInnerHTML={{
@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
                 dataLayer.push(arguments);
               }
               gtag('js', new Date());
-              gtag('config', 'G-J1GY1WVQKC');
+              gtag('config', 'G-8XM1BHKYZ2');
             `
           }}
         />
