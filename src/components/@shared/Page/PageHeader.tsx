@@ -41,7 +41,7 @@ export default function PageHeader({
             target="_blank"
             rel="noreferrer noopener"
           >
-            <AininLogo style={{ width: '200px', height: '60px' }} />
+            <AininLogo style={{ width: '200px', height: '70px' }} />
           </a>
         </div>
       ) : (
@@ -57,7 +57,7 @@ export default function PageHeader({
             target="_blank"
             rel="noreferrer noopener"
           >
-            <IngolstadtLogo style={{ width: '300px', height: '100px' }} />
+            <AininLogo style={{ width: '200px', height: '70px' }} />
           </a>
           <SearchBar placeholder="Search for service offerings" />
         </div>
