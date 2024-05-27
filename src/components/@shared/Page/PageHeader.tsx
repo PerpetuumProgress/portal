@@ -52,6 +52,13 @@ export default function PageHeader({
       )}
       {showSearch && (
         <div className={styles.search}>
+          <a
+            href="https://www.ingolstadt.de/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <IngolstadtLogo style={{ width: '300px', height: '100px' }} />
+          </a>
           <SearchBar placeholder="Search for service offerings" />
         </div>
       )}
