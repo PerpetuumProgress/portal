@@ -57,6 +57,7 @@ export function getSearchQuery(
         : !emptySearchTerm && searchTerm
         ? '*' + searchTerm + '*'
         : '**'
+    const words = searchTerm.split(' ')
     const searchFields = [
       'id',
       'nft.owner',
@@ -66,14 +67,29 @@ export function getSearchQuery(
       'metadata.name^10',
       'metadata.author',
       'metadata.description',
-      'metadata.tags'
+      'metadata.tags',
+      'metadata.additionalInformation.shaclmetadata.hdMapHeightSystem',
+      'metadata.additionalInformation.shaclmetadata.hdMapLaneTypes',
+      'metadata.additionalInformation.shaclmetadata.hdMapLevelOfDetail',
+      'metadata.additionalInformation.shaclmetadata.hdMapMeasurementSystem',
+      'metadata.additionalInformation.shaclmetadata.hdMapOrigin'
     ]
+    const wordQueries = words.map((word) => ({
+      query_string: {
+        query: `*${word}*`,
+        fields: searchFields,
+        minimum_should_match: '2<75%',
+        phrase_slop: 2,
+        boost: 5
+      }
+    }))
 
     nestedQuery = {
       must: [
         {
           bool: {
             should: [
+              ...wordQueries,
               {
                 query_string: {
                   query: `${modifiedSearchTerm}`,
@@ -92,7 +108,7 @@ export function getSearchQuery(
                 }
               },
               {
-                match_phrase: {
+                match: {
                   content: {
                     query: `${searchTerm}`,
                     boost: 10

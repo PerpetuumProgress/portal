@@ -12,6 +12,10 @@ import InputRadio from './Radio'
 import ContainerInput from '@shared/FormInput/InputElement/ContainerInput'
 import TagsAutoComplete from './TagsAutoComplete'
 import TabsFile from '@shared/atoms/TabsFile'
+import useDarkMode from '@oceanprotocol/use-dark-mode'
+import appConfig from '../../../../../app.config'
+import { extensions, oceanTheme } from '@utils/codemirror'
+import { ConsumerParameters } from './ConsumerParameters'
 
 const cx = classNames.bind(styles)
 
@@ -115,6 +119,10 @@ const InputElement = forwardRef(
 
         return <TabsFile items={tabs} className={styles.pricing} />
       }
+
+      case 'consumerParameters':
+        return <ConsumerParameters {...field} form={form} {...props} />
+
       case 'textarea':
         return (
           <textarea id={props.name} className={styles.textarea} {...props} />

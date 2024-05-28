@@ -86,6 +86,204 @@ export default function AssetContent({
                   datasetwithgeojson={[]}
                 />
               )}
+            {asset?.metadata?.type === 'dataset' &&
+              asset?.metadata?.additionalInformation?.datasettype ===
+                'track' && (
+                <>
+                  <div className={styles.description}>
+                    <strong>SHACL Metadata</strong>
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Accuracy (Lane Model Height):{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapAccuracyLaneModelHeight
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Accuracy (Objects):{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapAccuracyObjects
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Accuracy (Signals):{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapAccuracySignals
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Elevation Range:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapElevationRange
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map GNSS:{' '}
+                    {asset?.metadata?.additionalInformation?.shaclmetadata
+                      ?.hdMapGNSS
+                      ? 'Yes'
+                      : 'No'}
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Geodetic Datum:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapHeightSystem
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Lane Types:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLaneTypes
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Length:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLength
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Level Of Detail:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLevelOfDetail
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Light:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapLight
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Measurement System:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapMeasurementSystem
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Number Intersections:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberIntersections
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Number Objects:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberObjects
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Number Outlines:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberOutlines
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Number Traffic Lights:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberTrafficLights
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Number Traffic Signs:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapNumberTrafficSigns
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Origin:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapOrigin
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Precision:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapPrecision
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Projection Type:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapProjectionType
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Radar:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRadar
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Range Of Modeling:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRangeOfModeling
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Recording Time:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRecordingTime
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Road Types:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapRoadTypes
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Speed Limit:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapSpeedLimit
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Traffic Direction:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapTrafficDirection
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    HD Map Used Data Sources:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.hdMapUsedDataSources
+                    }
+                  </div>
+                  <div className={styles.description}>
+                    Map Level:{' '}
+                    {
+                      asset?.metadata?.additionalInformation?.shaclmetadata
+                        ?.MapLevel
+                    }
+                  </div>
+                </>
+              )}
             <MetaFull ddo={asset} />
             <EditHistory receipts={receipts} setReceipts={setReceipts} />
             {debug === true && <DebugOutput title="DDO" output={asset} />}

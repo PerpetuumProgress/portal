@@ -418,7 +418,6 @@ const calculateBoundingBox = (dataLayer) => {
       }
     }
   }
-  console.log('minLat', minLat)
   if (
     minLat === Infinity ||
     minLng === Infinity ||
@@ -563,17 +562,12 @@ const Map = ({ dataLayer, datasetwithgeojson }) => {
   for (const geojson of dataLayer) {
     itemList.push(<GeoJSON data={geojson} />)
   }
-  console.log('itemList', itemList)
-  console.log('datasetwithgeojson', datasetwithgeojson)
 
   const bounds = calculateBoundingBox(dataLayer)
   const newZoom = calculateZoom(bounds, { height: 400, width: 400 })
-  console.log(bounds)
-  console.log(newZoom)
 
   const router = useRouter()
   const { lng, lat, zoom } = router.query
-  // console.log(router)
   function handleMarkerClick(index) {
     const did = datasetwithgeojson[index]
     window.open(`/asset/${did}`, '_blank')
