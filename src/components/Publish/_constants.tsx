@@ -69,7 +69,38 @@ export const initialValues: FormPublishData = {
     dockerImage: '',
     dockerImageCustom: '',
     dockerImageCustomTag: '',
-    dockerImageCustomEntrypoint: ''
+    dockerImageCustomEntrypoint: '',
+    usesConsumerParameters: false,
+    consumerParameters: [],
+    datasettype: 'scenario',
+    hdMapAccuracyLaneModel2D: 0,
+    hdMapAccuracyLaneModelHeight: 0,
+    hdMapAccuracyObjects: 0,
+    hdMapAccuracySignals: 0,
+    hdMapElevationRange: 0,
+    hdMapGNSS: false,
+    hdMapHeightSystem: '',
+    hdMapLaneTypes: '',
+    hdMapLength: 0,
+    hdMapLevelOfDetail: '',
+    hdMapLight: false,
+    hdMapMeasurementSystem: '',
+    hdMapNumberIntersections: 0,
+    hdMapNumberObjects: 0,
+    hdMapNumberOutlines: 0,
+    hdMapNumberTrafficLights: 0,
+    hdMapNumberTrafficSigns: 0,
+    hdMapOrigin: '',
+    hdMapPrecision: 0,
+    hdMapProjectionType: '',
+    hdMapRadar: false,
+    hdMapRangeOfModeling: 0,
+    hdMapRecordingTime: undefined,
+    hdMapRoadTypes: '',
+    hdMapSpeedLimit: 0,
+    hdMapTrafficDirection: '',
+    hdMapUsedDataSources: '',
+    MapLevel: ''
   },
   services: [
     {
@@ -83,7 +114,9 @@ export const initialValues: FormPublishData = {
         valid: true,
         custom: false
       },
-      computeOptions
+      computeOptions,
+      usesConsumerParameters: false,
+      consumerParameters: []
     }
   ],
   pricing: {

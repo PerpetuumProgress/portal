@@ -1,8 +1,8 @@
 {
-  "siteTitle": "O V A L",
-  "siteTagline": "**O**pen **VAL**idation - a distributed ecosystem for ADAS AD development.",
-  "siteUrl": "https://oval.pepro.io",
-  "siteImage": "/share.png",
+  "siteTitle": "OVAL Platform",
+  "siteTagline": "DEVELOPMENT",
+  "siteUrl": "https://dev.oval.pepro.io",
+  "siteImage": "../public/images/ctd_benefits.png",
   "copyright": "All Rights Reserved. Powered by [Ocean Protocol](https://oceanprotocol.com). Built by [Perpetuum Progress](https://perpetuum-progress.io).",
   "menu": [
     {
@@ -16,6 +16,10 @@
     {
       "name": "Log",
       "link": "https://goerli.etherscan.io/"
+    },
+    {
+      "name": "Onboarding",
+      "link": "/onboarding"
     }
   ],
   "announcement": "",

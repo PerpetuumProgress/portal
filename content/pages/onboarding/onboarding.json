@@ -1,0 +1,92 @@
+{
+  "sections": [
+    {
+      "id": "setup-wallet",
+      "title": "How to Create a Wallet with MetaMask",
+      "content": "Schrittweise Anleitung zum Einrichten einer Wallet mit MetaMask...",
+      "steps": [
+        {
+          "title": "Schritt 1: MetaMask installieren",
+          "content": "Bitte besuchen Sie die offizielle MetaMask-Website, um die Browser-Erweiterung herunterzuladen und zu installieren.",
+          "image": "/images/metamask-install.png",
+          "link": "https://metamask.io/"
+        },
+        {
+          "title": "Schritt 2: MetaMask-Erweiterung hinzufügen",
+          "content": "Fügen Sie die MetaMask-Erweiterung Ihrem Browser hinzu und öffnen Sie diese.",
+          "image": "/images/metamask-chrome.png",
+          "link": ""
+        },
+        {
+          "title": "Schritt 3: Wallet erstellen",
+          "content": "Klicken Sie auf 'Erstellen einer Wallet' und folgen Sie den Anweisungen zur Erstellung eines sicheren Passworts. Notieren Sie sich die Seed-Phrase an einem sicheren Ort. Diese Phrase ist entscheidend für die Wiederherstellung des Zugangs zu Ihrer Wallet.",
+          "image": "/images/metamask-create-wallet.png",
+          "link": ""
+        },
+        {
+          "title": "Schritt 4: Wallet verwenden",
+          "content": "Nach der Einrichtung können Sie Ihre Wallet verwenden, um Ethereum und andere Token zu senden und zu empfangen sowie mit der Ecosystem OVAL zu interagieren.",
+          "image": "/images/metamask-wallet.png",
+          "link": ""
+        }
+      ],
+      "image": ""
+    },
+    {
+      "id": "download-dataset",
+      "title": "How to Download Dataset",
+      "content": "Schrittweise Anleitung zum Herunterladen eines Datasets.",
+      "image": "",
+      "steps": [
+        {
+          "title": "Schritt 1: Suche nach einem Dataset",
+          "content": "Nutzen Sie die Suchleiste auf der Webseite, um gezielt nach einem bestimmten Dataset zu suchen. Durchsuchen Sie die Ergebnisse und wählen Sie das gewünschte Dataset aus. Klicken Sie auf das erworbene Dataset, um weitere Details anzuzeigen.",
+          "image": "/images/dataset-search.png"
+        },
+        {
+          "title": "Schritt 2: Kauf des Datasets",
+          "content": "Klicken Sie auf das gewünschte Dataset, um detaillierte Informationen zu erhalten. Überprüfen Sie die Metadaten des Datasets und klicken Sie auf die Schaltfläche 'Kaufen', um den Kaufprozess zu starten. Befolgen Sie die Anweisungen zur Bestätigung des Kaufs und zur Zahlung des Preises über MetaMask.",
+          "image": "/images/dataset-buy.png"
+        },
+        {
+          "title": "Schritt 3: Herunterladen des Datasets",
+          "content": "Auf der Detailseite des Datasets finden Sie eine Schaltfläche oder Option zum Herunterladen. Klicken Sie auf den 'Download'-Button, um das Dataset herunterzuladen. Wählen Sie den Speicherort auf Ihrem Gerät aus und bestätigen Sie den Download.",
+          "image": "/images/dataset-download.png"
+        }
+      ]
+    },
+    {
+      "id": "c2d",
+      "title": "How to Start Comopute to Data",
+      "content": "Schrittweise Anleitung zum Herunterladen eines Datasets, ähnlich wie bei Ocean Market...",
+      "image": "",
+      "steps": [
+        {
+          "title": "Schritt 1: Suche nach einem Dataset",
+          "content": "Verwenden Sie die Suchleiste auf der Webseite, um gezielt nach einem bestimmten Dataset zu suchen. Durchsuchen Sie die Ergebnisse und wählen Sie das gewünschte Dataset aus. Klicken Sie auf das ausgewählte Dataset, um weitere Details anzuzeigen. Wenn es sich um ein Dataset für 'Compute to Data' handelt, werden auf der Detailseite verschiedene Algorithmen angezeigt, die auf den Daten laufen dürfen.",
+          "image": "/images/dataset-search.png"
+        },
+        {
+          "title": "Schritt 2: Kauf des Datasets und starten des Compute to Data",
+          "content": "Klicken Sie auf das gewünschte Dataset, um detaillierte Informationen zu erhalten. Überprüfen Sie die Metadaten des Datasets und wählen Sie den passenden Algorithmus aus.",
+          "image": "/images/dataset-compute-to-data.png"
+        },
+        {
+          "title": "Schritt 3: Compute to Data",
+          "content": "Klicken Sie dann auf die Schaltfläche 'Buy', um den Kaufprozess zu starten. Befolgen Sie die Anweisungen zur Bestätigung des Kaufs und zur Zahlung des Preises über MetaMask.",
+          "image": "/images/dataset-start-compute.png"
+        },
+        {
+          "title": "Schritt 4: Status der Bearbeitung ",
+          "content": "Nachdem der Compute-Job gestartet wurde, befindet sich unterhalb des 'Buy'-Buttons ein Dropdown-Menü, in dem Sie Ihre bisherigen Compute-Jobs finden können. In der ganz linken Spalte sehen Sie den Status der Bearbeitung. Sobald dieser auf 'Job Finished' wechselt, können Sie unter 'Show Details' weitere Informationen und Ergebnisse einsehen.",
+          "image": "/images/dataset-status-compute.png"
+        },
+        {
+          "title": "Schritt 5: Auswerten der Ergebnisse ",
+          "content": "Unter 'Job Finished' werden sowohl Logs als auch Dateien abgelegt, die während der Ausführung des Algorithmus erzeugt wurden. Im Bereich 'Algorithm Logs' werden die Ausgaben des Algorithmus gespeichert. Die 'Configuration Logs' enthalten die Ausgaben aus der Konfiguration des Containers vor der Ausführung der Compute-Jobs. Im 'Publish Logs'-Bereich werden alle Informationen gespeichert, die während des Veröffentlichungsprozesses der verschiedenen Daten gesammelt wurden.",
+          "image": "/images/dataset-end-compute.png"
+        }
+      ]
+    }
+  ]
+}

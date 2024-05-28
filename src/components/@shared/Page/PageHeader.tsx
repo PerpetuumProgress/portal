@@ -3,6 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
+import AininLogo from '@images/thi_ainin_logo.svg'
 
 const cx = classNames.bind(styles)
 

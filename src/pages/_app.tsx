@@ -17,6 +17,7 @@ import { connectKitTheme, wagmiClient } from '@utils/wallet'
 import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== 'undefined') {
@@ -42,6 +43,24 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <>
+      <Head>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-8XM1BHKYZ2`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag() {
+                dataLayer.push(arguments);
+              }
+              gtag('js', new Date());
+              gtag('config', 'G-8XM1BHKYZ2');
+            `
+          }}
+        />
+      </Head>
       <WagmiConfig client={wagmiClient}>
         <ConnectKitProvider
           options={{ initialChainId: 0 }}

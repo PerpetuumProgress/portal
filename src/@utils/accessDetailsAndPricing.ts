@@ -5,6 +5,7 @@ import {
   TokenPriceQuery_token as TokenPrice
 } from '../@types/subgraph/TokenPriceQuery'
 import {
+  AssetPrice,
   getErrorMessage,
   LoggerInstance,
   ProviderFees,
@@ -111,7 +112,10 @@ function getAccessDetailsFromTokenPrice(
     // the last valid order should be the last reuse order tx id if there is one
     accessDetails.validOrderTx = reusedOrder?.tx || order?.tx
   }
-  accessDetails.templateId = tokenPrice.templateId
+  accessDetails.templateId =
+    typeof tokenPrice.templateId === 'string'
+      ? parseInt(tokenPrice.templateId)
+      : tokenPrice.templateId
   // TODO: fetch order fee from sub query
   accessDetails.publisherMarketOrderFee = tokenPrice?.publishMarketFeeAmount
 
@@ -176,7 +180,6 @@ export async function getOrderPriceAndFees(
     },
     opcFee: '0'
   } as OrderPriceAndFees
-
   // fetch provider fee
   let initializeData
   try {
@@ -190,7 +193,7 @@ export async function getOrderPriceAndFees(
         customProviderUrl || asset?.services[0].serviceEndpoint
       ))
   } catch (error) {
-    const message = getErrorMessage(JSON.parse(error.message))
+    const message = getErrorMessage(error.message)
     LoggerInstance.error('[Initialize Provider] Error:', message)
     toast.error(message)
   }
@@ -251,4 +254,15 @@ export async function getAccessDetails(
   } catch (error) {
     LoggerInstance.error('Error getting access details: ', error.message)
   }
+}
+
+export function getAvailablePrice(asset: AssetExtended): AssetPrice {
+  const price: AssetPrice = asset?.stats?.price?.value
+    ? asset?.stats?.price
+    : {
+        value: Number(asset?.accessDetails?.price),
+        tokenSymbol: asset?.accessDetails?.baseToken?.symbol,
+        tokenAddress: asset?.accessDetails?.baseToken?.address
+      }
+  return price
 }

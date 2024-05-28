@@ -6,6 +6,14 @@ import styles from './Account.module.css'
 import Avatar from '@shared/atoms/Avatar'
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi'
 import { useModal } from 'connectkit'
+import accountNames from '../../../../peproAdresses.json'
+
+// This function attempts to find a user-friendly name for an account ID.
+// If a name is defined in `accountNames`, it's used. Otherwise, it tries to use `accountEns`.
+// If neither is found, it defaults to a truncated account ID.
+function getAccountName(accountId, accountEns) {
+  return accountNames[accountId] || accountEns || accountTruncate(accountId)
+}
 
 // Forward ref for Tippy.js
 // eslint-disable-next-line
@@ -41,7 +49,7 @@ const Account = React.forwardRef((props, ref: any) => {
     >
       <Avatar accountId={accountId} src={accountEnsAvatar} />
       <span className={styles.address} title={accountId}>
-        {accountTruncate(accountEns || accountId)}
+        {getAccountName(accountId, accountEns)}
       </span>
       <Caret aria-hidden="true" className={styles.caret} />
     </button>
