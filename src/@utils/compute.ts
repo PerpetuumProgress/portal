@@ -146,7 +146,7 @@ export async function getComputeEnviroment(
       asset.services[0].serviceEndpoint
     )
     if (!computeEnvs[asset.chainId][0]) return null
-    return computeEnvs[asset.chainId][2]
+    return "0x3db8d2AEf9A1d1584adD1aDDfb7728fe64d18c3F"
   } catch (e) {
     const message = getErrorMessage(e.message)
     LoggerInstance.error(
