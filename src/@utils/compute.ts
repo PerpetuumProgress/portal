@@ -146,7 +146,7 @@ export async function getComputeEnviroment(
       asset.services[0].serviceEndpoint
     )
     if (!computeEnvs[asset.chainId][0]) return null
-    return computeEnvs[asset.chainId][1]
+    return computeEnvs[asset.chainId][2]
   } catch (e) {
     const message = getErrorMessage(e.message)
     LoggerInstance.error(
