@@ -265,7 +265,6 @@ async function getJobs(
   } catch (err) {
     const message = getErrorMessage(err.message)
     LoggerInstance.error('[Compute to Data] Error:', message)
-    //toast.error(message)
   }
   return computeJobs
 }
