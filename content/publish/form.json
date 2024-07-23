@@ -27,7 +27,7 @@
         "name": "datasettype",
         "label": "Dataset Type",
         "type": "boxSelection",
-        "options": ["Scenario", "Track", "Environment Model", "Custom Shape"],
+        "options": ["Scenario", "Track", "Environment", "Sensor", "Custom Shape"],
         "required": true
       },
       {
@@ -364,7 +364,6 @@
         "type": "files",
         "required": true
       },
-
       {
         "name": "name",
         "label": "Title",
@@ -437,6 +436,219 @@
         "type": "checkbox",
         "options": ["I agree to the Terms and Conditions"],
         "required": true
+      },
+      {
+        "name": "authorOfSensorData",
+        "label": "Author of Sensor Data",
+        "type": "text",
+        "example": "prefix:AuthorIRI",
+        "required": true
+      },
+      {
+        "name": "localization",
+        "label": "SRMD Localization",
+        "type": "text",
+        "example": "prefix:LocalizationIRI",
+        "required": true
+      },
+      {
+        "name": "environment",
+        "label": "SRMD Environment",
+        "type": "text",
+        "example": "prefix:EnvironmentIRI",
+        "required": true
+      },
+      {
+        "name": "producedBySensor",
+        "label": "Sensor",
+        "type": "text",
+        "example": "prefix:SensorIRI",
+        "required": true
+      },
+      {
+        "name": "authorContact",
+        "label": "Author Contact",
+        "type": "text",
+        "example": "<+49 1234 456789> or <example@examplecompany.com>",
+        "required": true
+      },
+      {
+        "name": "sensorDataDocumentLink",
+        "label": "Sensor Data Document Link",
+        "type": "text",
+        "example": "https://www.hierLiegtEinDocument.org/document...",
+        "required": true
+      },
+      {
+        "name": "modelLink",
+        "label": "Sensor Data Document",
+        "type": "text",
+        "example": "prefix:SensorDataFileIRI",
+        "required": true
+      },
+      {
+        "name": "sensorName",
+        "label": "Sensor Name",
+        "type": "text",
+        "example": "ARS548",
+        "required": true
+      },
+      {
+        "name": "showOptionalFields",
+        "label": "Show Optional Fields",
+        "type": "checkbox",
+        "options": ["Show more Parameter"],
+        "required": false
+      },
+      {
+        "name": "timeReferenceFrame",
+        "label": "Time Reference Frame",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "timeDuration",
+        "label": "Time Duration",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "timeStartTime",
+        "label": "Time Start Time",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "usedToolchain",
+        "label": "Used Toolchain",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorTestsetup",
+        "label": "Sensor Test Setup",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorDataContent",
+        "label": "Sensor Data Content",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "gpsTraceDocumentLink",
+        "label": "GPS Trace Document Link",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "modelLink",
+        "label": "Model Link",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorTraceDocumentLink",
+        "label": "Sensor Trace Document Link",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorDataRawDocumentLink",
+        "label": "Sensor Data Raw Document Link",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "groundTruthDocumentLink",
+        "label": "Ground Truth Document Link",
+        "type": "text",
+        "required": false
+      }, 
+      {
+        "name": "authorGivenName",
+        "label": "Author Given Name",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "authorFamilyName",
+        "label": "Author Family Name",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "authorCompany",
+        "label": "Author Company",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorDataFileSize",
+        "label": "Sensor Data File Size (in KB)",
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "sensorDataFileChecksum",
+        "label": "Sensor Data File Checksum",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorDataFileMimetype",
+        "label": "Sensor Data File Mimetype",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorType",
+        "label": "Sensor Type",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorHardwareVersion",
+        "label": "Sensor Hardware Version",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorFirmwareVersion",
+        "label": "Sensor Firmware Version",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorManufacturerPartnumber",
+        "label": "Sensor Manufacturer Partnumber",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorTechnology",
+        "label": "Sensor Technology",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorTechnologyVariant",
+        "label": "Sensor Technology Variant",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorStatus",
+        "label": "Sensor Status",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "sensorPurpose",
+        "label": "Sensor Purpose",
+        "type": "text",
+        "required": false
       }
     ]
   },
