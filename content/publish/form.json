@@ -649,6 +649,237 @@
         "label": "Sensor Purpose",
         "type": "text",
         "required": false
+      },
+      {
+        "name": "general",
+        "label": "General",
+        "type": "text",
+        "help": "General information about the OSI trace.",
+        "required": true
+      },
+      {
+        "name": "format",
+        "label": "Format",
+        "type": "text",
+        "help": "Format information of the OSI trace.",
+        "required": true
+      },
+      {
+        "name": "content",
+        "label": "Content",
+        "type": "text",
+        "help": "Content details of the OSI trace.",
+        "required": true
+      },
+      {
+        "name": "quality",
+        "label": "Quality",
+        "type": "text",
+        "help": "Quality metrics of the OSI trace.",
+        "required": true
+      },
+      {
+        "name": "quantity",
+        "label": "Quantity",
+        "type": "text",
+        "help": "Quantity details of the OSI trace.",
+        "required": true
+      },
+      {
+        "name": "dataSource",
+        "label": "Data Source",
+        "type": "text",
+        "help": "Information about the data sources used in the OSI trace.",
+        "required": true
+      },
+      {
+        "name": "georeference",
+        "label": "Georeference",
+        "type": "text",
+        "help": "Georeference details of the OSI trace.",
+        "required": true
+      },
+      {
+        "name": "roadTypes",
+        "label": "Road Types",
+        "type": "text",
+        "help": "Covered/used road types, defined over ODR element t_road_type, see ODR spec section 8.3",
+        "required": true
+      },
+      {
+        "name": "laneTypes",
+        "label": "Lane Types",
+        "type": "text",
+        "help": "Covered lane types, see ODR spec section 9.5.3.",
+        "required": true
+      },
+      {
+        "name": "levelOfDetail",
+        "label": "Level of Detail",
+        "type": "text",
+        "help": "Covered object classes, see ODR spec section 11",
+        "required": true
+      },
+      {
+        "name": "trafficDirection",
+        "label": "Traffic Direction",
+        "type": "text",
+        "help": "Traffic direction, i.e. right-hand or left-hand traffic",
+        "required": true
+      },
+      {
+        "name": "granularity",
+        "label": "Granularity",
+        "type": "text",
+        "help": "Level of granularity of sensor data",
+        "required": true
+      },
+      {
+        "name": "scenarioIdentifier",
+        "label": "Scenario Identifier",
+        "type": "text",
+        "help": "Identifier of scenario performed in the trace file",
+        "required": true
+      },
+      {
+        "name": "startTime",
+        "label": "Start Time",
+        "type": "datetime",
+        "help": "Exact start timestamp of the recorded trace",
+        "required": true
+      },
+      {
+        "name": "stopTime",
+        "label": "Stop Time",
+        "type": "datetime",
+        "help": "Exact stop timestamp of the recorded trace",
+        "required": true
+      },
+      {
+        "name": "hostMovingObject",
+        "label": "Host Moving Object",
+        "type": "text",
+        "help": "Host moving object in trace file",
+        "required": true
+      },
+      {
+        "name": "targetMovingObject",
+        "label": "Target Moving Object",
+        "type": "text",
+        "help": "Target moving object in trace file",
+        "required": true
+      },
+      {
+        "name": "event",
+        "label": "Event",
+        "type": "text",
+        "help": "Description of event of interest in trace file",
+        "required": true
+      },
+      {
+        "name": "measurementSystem",
+        "label": "Measurement System",
+        "type": "text",
+        "help": "Main acquisition device",
+        "required": true
+      },
+      {
+        "name": "usedDataSources",
+        "label": "Used Data Sources",
+        "type": "text",
+        "help": "Basic data for the creation of the trace",
+        "required": true
+      },
+      {
+        "name": "version",
+        "label": "Version",
+        "type": "text",
+        "help": "Version of data format",
+        "required": true
+      },
+      {
+        "name": "type",
+        "label": "Type",
+        "type": "text",
+        "help": "Format type definition",
+        "required": true
+      },
+      {
+        "name": "accuracySignals",
+        "label": "Accuracy Signals",
+        "type": "number",
+        "help": "Accuracy of traffic relevant objects, signs and signals",
+        "required": false
+      },
+      {
+        "name": "accuracyObjects",
+        "label": "Accuracy Objects",
+        "type": "number",
+        "help": "Accuracy of objects in the traffic space, which do not directly affect the traffic",
+        "required": false
+      },
+      {
+        "name": "accuracyLaneModelHeight",
+        "label": "Accuracy Lane Model Height",
+        "type": "number",
+        "help": "Accuracy lane model height",
+        "required": false
+      },
+      {
+        "name": "precision",
+        "label": "Precision",
+        "type": "number",
+        "help": "Precision of measured road network (relative accuracy)",
+        "required": false
+      },
+      {
+        "name": "accuracyLaneModel2d",
+        "label": "Accuracy Lane Model 2D",
+        "type": "number",
+        "help": "Accuracy of lane model 2D",
+        "required": false
+      },
+      {
+        "name": "calibration",
+        "label": "Calibration",
+        "type": "text",
+        "help": "Description of any calibration steps performed prior to measurement",
+        "required": false
+      },
+      {
+        "name": "numberFrames",
+        "label": "Number of Frames",
+        "type": "number",
+        "help": "Number of frames/messages in the trace file",
+        "required": true
+      },
+      {
+        "name": "identifier",
+        "label": "Identifier",
+        "type": "text",
+        "help": "Moving object identifier in trace file",
+        "required": true
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "text",
+        "help": "Description of moving object in the trace file",
+        "required": true
+      },
+      {
+        "name": "time",
+        "label": "Time",
+        "type": "datetime",
+        "help": "Exact timestamp of the event in the recorded trace",
+        "required": true
+      },
+      {
+        "name": "tag",
+        "label": "Tag",
+        "type": "text",
+        "help": "Unique tag of the event in trace file",
+        "required": true
       }
     ]
   },
