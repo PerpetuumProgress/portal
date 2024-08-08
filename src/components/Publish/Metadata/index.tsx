@@ -88,7 +88,7 @@ export default function MetadataFields(): ReactElement {
     {
       name: datasettypeOptionsTitles[5].toLowerCase(),
       title: datasettypeOptionsTitles[5],
-      checked: values.metadata.datasettype === 'custom shape',
+      checked: values.metadata.datasettype === 'custom',
       icon: <IconDataset />
     }
   ]
@@ -1010,7 +1010,7 @@ export default function MetadataFields(): ReactElement {
           </>
         )}
       {values.metadata.type === 'dataset' &&
-        values.metadata.datasettype === 'custom shape' && (
+        values.metadata.datasettype === 'custom' && (
           <>
             <Field
               {...getFieldContent('Positioning', content.metadata.fields)}

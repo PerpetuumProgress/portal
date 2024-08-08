@@ -27,7 +27,7 @@
         "name": "datasettype",
         "label": "Dataset Type",
         "type": "boxSelection",
-        "options": ["Scenario", "Track", "Environment", "Sensor", "OSI", "Custom Shape"],
+        "options": ["Scenario", "Track", "Environment", "Sensor", "OSI", "Custom"],
         "required": true
       },
       {
