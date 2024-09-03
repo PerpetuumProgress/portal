@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
-import GaiaXLogo from '@images/gaia-x_logo.svg'
+import RanaultLogo from '@images/renault_logo.svg'
 
 const cx = classNames.bind(styles)
 
@@ -37,11 +37,11 @@ export default function PageHeader({
             ))}
           </h1>
           <a
-            href="https://gaia-x.eu/"
+            href="https://www.renaultgroup.com/en/innovation-2/"
             target="_blank"
             rel="noreferrer noopener"
           >
-            <GaiaXLogo style={{ width: '200px', height: '60px' }} />
+            <RanaultLogo style={{ width: '200px', height: '60px' }} />
           </a>
         </div>
       ) : (
