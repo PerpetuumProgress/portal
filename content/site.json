@@ -1,7 +1,7 @@
 {
   "siteTitle": "OVAL Platform",
-  "siteTagline": "INTERGRATION",
-  "siteUrl": "https://int.oval.pepro.io",
+  "siteTagline": "",
+  "siteUrl": "https://dev.oval.pepro.io",
   "siteImage": "../public/images/ctd_benefits.png",
   "copyright": "All Rights Reserved. Powered by [Ocean Protocol](https://oceanprotocol.com). Built by [Perpetuum Progress](https://perpetuum-progress.io).",
   "menu": [
