@@ -12,6 +12,7 @@ import styles from './index.module.css'
 import Allocations from './Allocations'
 import MostViews from './MostViews'
 import HomeContent from './Content'
+import OvalIllustration from '@images/oval_Illustration.svg'
 
 export default function HomePage(): ReactElement {
   const { chainIds } = useUserPreferences()
@@ -100,7 +101,8 @@ export default function HomePage(): ReactElement {
       <section className={styles.section}>
         {/* <h3>Bookmarks</h3>
         <Bookmarks /> */}
-        <Map dataLayer={[]} datasetwithgeojson={asset} />
+        {/* <Map dataLayer={[]} datasetwithgeojson={asset} /> */}
+        <OvalIllustration style={{ width: '1200px', height: '675px' }} />
       </section>
 
       <Allocations />

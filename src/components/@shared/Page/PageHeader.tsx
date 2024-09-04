@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
-import AininLogo from '@images/thi_ainin_logo.svg'
+import Logo from '@images/oval-logo.svg'
 
 const cx = classNames.bind(styles)
 
@@ -36,6 +36,13 @@ export default function PageHeader({
               </span>
             ))}
           </h1>
+          <a
+            href="https://perpetuum-progress.io/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <Logo style={{ width: '200px', height: '60px' }} />
+          </a>
         </div>
       ) : (
         <h1 className={styles.title}>{title}</h1>
