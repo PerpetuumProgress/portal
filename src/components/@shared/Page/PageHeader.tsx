@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
-import RanaultLogo from '@images/renault_logo.svg'
+import Logo from '@images/oval-logo.svg'
 
 const cx = classNames.bind(styles)
 
@@ -37,11 +37,11 @@ export default function PageHeader({
             ))}
           </h1>
           <a
-            href="https://www.renaultgroup.com/en/innovation-2/"
+            href="https://perpetuum-progress.io/"
             target="_blank"
             rel="noreferrer noopener"
           >
-            <RanaultLogo style={{ width: '200px', height: '60px' }} />
+            <Logo style={{ width: '200px', height: '60px' }} />
           </a>
         </div>
       ) : (
