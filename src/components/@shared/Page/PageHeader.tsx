@@ -37,7 +37,7 @@ export default function PageHeader({
             ))}
           </h1>
           <a
-            href=""
+            href="https://perpetuum-progress.io/"
             target="_blank"
             rel="noreferrer noopener"
           >
