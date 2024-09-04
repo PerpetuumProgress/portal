@@ -13,7 +13,7 @@ image:
     - name: "NEXT_PUBLIC_METADATACACHE_URI"
       value: "http://metadatacache.oval.pepro.io:5000"
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "prod"
+  tag: "renault"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -26,7 +26,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "prod-oval-run-service-account"
+  name: "renault-oval-run-service-account"
 
 podAnnotations: {}
 
@@ -53,14 +53,14 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: oval.pepro.io
+    - host: renault.oval.pepro.io
       paths:
         - path: /
           pathType: Prefix
   tls: 
-    - secretName: prod-oval-market-tls
+    - secretName: renault-oval-market-tls
       hosts:
-         - oval.pepro.io
+         - renault.oval.pepro.io
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
