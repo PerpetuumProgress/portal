@@ -1,8 +1,8 @@
-name: prod-cicd
+name: renault-cicd
 on:
   push:
     branches:
-      - 'prod'
+      - 'renault-prod'
 jobs:
   build:
     runs-on: ubuntu-latest
