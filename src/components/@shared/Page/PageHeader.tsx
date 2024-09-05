@@ -3,7 +3,7 @@ import classNames from 'classnames/bind'
 import styles from './PageHeader.module.css'
 import Markdown from '@shared/Markdown'
 import SearchBar from '@components/Header/SearchBar'
-import Logo from '@images/oval-logo.svg'
+import Logo from '@images/gaia-x-logo.svg'
 
 const cx = classNames.bind(styles)
 
@@ -37,7 +37,7 @@ export default function PageHeader({
             ))}
           </h1>
           <a
-            href="https://perpetuum-progress.io/"
+            href="https://gaia-x.eu/"
             target="_blank"
             rel="noreferrer noopener"
           >
