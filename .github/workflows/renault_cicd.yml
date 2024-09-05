@@ -36,8 +36,10 @@ jobs:
           cat ./oval-chart/Chart.old.yaml | grep -v appVersion > ./oval-chart/Chart.yaml &&
           echo -e "\r\nappVersion: v${GITHUB_REF##*/}\r\n" >> ./oval-chart/Chart.yaml &&
           cat ./oval-chart/Chart.yaml
+      - name: Pull Docker Image
+        run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/portal-oval:renaultprod
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade renault-oval ./oval-chart --install --wait --atomic --namespace=oval --set=app.name=renault_oval --set=infura_api_key=${{ secrets.INFURA_API_KEY}} --values=./oval-chart/renault-values.yaml
+          exec: helm upgrade renault-oval ./oval-chart --install --wait --atomic --namespace=oval --set=app.name=renault_oval --set=infura_api_key=${{ secrets.INFURA_API_KEY}} --values=./oval-chart/renault-values.yaml --debug
           kubeconfig: '${{ secrets.PROD_KUBECONFIG }}'
