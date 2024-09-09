@@ -37,9 +37,7 @@ export default function PageHeader({
             ))}
           </h1>
           <a
-            href="https://ainin.de/"
-            target="_blank"
-            rel="noreferrer noopener"
+            href="https://ainin.de" target="_blank" rel="noreferrer noopener"
           >
             <Logo style={{ width: '200px', height: '60px' }} />
           </a>
