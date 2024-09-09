@@ -36,9 +36,7 @@ export default function PageHeader({
               </span>
             ))}
           </h1>
-          <a
-            href="https://ainin.de" target="_blank" rel="noreferrer noopener"
-          >
+          <a href="https://ainin.de" target="_blank" rel="noreferrer noopener">
             <Logo style={{ width: '200px', height: '60px' }} />
           </a>
         </div>
