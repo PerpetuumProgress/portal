@@ -31,7 +31,7 @@ export default function PriceUnit({
         <>
           <div>
             {formatNumber(price, locale, decimals)}
-            <span className={styles.symbol}>AININ</span>
+            <span className={styles.symbol}>OCEAN</span>
           </div>
           {conversion && <Conversion price={price} symbol={symbol} />}
         </>
