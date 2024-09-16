@@ -29,6 +29,13 @@ export default function PageHeader({
     <header className={styleClasses}>
       {isHome ? (
         <div className={styles.homeTitleContainer}>
+          <a
+            href="https://www.renaultgroup.com/en/innovation-2/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <Logo style={{ width: '300px', height: '90px' }} />
+          </a>
           <h1>
             {(title as string).split(' - ').map((text, i) => (
               <span key={i} className={styles.title}>
@@ -36,13 +43,6 @@ export default function PageHeader({
               </span>
             ))}
           </h1>
-          <a
-            href="https://www.renaultgroup.com/en/innovation-2/"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <Logo style={{ width: '200px', height: '60px' }} />
-          </a>
         </div>
       ) : (
         <h1 className={styles.title}>{title}</h1>
