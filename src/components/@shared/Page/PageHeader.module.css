@@ -51,3 +51,18 @@
   margin-top: calc(var(--spacer) / 2);
   max-width: 30rem;
 }
+
+.logoContainer {
+  display: flex;
+  gap: 15px; /* Abstand zwischen den Logos */
+  overflow-x: auto; /* Ermöglicht horizontales Scrollen */
+  white-space: nowrap; /* Verhindert Zeilenumbrüche */
+  padding: 10px 0;
+}
+
+.logo {
+  height: 70px; /* Höhe der Logos anpassen */
+  width: auto;
+  object-fit: contain; /* Sorgt dafür, dass die Logos korrekt skaliert werden */
+  flex-shrink: 0; /* Verhindert, dass die Logos schrumpfen */
+}
