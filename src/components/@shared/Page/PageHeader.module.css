@@ -58,6 +58,11 @@
   overflow-x: auto; /* Ermöglicht horizontales Scrollen */
   white-space: nowrap; /* Verhindert Zeilenumbrüche */
   padding: 10px 0;
+  scrollbar-width: none; /* Für Firefox */
+}
+
+.logoContainer::-webkit-scrollbar {
+  display: none; /* Für Webkit-basierte Browser (Chrome, Safari) */
 }
 
 .logo {
