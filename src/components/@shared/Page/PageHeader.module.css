@@ -53,21 +53,21 @@
 }
 
 .logoContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 Spalten */
   gap: 15px; /* Abstand zwischen den Logos */
-  overflow-x: auto; /* Ermöglicht horizontales Scrollen */
-  white-space: nowrap; /* Verhindert Zeilenumbrüche */
   padding: 10px 0;
-  scrollbar-width: none; /* Für Firefox */
-}
-
-.logoContainer::-webkit-scrollbar {
-  display: none; /* Für Webkit-basierte Browser (Chrome, Safari) */
+  width: 100%; /* Passt den Container auf die gesamte Breite an */
 }
 
 .logo {
   height: 70px; /* Höhe der Logos anpassen */
   width: auto;
   object-fit: contain; /* Sorgt dafür, dass die Logos korrekt skaliert werden */
-  flex-shrink: 0; /* Verhindert, dass die Logos schrumpfen */
+}
+
+.projectPartnersTitle {
+  font-size: var(--font-size-h2); /* Oder die gewünschte Schriftgröße */
+  text-align: center; /* Zentriert die Überschrift */
+  margin: 20px 0; /* Abstand nach oben und unten */
 }

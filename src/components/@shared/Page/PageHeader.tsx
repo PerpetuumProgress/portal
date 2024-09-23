@@ -60,8 +60,9 @@ export default function PageHeader({
             target="_blank"
             rel="noreferrer noopener"
           >
-            <Logo style={{ width: '200px', height: '60px' }} />
+            <Logo style={{ width: '300px', height: '90px' }} />
           </a>
+          <h2 className={styles.projectPartnersTitle}>CONSORTIUM</h2>
           <div className={styles.logoContainer}>
             <Image
               src={Logo1}
