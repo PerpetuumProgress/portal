@@ -67,7 +67,7 @@
 }
 
 .projectPartnersTitle {
-  font-size: var(--font-size-h2); /* Oder die gewünschte Schriftgröße */
+  font-size: var(--font-size-h3); /* Oder die gewünschte Schriftgröße */
   text-align: center; /* Zentriert die Überschrift */
   margin: 20px 0; /* Abstand nach oben und unten */
 }
