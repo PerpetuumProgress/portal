@@ -54,7 +54,7 @@
 
 .logoContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 Spalten */
+  grid-template-columns: repeat(5, 1fr); /* 4 Spalten */
   gap: 15px; /* Abstand zwischen den Logos */
   padding: 10px 0;
   width: 100%; /* Passt den Container auf die gesamte Breite an */

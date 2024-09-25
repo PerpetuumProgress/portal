@@ -18,11 +18,11 @@ import Logo10 from '@images/gaiax_logos/logo_IQZ_4c_Zeichenfläche+1-1920w.png'
 import Logo11 from '@images/gaiax_logos/logo_msg_4c-1920w.webp'
 import Logo12 from '@images/gaiax_logos/logo_setlabs_4c-1920w.png'
 import Logo13 from '@images/gaiax_logos/logo_thingolstadt_4c-1920w.png'
-import Logo14 from '@images/gaiax_logos/logo_triangraphics_4c-1920w.png'
-import Logo15 from '@images/gaiax_logos/logo_tu-berlin_4c-1920w.png'
-import Logo16 from '@images/gaiax_logos/logo_tum_4c-1920w.png'
-import Logo17 from '@images/gaiax_logos/logo_vcs_4c-1920w.png'
-import Logo18 from '@images/gaiax_logos/tracetronic-orange-1920w.webp'
+import Logo14 from '@images/gaiax_logos/tracetronic-orange-1920w.webp'
+import Logo15 from '@images/gaiax_logos/logo_triangraphics_4c-1920w.png'
+import Logo16 from '@images/gaiax_logos/logo_tu-berlin_4c-1920w.png'
+import Logo17 from '@images/gaiax_logos/logo_tum_4c-1920w.png'
+import Logo18 from '@images/gaiax_logos/logo_vcs_4c-1920w.png'
 
 const cx = classNames.bind(styles)
 
@@ -130,6 +130,13 @@ export default function PageHeader({
             />
             <Image
               src={Logo11}
+              alt="Logo 11"
+              className={styles.logo}
+              width={200}
+              height={60}
+            />
+            <Image
+              src={Logo12}
               alt="Logo 12"
               className={styles.logo}
               width={200}
@@ -159,6 +166,20 @@ export default function PageHeader({
             <Image
               src={Logo16}
               alt="Logo 16"
+              className={styles.logo}
+              width={200}
+              height={60}
+            />
+            <Image
+              src={Logo17}
+              alt="Logo 17"
+              className={styles.logo}
+              width={200}
+              height={60}
+            />
+            <Image
+              src={Logo18}
+              alt="Logo 18"
               className={styles.logo}
               width={200}
               height={60}
