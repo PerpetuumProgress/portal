@@ -53,14 +53,14 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: gaiax.oval.pepro.io
+    - host: gaiax4plcaad.dlr.de
       paths:
         - path: /
           pathType: Prefix
   tls: 
     - secretName: gaiax-oval-market-tls
       hosts:
-         - gaiax.oval.pepro.io
+         - gaiax4plcaad.dlr.de
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
