@@ -65,7 +65,7 @@ module.exports = {
   darkModeConfig: {
     classNameDark: 'dark',
     classNameLight: 'light',
-    storageKey: 'oceanLightMode'
+    storageKey: 'oceanDarkMode'
   },
 
   // Used to show or hide the fixed or free price options
