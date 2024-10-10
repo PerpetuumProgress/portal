@@ -185,7 +185,7 @@ export default function PageHeader({
               width={200}
               height={60}
             />
-            <Logo19 className={styles.logo} />
+            <Logo19 className={styles.logopepro} />
           </div>
         </div>
       ) : (
