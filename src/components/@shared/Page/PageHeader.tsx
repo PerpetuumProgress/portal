@@ -23,6 +23,7 @@ import Logo15 from '@images/gaiax_logos/logo_triangraphics_4c-1920w.png'
 import Logo16 from '@images/gaiax_logos/logo_tu-berlin_4c-1920w.png'
 import Logo17 from '@images/gaiax_logos/logo_tum_4c-1920w.png'
 import Logo18 from '@images/gaiax_logos/logo_vcs_4c-1920w.png'
+import Logo19 from '@images/perpetuumprogress.svg'
 
 const cx = classNames.bind(styles)
 
@@ -184,6 +185,7 @@ export default function PageHeader({
               width={200}
               height={60}
             />
+            <Logo19 className={styles.logo} />
           </div>
         </div>
       ) : (
