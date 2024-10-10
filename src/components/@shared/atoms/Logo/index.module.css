@@ -1,5 +1,5 @@
 .logo {
-  width: var(--menu-logo-size-sm);
+  width: calc(var(--menu-logo-size-sm) * 0.8);
   height: auto;
   margin: 0;
 }
@@ -14,6 +14,6 @@ a > .logo:hover path {
 
 @media screen and (min-width: 55rem) {
   .logo {
-    width: var(--menu-logo-size-lg);
+    width: calc(var(--menu-logo-size-lg) * 0.8);
   }
 }

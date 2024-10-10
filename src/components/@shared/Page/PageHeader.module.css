@@ -61,7 +61,7 @@
 }
 
 .logo {
-  height: 70px; /* Höhe der Logos anpassen */
+  height: 90px; /* Höhe der Logos anpassen */
   width: auto;
   object-fit: contain; /* Sorgt dafür, dass die Logos korrekt skaliert werden */
 }
