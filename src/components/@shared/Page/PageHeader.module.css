@@ -66,6 +66,12 @@
   object-fit: contain; /* Sorgt dafür, dass die Logos korrekt skaliert werden */
 }
 
+.logopepro {
+  height: 70px; /* Höhe der Logos anpassen */
+  width: auto;
+  object-fit: contain; /* Sorgt dafür, dass die Logos korrekt skaliert werden */
+}
+
 .projectPartnersTitle {
   font-size: var(--font-size-h3); /* Oder die gewünschte Schriftgröße */
   text-align: center; /* Zentriert die Überschrift */
