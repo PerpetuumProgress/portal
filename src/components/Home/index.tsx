@@ -14,7 +14,7 @@ import MostViews from './MostViews'
 import HomeContent from './Content'
 import OvalIllustration from '@images/oval_Illustration.svg'
 
-const videoPath = 
+const videoPath =
   '/images/2024_10_11_Perpetuum_Progress_Software_GAIAX_Use_Case_Vorstellungt.mp4'
 
 export default function HomePage(): ReactElement {
