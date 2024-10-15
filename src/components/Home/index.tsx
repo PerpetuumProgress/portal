@@ -14,6 +14,8 @@ import MostViews from './MostViews'
 import HomeContent from './Content'
 import OvalIllustration from '@images/oval_Illustration.svg'
 
+const videoPath = '/images/2024_10_11_Perpetuum_Progress_Software_GAIAX_Use_Case_Vorstellungt.mp4'
+
 export default function HomePage(): ReactElement {
   const { chainIds } = useUserPreferences()
   const asset = [
@@ -103,6 +105,10 @@ export default function HomePage(): ReactElement {
         <Bookmarks /> */}
         {/* <Map dataLayer={[]} datasetwithgeojson={asset} /> */}
         <OvalIllustration style={{ width: '1200px', height: '675px' }} />
+        <video width="1200" height="675" controls style={{ marginTop: '20px' }}>
+          <source src={videoPath} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </section>
 
       <Allocations />
