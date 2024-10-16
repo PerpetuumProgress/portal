@@ -155,11 +155,6 @@ export default function SearchPage({
           />
         </div>
       </div>
-      {geojsonField && (
-        <section className={styles.section}>
-          <Map dataLayer={[]} datasetwithgeojson={datasetwithgeojson} />
-        </section>
-      )}
       <div className={styles.results}>
         <AssetList
           assets={queryResult?.results}
