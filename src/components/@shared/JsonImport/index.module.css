@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-family-base); /* Übernimmt die globale Schriftart */
+}
+
+.label {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 8px; /* Abstand zwischen "Import JSON" und Button */
+}
+
+.button {
+  font-family: var(--font-family-base); /* Übernimmt die globale Schriftart */
+  font-size: var(--font-size-base); /* Globale Schriftgröße */
+  color: var(--input-font-color); /* Globale Textfarbe für Inputs */
+  background-color: var(--input-background); /* Globale Hintergrundfarbe */
+  border: var(--input-border-size) solid var(--input-border-color); /* Globale Rahmen-Eigenschaften */
+  padding: calc(var(--spacer) / 3) var(--spacer); /* Globale Padding-Einstellungen */
+  border-radius: var(--input-border-radius); /* Globale abgerundete Ecken */
+  transition: 0.2s ease-out; /* Übergangseffekte */
+}
+
+.button:focus {
+  outline: none; /* Standard-Umriss entfernen */
+  border-color: var(--input-selected-border-color); /* Rahmenfarbe bei Auswahl */
+  background-color: var(--input-selected-background); /* Hintergrundfarbe bei Auswahl */
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.hiddeninput {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.custombutton {
+  font-family: var(--font-family-base); /* Übernimmt die globale Schriftart */
+  font-size: var(--font-size-base); /* Globale Schriftgröße */
+  color: var(--button-font-color); /* Globale Button-Schriftfarbe */
+  background-color: var(--button-background); /* Globale Hintergrundfarbe */
+  border: var(--input-border-size) solid var(--input-border-color); /* Globale Rahmen-Eigenschaften */
+  padding: calc(var(--spacer) / 3) var(--spacer); /* Globale Padding-Einstellungen */
+  border-radius: var(--button-border-radius); /* Abgerundete Ecken */
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.custombutton:hover,
+.custombutton:focus {
+  background-color: var(--button-hover-background);
+  color: var(--button-hover-font-color);
+}
+
+.custombutton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

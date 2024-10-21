@@ -651,235 +651,256 @@
         "required": false
       },
       {
-        "name": "general",
-        "label": "General",
+        "name": "osiname",
+        "label": "Name",
         "type": "text",
-        "help": "General information about the OSI trace.",
+        "help": "General information about the OSI trace name.",
         "required": true
+      },
+      {
+        "name": "osisize",
+        "label": "Size",
+        "type": "number",
+        "help": "Size of the OSI trace data in bytes.",
+        "required": true
+      },
+      {
+        "name": "osicontractId",
+        "label": "Contract ID",
+        "type": "text",
+        "help": "Contract ID related to the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "osirecordingTime",
+        "label": "Recording Time",
+        "type": "datetime",
+        "help": "Time when the OSI trace was recorded.",
+        "required": false
+      },
+      {
+        "name": "osidata",
+        "label": "Data URL",
+        "type": "url",
+        "help": "Link to the OSI data.",
+        "required": false
+      },
+      {
+        "name": "osimedia",
+        "label": "Media URL",
+        "type": "url",
+        "help": "Link to the OSI media data.",
+        "required": false
+      },
+      {
+        "name": "osirequiredData",
+        "label": "Required Data URL",
+        "type": "url",
+        "help": "Link to required data for OSI trace.",
+        "required": false
       },
       {
         "name": "format",
-        "label": "Format",
+        "label": "Format Type",
         "type": "text",
-        "help": "Format information of the OSI trace.",
-        "required": true
-      },
-      {
-        "name": "content",
-        "label": "Content",
-        "type": "text",
-        "help": "Content details of the OSI trace.",
-        "required": true
-      },
-      {
-        "name": "quality",
-        "label": "Quality",
-        "type": "text",
-        "help": "Quality metrics of the OSI trace.",
-        "required": true
-      },
-      {
-        "name": "quantity",
-        "label": "Quantity",
-        "type": "text",
-        "help": "Quantity details of the OSI trace.",
-        "required": true
-      },
-      {
-        "name": "dataSource",
-        "label": "Data Source",
-        "type": "text",
-        "help": "Information about the data sources used in the OSI trace.",
-        "required": true
-      },
-      {
-        "name": "georeference",
-        "label": "Georeference",
-        "type": "text",
-        "help": "Georeference details of the OSI trace.",
-        "required": true
-      },
-      {
-        "name": "roadTypes",
-        "label": "Road Types",
-        "type": "text",
-        "help": "Covered/used road types, defined over ODR element t_road_type, see ODR spec section 8.3",
-        "required": true
-      },
-      {
-        "name": "laneTypes",
-        "label": "Lane Types",
-        "type": "text",
-        "help": "Covered lane types, see ODR spec section 9.5.3.",
-        "required": true
-      },
-      {
-        "name": "levelOfDetail",
-        "label": "Level of Detail",
-        "type": "text",
-        "help": "Covered object classes, see ODR spec section 11",
-        "required": true
-      },
-      {
-        "name": "trafficDirection",
-        "label": "Traffic Direction",
-        "type": "text",
-        "help": "Traffic direction, i.e. right-hand or left-hand traffic",
-        "required": true
-      },
-      {
-        "name": "granularity",
-        "label": "Granularity",
-        "type": "text",
-        "help": "Level of granularity of sensor data",
-        "required": true
-      },
-      {
-        "name": "scenarioIdentifier",
-        "label": "Scenario Identifier",
-        "type": "text",
-        "help": "Identifier of scenario performed in the trace file",
-        "required": true
-      },
-      {
-        "name": "startTime",
-        "label": "Start Time",
-        "type": "datetime",
-        "help": "Exact start timestamp of the recorded trace",
-        "required": true
-      },
-      {
-        "name": "stopTime",
-        "label": "Stop Time",
-        "type": "datetime",
-        "help": "Exact stop timestamp of the recorded trace",
-        "required": true
-      },
-      {
-        "name": "hostMovingObject",
-        "label": "Host Moving Object",
-        "type": "text",
-        "help": "Host moving object in trace file",
-        "required": true
-      },
-      {
-        "name": "targetMovingObject",
-        "label": "Target Moving Object",
-        "type": "text",
-        "help": "Target moving object in trace file",
-        "required": true
-      },
-      {
-        "name": "event",
-        "label": "Event",
-        "type": "text",
-        "help": "Description of event of interest in trace file",
-        "required": true
-      },
-      {
-        "name": "measurementSystem",
-        "label": "Measurement System",
-        "type": "text",
-        "help": "Main acquisition device",
-        "required": true
-      },
-      {
-        "name": "usedDataSources",
-        "label": "Used Data Sources",
-        "type": "text",
-        "help": "Basic data for the creation of the trace",
+        "help": "Format type of the OSI trace.",
         "required": true
       },
       {
         "name": "version",
         "label": "Version",
         "type": "text",
-        "help": "Version of data format",
+        "help": "Version of the OSI trace format.",
         "required": true
       },
       {
-        "name": "type",
-        "label": "Type",
+        "name": "roadTypes",
+        "label": "Road Types",
         "type": "text",
-        "help": "Format type definition",
-        "required": true
-      },
-      {
-        "name": "accuracySignals",
-        "label": "Accuracy Signals",
-        "type": "number",
-        "help": "Accuracy of traffic relevant objects, signs and signals",
+        "help": "Types of roads in the OSI trace.",
         "required": false
       },
       {
-        "name": "accuracyObjects",
-        "label": "Accuracy Objects",
-        "type": "number",
-        "help": "Accuracy of objects in the traffic space, which do not directly affect the traffic",
-        "required": false
-      },
-      {
-        "name": "accuracyLaneModelHeight",
-        "label": "Accuracy Lane Model Height",
-        "type": "number",
-        "help": "Accuracy lane model height",
-        "required": false
-      },
-      {
-        "name": "precision",
-        "label": "Precision",
-        "type": "number",
-        "help": "Precision of measured road network (relative accuracy)",
-        "required": false
-      },
-      {
-        "name": "accuracyLaneModel2d",
-        "label": "Accuracy Lane Model 2D",
-        "type": "number",
-        "help": "Accuracy of lane model 2D",
-        "required": false
-      },
-      {
-        "name": "calibration",
-        "label": "Calibration",
+        "name": "laneTypes",
+        "label": "Lane Types",
         "type": "text",
-        "help": "Description of any calibration steps performed prior to measurement",
+        "help": "Types of lanes in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "levelOfDetail",
+        "label": "Level of Detail",
+        "type": "text",
+        "help": "The level of detail in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "trafficDirection",
+        "label": "Traffic Direction",
+        "type": "text",
+        "help": "The traffic direction in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "granularity",
+        "label": "Granularity",
+        "type": "text",
+        "help": "The granularity of the OSI trace data.",
+        "required": false
+      },
+      {
+        "name": "startTime",
+        "label": "Start Time",
+        "type": "datetime",
+        "help": "Start time of the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "stopTime",
+        "label": "Stop Time",
+        "type": "datetime",
+        "help": "Stop time of the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "hostMovingObjectDescription",
+        "label": "Host Moving Object Description",
+        "type": "text",
+        "help": "Description of the host moving object in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "hostMovingObjectIdentifier",
+        "label": "Host Moving Object Identifier",
+        "type": "text",
+        "help": "Identifier of the host moving object in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "targetMovingObjectDescription",
+        "label": "Target Moving Object Description",
+        "type": "text",
+        "help": "Description of the target moving object in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "targetMovingObjectIdentifier",
+        "label": "Target Moving Object Identifier",
+        "type": "text",
+        "help": "Identifier of the target moving object in the OSI trace.",
         "required": false
       },
       {
         "name": "numberFrames",
         "label": "Number of Frames",
         "type": "number",
-        "help": "Number of frames/messages in the trace file",
-        "required": true
+        "help": "Number of frames in the OSI trace.",
+        "required": false
       },
       {
-        "name": "identifier",
-        "label": "Identifier",
+        "name": "usedDataSources",
+        "label": "Used Data Sources",
         "type": "text",
-        "help": "Moving object identifier in trace file",
-        "required": true
+        "help": "Data sources used in the OSI trace.",
+        "required": false
       },
       {
-        "name": "description",
-        "label": "Description",
+        "name": "measurementSystem",
+        "label": "Measurement System",
         "type": "text",
-        "help": "Description of moving object in the trace file",
-        "required": true
+        "help": "Measurement system used in the OSI trace.",
+        "required": false
       },
       {
-        "name": "time",
-        "label": "Time",
-        "type": "datetime",
-        "help": "Exact timestamp of the event in the recorded trace",
-        "required": true
-      },
-      {
-        "name": "tag",
-        "label": "Tag",
+        "name": "georeferenceCountry",
+        "label": "Country",
         "type": "text",
-        "help": "Unique tag of the event in trace file",
+        "help": "Country of the project location in the OSI trace.",
         "required": true
+      },
+      {
+        "name": "georeferenceState",
+        "label": "State",
+        "type": "text",
+        "help": "State of the project location in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "georeferenceRegion",
+        "label": "Region",
+        "type": "text",
+        "help": "Region of the project location in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "georeferenceCity",
+        "label": "City",
+        "type": "text",
+        "help": "City of the project location in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "georeferenceRelationOrArea",
+        "label": "Relation or Area",
+        "type": "text",
+        "help": "Relation or specific area related to the georeference in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "boundingBoxXMin",
+        "label": "Bounding Box X Min",
+        "type": "number",
+        "help": "Minimum X coordinate of the bounding box.",
+        "required": false
+      },
+      {
+        "name": "boundingBoxYMin",
+        "label": "Bounding Box Y Min",
+        "type": "number",
+        "help": "Minimum Y coordinate of the bounding box.",
+        "required": false
+      },
+      {
+        "name": "boundingBoxXMax",
+        "label": "Bounding Box X Max",
+        "type": "number",
+        "help": "Maximum X coordinate of the bounding box.",
+        "required": false
+      },
+      {
+        "name": "boundingBoxYMax",
+        "label": "Bounding Box Y Max",
+        "type": "number",
+        "help": "Maximum Y coordinate of the bounding box.",
+        "required": false
+      },
+      {
+        "name": "georeferenceCoordinateSystem",
+        "label": "Coordinate System",
+        "type": "text",
+        "help": "Coordinate system used in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "originX",
+        "label": "Origin X",
+        "type": "number",
+        "help": "X coordinate of the geodetic origin in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "originY",
+        "label": "Origin Y",
+        "type": "number",
+        "help": "Y coordinate of the geodetic origin in the OSI trace.",
+        "required": false
+      },
+      {
+        "name": "heightSystem",
+        "label": "Height System",
+        "type": "text",
+        "help": "Height system used in the OSI trace.",
+        "required": false
       }
     ]
   },

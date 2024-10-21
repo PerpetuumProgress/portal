@@ -70,6 +70,42 @@ export interface FormPublishData {
     hdMapTrafficDirection: string
     hdMapUsedDataSources: string
     MapLevel: string
+    osiname: string
+    osisize: number
+    osicontractId: string
+    osirecordingTime: string
+    osidata: string
+    osimedia: string
+    osirequiredData: string
+    format: string
+    version: string
+    roadTypes: string
+    laneTypes: string
+    levelOfDetail: string
+    trafficDirection: string
+    granularity: string
+    startTime: string
+    stopTime: string
+    hostMovingObjectDescription: string
+    hostMovingObjectIdentifier: string
+    targetMovingObjectDescription: string
+    targetMovingObjectIdentifier: string
+    numberFrames: number
+    usedDataSources: string
+    measurementSystem: string
+    georeferenceCountry: string
+    georeferenceState: string
+    georeferenceRegion: string
+    georeferenceCity: string
+    georeferenceRelationOrArea: string
+    boundingBoxXMin: number
+    boundingBoxYMin: number
+    boundingBoxXMax: number
+    boundingBoxYMax: number
+    georeferenceCoordinateSystem: string
+    originX: number
+    originY: number
+    heightSystem: string
   }
   services: FormPublishService[]
   pricing: PricePublishOptions

@@ -17,6 +17,7 @@ import { algorithmContainerPresets } from '../_constants'
 import Alert from '@shared/atoms/Alert'
 import { useMarketMetadata } from '@context/MarketMetadata'
 import { getFieldContent } from '@utils/form'
+import JSONImport from '@shared/JsonImport'
 
 const assetTypeOptionsTitles = getFieldContent(
   'type',
@@ -766,48 +767,70 @@ export default function MetadataFields(): ReactElement {
       {values.metadata.type === 'dataset' &&
         values.metadata.datasettype === 'osi' && (
           <>
+            <JSONImport />
+            <p>General</p>
             <Field
-              {...getFieldContent('general', content.metadata.fields)}
+              {...getFieldContent('osiname', content.metadata.fields)}
               component={Input}
-              name="metadata.general"
-              label="General"
+              name="metadata.osiname"
+              label="Name"
             />
+            <Field
+              {...getFieldContent('description', content.metadata.fields)}
+              component={Input}
+              name="metadata.description"
+              label="Description"
+            />
+            <Field
+              {...getFieldContent('osisize', content.metadata.fields)}
+              component={Input}
+              name="metadata.osisize"
+              label="Size"
+            />
+            <Field
+              {...getFieldContent('osicontractId', content.metadata.fields)}
+              component={Input}
+              name="metadata.osicontractId"
+              label="Contract ID"
+            />
+            <Field
+              {...getFieldContent('osirecordingTime', content.metadata.fields)}
+              component={Input}
+              name="metadata.osirecordingTime"
+              label="Recording Time"
+            />
+            <Field
+              {...getFieldContent('osidata', content.metadata.fields)}
+              component={Input}
+              name="metadata.osidata"
+              label="Data URL"
+            />
+            <Field
+              {...getFieldContent('osimedia', content.metadata.fields)}
+              component={Input}
+              name="metadata.osimedia"
+              label="Media URL"
+            />
+            <Field
+              {...getFieldContent('osirequiredData', content.metadata.fields)}
+              component={Input}
+              name="metadata.osirequiredData"
+              label="Required Data URL"
+            />
+            <p>Format</p>
             <Field
               {...getFieldContent('format', content.metadata.fields)}
               component={Input}
               name="metadata.format"
-              label="Format"
+              label="Format Type"
             />
             <Field
-              {...getFieldContent('content', content.metadata.fields)}
+              {...getFieldContent('version', content.metadata.fields)}
               component={Input}
-              name="metadata.content"
-              label="Content"
+              name="metadata.version"
+              label="Version"
             />
-            <Field
-              {...getFieldContent('quality', content.metadata.fields)}
-              component={Input}
-              name="metadata.quality"
-              label="Quality"
-            />
-            <Field
-              {...getFieldContent('quantity', content.metadata.fields)}
-              component={Input}
-              name="metadata.quantity"
-              label="Quantity"
-            />
-            <Field
-              {...getFieldContent('dataSource', content.metadata.fields)}
-              component={Input}
-              name="metadata.dataSource"
-              label="Data Source"
-            />
-            <Field
-              {...getFieldContent('georeference', content.metadata.fields)}
-              component={Input}
-              name="metadata.georeference"
-              label="Georeference"
-            />
+            <p>Content</p>
             <Field
               {...getFieldContent('roadTypes', content.metadata.fields)}
               component={Input}
@@ -839,15 +862,6 @@ export default function MetadataFields(): ReactElement {
               label="Granularity"
             />
             <Field
-              {...getFieldContent(
-                'scenarioIdentifier',
-                content.metadata.fields
-              )}
-              component={Input}
-              name="metadata.scenarioIdentifier"
-              label="Scenario Identifier"
-            />
-            <Field
               {...getFieldContent('startTime', content.metadata.fields)}
               component={Input}
               name="metadata.startTime"
@@ -859,33 +873,51 @@ export default function MetadataFields(): ReactElement {
               name="metadata.stopTime"
               label="Stop Time"
             />
-            <Field
-              {...getFieldContent('hostMovingObject', content.metadata.fields)}
-              component={Input}
-              name="metadata.hostMovingObject"
-              label="Host Moving Object"
-            />
+            <p>Moving Objects</p>
             <Field
               {...getFieldContent(
-                'targetMovingObject',
+                'hostMovingObjectDescription',
                 content.metadata.fields
               )}
               component={Input}
-              name="metadata.targetMovingObject"
-              label="Target Moving Object"
+              name="metadata.hostMovingObjectDescription"
+              label="Host Moving Object Description"
             />
             <Field
-              {...getFieldContent('event', content.metadata.fields)}
+              {...getFieldContent(
+                'hostMovingObjectIdentifier',
+                content.metadata.fields
+              )}
               component={Input}
-              name="metadata.event"
-              label="Event"
+              name="metadata.hostMovingObjectIdentifier"
+              label="Host Moving Object Identifier"
             />
             <Field
-              {...getFieldContent('measurementSystem', content.metadata.fields)}
+              {...getFieldContent(
+                'targetMovingObjectDescription',
+                content.metadata.fields
+              )}
               component={Input}
-              name="metadata.measurementSystem"
-              label="Measurement System"
+              name="metadata.targetMovingObjectDescription"
+              label="Target Moving Object Description"
             />
+            <Field
+              {...getFieldContent(
+                'targetMovingObjectIdentifier',
+                content.metadata.fields
+              )}
+              component={Input}
+              name="metadata.targetMovingObjectIdentifier"
+              label="Target Moving Object Identifier"
+            />
+            <p>Quantity</p>
+            <Field
+              {...getFieldContent('numberFrames', content.metadata.fields)}
+              component={Input}
+              name="metadata.numberFrames"
+              label="Number of Frames"
+            />
+            <p>Data Source</p>
             <Field
               {...getFieldContent('usedDataSources', content.metadata.fields)}
               component={Input}
@@ -893,88 +925,103 @@ export default function MetadataFields(): ReactElement {
               label="Used Data Sources"
             />
             <Field
-              {...getFieldContent('version', content.metadata.fields)}
+              {...getFieldContent('measurementSystem', content.metadata.fields)}
               component={Input}
-              name="metadata.version"
-              label="Version"
+              name="metadata.measurementSystem"
+              label="Measurement System"
             />
-            <Field
-              {...getFieldContent('type', content.metadata.fields)}
-              component={Input}
-              name="metadata.type"
-              label="Type"
-            />
-            <Field
-              {...getFieldContent('accuracySignals', content.metadata.fields)}
-              component={Input}
-              name="metadata.accuracySignals"
-              label="Accuracy Signals"
-            />
-            <Field
-              {...getFieldContent('accuracyObjects', content.metadata.fields)}
-              component={Input}
-              name="metadata.accuracyObjects"
-              label="Accuracy Objects"
-            />
+            <p>Georeference</p>
             <Field
               {...getFieldContent(
-                'accuracyLaneModelHeight',
+                'georeferenceCountry',
                 content.metadata.fields
               )}
               component={Input}
-              name="metadata.accuracyLaneModelHeight"
-              label="Accuracy Lane Model Height"
+              name="metadata.georeference.country"
+              label="Country"
             />
             <Field
-              {...getFieldContent('precision', content.metadata.fields)}
+              {...getFieldContent('georeferenceState', content.metadata.fields)}
               component={Input}
-              name="metadata.precision"
-              label="Precision"
+              name="metadata.georeference.state"
+              label="State"
             />
             <Field
               {...getFieldContent(
-                'accuracyLaneModel2d',
+                'georeferenceRegion',
                 content.metadata.fields
               )}
               component={Input}
-              name="metadata.accuracyLaneModel2d"
-              label="Accuracy Lane Model 2D"
+              name="metadata.georeference.region"
+              label="Region"
             />
             <Field
-              {...getFieldContent('calibration', content.metadata.fields)}
+              {...getFieldContent('georeferenceCity', content.metadata.fields)}
               component={Input}
-              name="metadata.calibration"
-              label="Calibration"
+              name="metadata.georeference.city"
+              label="City"
             />
             <Field
-              {...getFieldContent('numberFrames', content.metadata.fields)}
+              {...getFieldContent(
+                'georeferenceRelationOrArea',
+                content.metadata.fields
+              )}
               component={Input}
-              name="metadata.numberFrames"
-              label="Number of Frames"
+              name="metadata.georeference.relationOrArea"
+              label="Relation or Area"
+            />
+            <p>Bounding Box</p>
+            <Field
+              {...getFieldContent('boundingBoxXMin', content.metadata.fields)}
+              component={Input}
+              name="metadata.georeference.boundingBox.xMin"
+              label="Bounding Box X Min"
             />
             <Field
-              {...getFieldContent('identifier', content.metadata.fields)}
+              {...getFieldContent('boundingBoxYMin', content.metadata.fields)}
               component={Input}
-              name="metadata.identifier"
-              label="Identifier"
+              name="metadata.georeference.boundingBox.yMin"
+              label="Bounding Box Y Min"
             />
             <Field
-              {...getFieldContent('description', content.metadata.fields)}
+              {...getFieldContent('boundingBoxXMax', content.metadata.fields)}
               component={Input}
-              name="metadata.description"
-              label="Description"
+              name="metadata.georeference.boundingBox.xMax"
+              label="Bounding Box X Max"
             />
             <Field
-              {...getFieldContent('time', content.metadata.fields)}
+              {...getFieldContent('boundingBoxYMax', content.metadata.fields)}
               component={Input}
-              name="metadata.time"
-              label="Time"
+              name="metadata.georeference.boundingBox.yMax"
+              label="Bounding Box Y Max"
+            />
+            <p>Geodetic Reference System</p>
+            <Field
+              {...getFieldContent(
+                'georeferenceCoordinateSystem',
+                content.metadata.fields
+              )}
+              component={Input}
+              name="metadata.georeference.coordinateSystem"
+              label="Coordinate System"
             />
             <Field
-              {...getFieldContent('tag', content.metadata.fields)}
+              {...getFieldContent('originX', content.metadata.fields)}
               component={Input}
-              name="metadata.tag"
-              label="Tag"
+              name="metadata.georeference.origin.x"
+              label="Origin X"
+            />
+            <Field
+              {...getFieldContent('originY', content.metadata.fields)}
+              component={Input}
+              name="metadata.georeference.origin.y"
+              label="Origin Y"
+            />
+            <Field
+              {...getFieldContent('heightSystem', content.metadata.fields)}
+              component={Input}
+              name="metadata.georeference.heightSystem"
+              label="Height System"
             />
           </>
         )}
