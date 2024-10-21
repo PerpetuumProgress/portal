@@ -49,7 +49,7 @@ export default function JSONImport(): JSX.Element {
         json['ositrace:general']['general:links']['general:data']['general:url']
       const { '@value': requiredData } =
         json['ositrace:general']['general:bundleData']['general:requiredData'][
-         'general:url'
+          'general:url'
         ]
 
       setFieldValue('metadata.osiname', name)
