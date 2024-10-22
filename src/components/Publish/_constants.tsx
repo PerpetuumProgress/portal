@@ -101,7 +101,6 @@ export const initialValues: FormPublishData = {
     hdMapTrafficDirection: '',
     hdMapUsedDataSources: '',
     MapLevel: '',
-    osiname: '',
     osisize: 0,
     osicontractId: '',
     osirecordingTime: '',

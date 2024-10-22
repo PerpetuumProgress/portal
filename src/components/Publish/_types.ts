@@ -70,7 +70,6 @@ export interface FormPublishData {
     hdMapTrafficDirection: string
     hdMapUsedDataSources: string
     MapLevel: string
-    osiname: string
     osisize: number
     osicontractId: string
     osirecordingTime: string

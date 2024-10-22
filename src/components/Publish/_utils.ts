@@ -144,7 +144,6 @@ export async function transformPublishFormToDdo(
     hdMapTrafficDirection,
     hdMapUsedDataSources,
     MapLevel,
-    osiname,
     osisize,
     osicontractId,
     osirecordingTime,
@@ -247,8 +246,6 @@ export async function transformPublishFormToDdo(
         MapLevel
       },
       osimetadata: {
-        osiname,
-        description,
         osisize,
         osicontractId,
         osirecordingTime,

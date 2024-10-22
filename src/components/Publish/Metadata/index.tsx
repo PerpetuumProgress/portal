@@ -770,18 +770,6 @@ export default function MetadataFields(): ReactElement {
             <JSONImport />
             <p>General</p>
             <Field
-              {...getFieldContent('osiname', content.metadata.fields)}
-              component={Input}
-              name="metadata.osiname"
-              label="Name"
-            />
-            <Field
-              {...getFieldContent('description', content.metadata.fields)}
-              component={Input}
-              name="metadata.description"
-              label="Description"
-            />
-            <Field
               {...getFieldContent('osisize', content.metadata.fields)}
               component={Input}
               name="metadata.osisize"

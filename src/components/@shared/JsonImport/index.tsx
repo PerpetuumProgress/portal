@@ -52,7 +52,7 @@ export default function JSONImport(): JSX.Element {
           'general:url'
         ]
 
-      setFieldValue('metadata.osiname', name)
+      setFieldValue('metadata.name', name)
       setFieldValue('metadata.description', description)
       setFieldValue('metadata.osisize', size)
       setFieldValue('metadata.osicontractId', contractId)
@@ -191,7 +191,7 @@ export default function JSONImport(): JSX.Element {
   return (
     <div className={styles.container}>
       <label htmlFor="json-upload" className={styles.label}>
-        Import OsiTrace JSON
+        Import OSITrace JSON
       </label>
       <input
         type="file"

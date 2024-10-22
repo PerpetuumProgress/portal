@@ -651,13 +651,6 @@
         "required": false
       },
       {
-        "name": "osiname",
-        "label": "Name",
-        "type": "text",
-        "help": "General information about the OSI trace name.",
-        "required": true
-      },
-      {
         "name": "osisize",
         "label": "Size",
         "type": "number",

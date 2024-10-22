@@ -291,13 +291,6 @@ export default function AssetContent({
                     <strong>OSI Metadata</strong>
                   </div>
                   <div className={styles.description}>
-                    Name:{' '}
-                    {
-                      asset?.metadata?.additionalInformation?.osimetadata
-                        ?.osiname
-                    }
-                  </div>
-                  <div className={styles.description}>
                     Description:{' '}
                     {
                       asset?.metadata?.additionalInformation?.osimetadata
