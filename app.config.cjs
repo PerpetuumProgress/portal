@@ -20,7 +20,9 @@ module.exports = {
   // List of all supported chainIds. Used to populate the Chains user preferences list.
   chainIdsSupported: [11155111, 8996],
 
-  customProviderUrl: process.env.NEXT_PUBLIC_PROVIDER_URL,
+  customProviderUrl:
+    process.env.NEXT_PUBLIC_PROVIDER_URL ||
+    'https://ocean-node-vm3.oceanenterprise.io',
 
   infuraProjectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID || 'xxx',
 

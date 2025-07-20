@@ -14,6 +14,7 @@ import InputElement from '@shared/FormInput/InputElement'
 import Features from './Features/Features'
 import Upload from '@images/publish.svg'
 import SearchLogo from '@images/search.svg'
+import Oval from '@images/oval.svg'
 import Menu from './Menu/Menu'
 import { addExistingParamsToUrl } from '../Search/utils'
 import { useRouter } from 'next/router'
@@ -111,9 +112,7 @@ function HeroSection({
           <Menu />
         </header>
         <div className={styles.textContent}>
-          <h1 className={styles.title}>
-            Ocean Enterprise Demonstration Marketplace
-          </h1>
+          <h1 className={styles.title}>O V A L</h1>
           <div className={styles.subtitle}>
             <p>
               Publish, find, compare, manage and monetize proprietary data & AI
@@ -191,6 +190,11 @@ export default function HomePage(): ReactElement {
         </>
       )}
       <Features />
+      <section className={styles.svgSection}>
+        <div className={styles.svgWrapper}>
+          <Oval className={styles.svgImage} />
+        </div>
+      </section>
     </>
   )
 }

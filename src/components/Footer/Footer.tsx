@@ -22,25 +22,11 @@ export default function Footer(): ReactElement {
           <Logo className={styles.logo} />
           <div className={styles.socialLinks}>
             <a
-              href="https://x.com/ocnenterprise"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <XIcon className={styles.socialIcon} />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/ocean-enterprise-collective"
+              href="https://www.linkedin.com/company/perpetuum-progress"
               target="_blank"
               rel="noopener noreferrer"
             >
               <LinkedInIcon className={styles.socialIcon} />
-            </a>
-            <a
-              href="https://medium.com/ocean-enterprise-collective"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MediumIcon className={styles.socialIcon} />
             </a>
           </div>
         </div>

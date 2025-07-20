@@ -1,5 +1,5 @@
 {
-  "siteTitle": "Ocean Protocol Enterprise",
+  "siteTitle": "OVAL",
   "siteTagline": "Publish, find, compare, manage and monetize proprietary data & AI products in a secure,",
   "taglineContinuation": "Continuted",
   "siteUrl": "https://enterprise.oceanprotocol.com",
@@ -27,7 +27,7 @@
   "siteDescription": "A decentralized data marketplace powered by Ocean Protocol.",
   "footer": {
     "subtitle": "The enterprise data market",
-    "copyright": "© Ocean Enterprise 2025",
+    "copyright": "© Perpetuum Progress 2025",
     "privacyTitle": "Privacy",
     "content": [
       {
@@ -39,15 +39,11 @@
           },
           {
             "name": "GitHub",
-            "link": "https://github.com/OceanProtocolEnterprise"
+            "link": "https://github.com/PerpetuumProgress"
           },
           {
             "name": "Docs",
             "link": "https://github.com/OceanProtocolEnterprise/docs"
-          },
-          {
-            "name": "Medium",
-            "link": "https://medium.com/ocean-enterprise-collective"
           }
         ]
       },
