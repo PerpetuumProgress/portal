@@ -10,8 +10,8 @@ image:
   # Set environment variables
   env:
     # environment variable for auqrius uri
-    - name: 'NEXT_PUBLIC_PROVIDER_URL'
-      value: 'https://ocean-node-vm3.oceanenterprise.io'
+    #- name: 'NEXT_PUBLIC_PROVIDER_URL'
+    #  value: 'https://ocean-node-vm3.oceanenterprise.io'
   # Overrides the image tag whose default is the chart appVersion.
   tag: 'dev'
 
@@ -26,7 +26,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: 'github-dev-service-account'
+  name: 'dev-oval-run-service-account'
 
 podAnnotations: {}
 
