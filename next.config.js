@@ -71,7 +71,7 @@ const nextConfig = () => {
       const walletApiBase =
         process.env.NEXT_PUBLIC_SSI_WALLET_API || 'https://wallet.demo.walt.id'
 
-      const providerUrl = process.env.NEXT_PUBLIC_PROVIDER_URL
+      const providerUrl = process.env.NEXT_PUBLIC_PROVIDER_URL || 'https://ocean-node-vm3.oceanenterprise.io'
 
       const routes = [
         {
