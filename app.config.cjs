@@ -24,7 +24,7 @@ module.exports = {
     process.env.NEXT_PUBLIC_PROVIDER_URL ||
     'https://ocean-node-vm3.oceanenterprise.io',
 
-  infuraProjectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID || 'xxx',
+  infuraProjectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_ID || '6a3e18dfad90440aa5ad64e8f71d9da9',
 
   defaultDatatokenCap:
     '115792089237316195423570985008687907853269984665640564039457',
