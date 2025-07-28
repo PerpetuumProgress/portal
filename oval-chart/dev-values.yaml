@@ -10,8 +10,8 @@ image:
   # Set environment variables
   env:
     # environment variable for auqrius uri
-    #- name: 'NEXT_PUBLIC_METADATACACHE_URI'
-    #  value: 'https://metadatacache.dev.oval.pepro.io'
+    - name: 'NEXT_PUBLIC_PROVIDER_URL'
+      value: 'https://ocean-node-vm3.oceanenterprise.io'
   # Overrides the image tag whose default is the chart appVersion.
   tag: 'dev'
 
