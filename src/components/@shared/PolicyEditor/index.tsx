@@ -17,6 +17,7 @@ import {
 import fields from './editor.json'
 import Tooltip from '@shared/atoms/Tooltip'
 import Markdown from '@shared/Markdown'
+import { credentialFieldOptions } from './constant/credentialFields'
 
 interface PolicyViewProps {
   policy: PolicyType
@@ -25,6 +26,7 @@ interface PolicyViewProps {
   innerIndex: number
   onDeletePolicy: () => void
   onValueChange: () => void
+  credentialType?: string
 }
 
 interface VpPolicyViewProps {
@@ -274,6 +276,9 @@ function CustomPolicyView(props: PolicyViewProps): ReactElement {
     onValueChange()
   }
 
+  const credentialType = props.credentialType || 'id'
+  const options = credentialFieldOptions[credentialType] || ['id']
+
   return (
     <>
       <label>{{ ...getFieldContent('customPolicy', fields) }.label}</label>
@@ -311,13 +316,25 @@ function CustomPolicyView(props: PolicyViewProps): ReactElement {
             <div
               className={`${styles.panelRow} ${styles.alignItemsEnd} ${styles.width100} ${styles.paddingLeft3em}`}
             >
-              <div className={styles.flexGrow}>
+              <div className={styles.field}>
+                <label htmlFor={`customPolicy.rules.${index}.leftValue`}>
+                  Credential field*
+                </label>
+
                 <Field
-                  {...getFieldContent('leftValue', fields)}
-                  component={Input}
+                  as="select"
                   name={`${name}.requestCredentials[${index}].policies[${innerIndex}].rules[${ruleIndex}].leftValue`}
-                />
+                  className={styles.select}
+                  required
+                >
+                  {options.map((field) => (
+                    <option key={field} value={field}>
+                      {field}
+                    </option>
+                  ))}
+                </Field>
               </div>
+
               <Field
                 {...getFieldContent('operator', fields)}
                 component={Input}
@@ -457,7 +474,7 @@ export function PolicyEditor(props): ReactElement {
     isAsset = false
   }: PolicyEditorProps = props
 
-  const [enabled, setEnabled] = useState(enabledView)
+  const [enabled, setEnabled] = useState(credentials.enabled || enabledView)
   const [editAdvancedFeatures, setEditAdvancedFeatures] = useState(false)
   const [holderBinding, setHolderBinding] = useState(true)
   const [requireAllTypes, setRequireAllTypes] = useState(true)
@@ -465,6 +482,7 @@ export function PolicyEditor(props): ReactElement {
   const [limitMaxCredentials, setLimitMaxCredentials] = useState(false)
   const [minimumCredentials, setMinimumCredentials] = useState('1')
   const [limitMinCredentials, setLimitMinCredentials] = useState(false)
+  const [hasUserSetEnabled, setHasUserSetEnabled] = useState(false)
 
   const filteredDefaultPolicies = defaultPolicies.filter(
     (policy) => policy.length > 0
@@ -505,13 +523,94 @@ export function PolicyEditor(props): ReactElement {
     }
   }, [enabled, editAdvancedFeatures])
 
+  useEffect(() => {
+    const hasExistingCredentials =
+      (credentials.vpPolicies && credentials.vpPolicies.length > 0) ||
+      (credentials.requestCredentials &&
+        credentials.requestCredentials.length > 0) ||
+      (credentials.vcPolicies && credentials.vcPolicies.length > 0)
+
+    const hasOnlyDefaultVcPolicies =
+      credentials.vcPolicies?.length > 0 &&
+      !credentials.vpPolicies?.length &&
+      !credentials.requestCredentials?.length
+
+    if (
+      hasExistingCredentials &&
+      !hasOnlyDefaultVcPolicies &&
+      !credentials.enabled &&
+      !hasUserSetEnabled
+    ) {
+      setEnabled(true)
+      setCredentials({ ...credentials, enabled: true })
+    }
+
+    if (!credentials.vpPolicies || credentials.vpPolicies.length === 0) return
+
+    const hasHolderBinding = credentials.vpPolicies.some(
+      (p) => p?.type === 'staticVpPolicy' && p?.name === 'holder-binding'
+    )
+    if (hasHolderBinding) {
+      setHolderBinding(true)
+      setEditAdvancedFeatures(true)
+    }
+
+    const hasPresentationDefinition = credentials.vpPolicies.some(
+      (p) =>
+        p?.type === 'staticVpPolicy' && p?.name === 'presentation-definition'
+    )
+    if (hasPresentationDefinition) {
+      setRequireAllTypes(true)
+      setEditAdvancedFeatures(true)
+    }
+
+    const minCredsPolicy = credentials.vpPolicies.find(
+      (p) =>
+        p?.type === 'argumentVpPolicy' && p?.policy === 'minimum-credentials'
+    )
+    if (minCredsPolicy && minCredsPolicy.type === 'argumentVpPolicy') {
+      setLimitMinCredentials(true)
+      setMinimumCredentials(minCredsPolicy.args.toString())
+      setEditAdvancedFeatures(true)
+    }
+
+    const maxCredsPolicy = credentials.vpPolicies.find(
+      (p) =>
+        p?.type === 'argumentVpPolicy' && p?.policy === 'maximum-credentials'
+    )
+    if (maxCredsPolicy && maxCredsPolicy.type === 'argumentVpPolicy') {
+      setLimitMaxCredentials(true)
+      setMaximumCredentials(maxCredsPolicy.args.toString())
+      setEditAdvancedFeatures(true)
+    }
+  }, [
+    credentials.vpPolicies,
+    credentials.requestCredentials,
+    credentials.vcPolicies,
+    credentials.enabled,
+    hasUserSetEnabled
+  ])
+
   function handlePolicyEditorToggle(value: boolean) {
+    setHasUserSetEnabled(true)
     if (!value) {
       const updatedCredentials = {
         ...credentials,
+        enabled: false,
         requestCredentials: [],
-        vcPolicies: credentials.vcPolicies?.slice(0, 3) || [],
+        vcPolicies: [],
         vpPolicies: []
+      }
+      setCredentials(updatedCredentials)
+      setEditAdvancedFeatures(false)
+    } else {
+      const updatedCredentials = {
+        ...credentials,
+        enabled: true,
+        vcPolicies: defaultPolicies || []
+      }
+      if (credentials.vpPolicies?.length) {
+        updatedCredentials.vpPolicies = credentials.vpPolicies
       }
       setCredentials(updatedCredentials)
     }
@@ -669,7 +768,21 @@ export function PolicyEditor(props): ReactElement {
   }
 
   useEffect(() => {
-    if (!enabled || !editAdvancedFeatures) return
+    if (!enabled) return
+
+    if (!editAdvancedFeatures) {
+      if (credentials.vpPolicies?.length) {
+        const { vpPolicies, ...credentialsWithoutVpPolicies } = credentials
+        setCredentials(credentialsWithoutVpPolicies)
+      }
+      setHolderBinding(true)
+      setRequireAllTypes(true)
+      setLimitMinCredentials(false)
+      setLimitMaxCredentials(false)
+      setMinimumCredentials('1')
+      setMaximumCredentials('1')
+      return
+    }
 
     const updatedVpPolicies = [...(credentials.vpPolicies || [])]
 
@@ -703,7 +816,55 @@ export function PolicyEditor(props): ReactElement {
 
     let changed = false
 
-    // Handle minimum
+    if (holderBinding) {
+      const exists = updatedVpPolicies.some(
+        (p) => p?.type === 'staticVpPolicy' && p?.name === 'holder-binding'
+      )
+      if (!exists) {
+        updatedVpPolicies.push({
+          type: 'staticVpPolicy',
+          name: 'holder-binding'
+        })
+        changed = true
+      }
+    } else {
+      const filtered = updatedVpPolicies.filter(
+        (p) => !(p?.type === 'staticVpPolicy' && p?.name === 'holder-binding')
+      )
+      if (filtered.length !== updatedVpPolicies.length) {
+        updatedVpPolicies.length = 0
+        updatedVpPolicies.push(...filtered)
+        changed = true
+      }
+    }
+
+    if (requireAllTypes) {
+      const exists = updatedVpPolicies.some(
+        (p) =>
+          p?.type === 'staticVpPolicy' && p?.name === 'presentation-definition'
+      )
+      if (!exists) {
+        updatedVpPolicies.push({
+          type: 'staticVpPolicy',
+          name: 'presentation-definition'
+        })
+        changed = true
+      }
+    } else {
+      const filtered = updatedVpPolicies.filter(
+        (p) =>
+          !(
+            p?.type === 'staticVpPolicy' &&
+            p?.name === 'presentation-definition'
+          )
+      )
+      if (filtered.length !== updatedVpPolicies.length) {
+        updatedVpPolicies.length = 0
+        updatedVpPolicies.push(...filtered)
+        changed = true
+      }
+    }
+
     if (limitMinCredentials) {
       upsertPolicy('minimum-credentials', minimumCredentials)
       changed = true
@@ -879,6 +1040,7 @@ export function PolicyEditor(props): ReactElement {
                           onValueChange={() => {
                             setCredentials(credentials)
                           }}
+                          credentialType={credential.type}
                         />
                       </div>
                     ))}
