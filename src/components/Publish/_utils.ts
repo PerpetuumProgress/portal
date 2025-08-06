@@ -48,7 +48,6 @@ import {
   VP
 } from 'src/@types/ddo/Credentials'
 import * as VCDataModel from 'src/@types/ddo/VerifiableCredential'
-import { asset } from '.jest/__fixtures__/datasetWithAccessDetails'
 import { convertLinks } from '@utils/links'
 import { License } from 'src/@types/ddo/License'
 import base64url from 'base64url'
@@ -56,8 +55,6 @@ import { JWTHeaderParameters } from 'jose'
 import {
   PolicyArgument,
   PolicyRule,
-  PolicyRuleLeftValuePrefix,
-  PolicyRuleRightValuePrefix,
   PolicyType,
   CredentialForm,
   VpPolicyType
@@ -315,17 +312,6 @@ export function parseCredentialPolicies(credentials: Credential) {
             return requestCredentials
           }
         )
-
-        value.vp_policies = value.vp_policies
-          .map((policy) => {
-            try {
-              return JSON.parse(policy)
-            } catch (error) {
-              LoggerInstance.error(error)
-              return null
-            }
-          })
-          .filter((policy) => !!policy)
         return value
       })
     }
@@ -357,9 +343,6 @@ export function stringifyCredentialPolicies(credentials: Credential) {
             return requestCredentials
           }
         )
-
-        value.vp_policies =
-          value.vp_policies?.map((policy) => JSON.stringify(policy)) ?? []
         return value
       })
     }
@@ -391,22 +374,20 @@ export function generateCredentials(
           }
         }
       )
-
     const vpPolicies: VP[] = updatedCredentials?.vpPolicies?.map(
       (credential: VpPolicyType) => {
-        let policy: VP
-        switch (credential.type) {
-          case 'staticVpPolicy':
-            policy = credential.name
-            break
-          case 'argumentVpPolicy':
-            policy = {
-              policy: credential.policy,
-              args: parseInt(credential.args)
-            }
-            break
+        if (credential.type === 'staticVpPolicy') {
+          return { policy: credential.name }
         }
-        return policy
+
+        if (credential.type === 'argumentVpPolicy') {
+          return {
+            policy: credential.policy,
+            args: String(credential.args)
+          }
+        }
+
+        return null
       }
     )
     const hasAny =
@@ -606,7 +587,7 @@ export async function transformPublishFormToDdo(
   const newServiceCredentials = generateCredentials(credentials)
   const valuesCompute: ComputeEditForm = {
     allowAllPublishedAlgorithms: values.allowAllPublishedAlgorithms,
-    publisherTrustedAlgorithms: values.publisherTrustedAlgorithms,
+    publisherTrustedAlgorithms: values.publisherTrustedAlgorithms ?? [],
     publisherTrustedAlgorithmPublishers:
       values.publisherTrustedAlgorithmPublishers
   }
@@ -641,7 +622,6 @@ export async function transformPublishFormToDdo(
     })
   }
   const newCredentials = generateCredentials(values.credentials)
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const newDdo: any = {
     '@context': ['https://www.w3.org/ns/credentials/v2'],
@@ -757,13 +737,7 @@ export async function signAssetAndUploadToIpfs(
       valid = await isSessionValid(ssiWalletContext.sessionToken.token)
     }
     if (valid) {
-      const key = await getWalletKey(
-        ssiWalletContext?.selectedWallet?.id,
-        ssiWalletContext?.selectedKey?.keyId?.id,
-        ssiWalletContext.sessionToken.token
-      )
-      const keyBase64 = base64url(JSON.stringify(key))
-      credential.issuer = `did:jwk:${keyBase64}`
+      credential.issuer = ssiWalletContext?.selectedDid
       jwtVerifiableCredential = await signMessage(
         ssiWalletContext?.selectedWallet?.id,
         ssiWalletContext?.selectedKey.keyId?.id,

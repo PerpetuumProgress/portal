@@ -28,6 +28,8 @@ import {
   PublisherTrustedAlgorithms
 } from 'src/@types/ddo/Service'
 import { AssetExtended } from 'src/@types/AssetExtended'
+import { customProviderUrl } from 'app.config.cjs'
+import { ServiceComputeOptions } from '@oceanprotocol/ddo-js'
 
 async function getAssetMetadata(
   queryDtList: string[],
@@ -39,9 +41,12 @@ async function getAssetMetadata(
     index: index ?? 'op_ddo_v5.0.0',
     chainIds,
     filters: [
-      getFilterTerm('services.datatokenAddress.keyword', queryDtList),
-      getFilterTerm('services.type', 'compute'),
-      getFilterTerm('metadata.type', 'dataset')
+      getFilterTerm(
+        'credentialSubject.services.datatokenAddress.keyword',
+        queryDtList
+      ),
+      getFilterTerm('credentialSubject.services.type', 'compute'),
+      getFilterTerm('credentialSubject.metadata.type', 'dataset')
     ],
     ignorePurgatory: true
   } as BaseQueryParams
@@ -127,7 +132,8 @@ export async function getComputeEnvironment(
 export function getQueryString(
   trustedAlgorithmList: PublisherTrustedAlgorithms[],
   trustedPublishersList: string[],
-  chainId?: number
+  chainId?: number,
+  allAlgosAllowed?: boolean
 ): SearchQuery {
   const algorithmDidList = trustedAlgorithmList?.map((x) => x.did)
 
@@ -140,17 +146,43 @@ export function getQueryString(
     }
   } as BaseQueryParams
   algorithmDidList?.length > 0 &&
+    !allAlgosAllowed &&
     baseParams.filters.push(getFilterTerm('_id', algorithmDidList))
-  trustedPublishersList?.length > 0 &&
+
+  if (
+    trustedPublishersList?.length > 0 &&
+    !(trustedPublishersList.length === 1 && trustedPublishersList[0] === '*')
+  ) {
     baseParams.filters.push(
       getFilterTerm(
         'indexedMetadata.nft.owner',
         trustedPublishersList.map((address) => address.toLowerCase())
       )
     )
+  }
   const query = generateBaseQuery(baseParams)
-
   return query
+}
+
+function isAllAlgoAllowed(compute: ServiceComputeOptions): boolean {
+  // Check if publisherTrustedAlgorithmPublishers contains "*"
+  if (
+    Array.isArray(compute.publisherTrustedAlgorithmPublishers) &&
+    compute.publisherTrustedAlgorithmPublishers.includes('*')
+  ) {
+    return true
+  }
+
+  // Check if publisherTrustedAlgorithms contains a single object where all values are "*"
+  if (
+    Array.isArray(compute.publisherTrustedAlgorithms) &&
+    compute.publisherTrustedAlgorithms.length === 1
+  ) {
+    const algo = compute.publisherTrustedAlgorithms[0]
+    return Object.values(algo).every((value) => value === '*')
+  }
+
+  return false
 }
 
 export async function getAlgorithmsForAsset(
@@ -165,16 +197,17 @@ export async function getAlgorithmsForAsset(
   ) {
     return []
   }
-
-  const gueryResults = await queryMetadata(
+  const allAlgosAllowed = isAllAlgoAllowed(service.compute)
+  const queryResults = await queryMetadata(
     getQueryString(
       service.compute.publisherTrustedAlgorithms,
       service.compute.publisherTrustedAlgorithmPublishers,
-      asset.credentialSubject?.chainId
+      asset.credentialSubject?.chainId,
+      allAlgosAllowed
     ),
     token
   )
-  const algorithms: Asset[] = gueryResults?.results
+  const algorithms: Asset[] = queryResults?.results
   return algorithms
 }
 
@@ -193,7 +226,7 @@ export async function getAlgorithmAssetSelectionList(
       service?.serviceEndpoint,
       algorithms,
       accountId,
-      []
+      service.compute.publisherTrustedAlgorithms
     )
   }
   return algorithmSelectionList
@@ -202,7 +235,8 @@ export async function getAlgorithmAssetSelectionList(
 async function getJobs(
   providerUrls: string[],
   accountId: string,
-  assets: Asset[]
+  assets?: Asset[],
+  cancelToken?: CancelToken
 ): Promise<ComputeJobMetaData[]> {
   const uniqueProviders = [...new Set(providerUrls)]
   const providersComputeJobsExtended: ComputeJobExtended[] = []
@@ -220,7 +254,6 @@ async function getJobs(
         })
       )
     }
-
     if (providersComputeJobsExtended) {
       providersComputeJobsExtended.sort((a, b) => {
         if (a.dateCreated > b.dateCreated) {
@@ -231,16 +264,27 @@ async function getJobs(
         }
         return 0
       })
-
-      providersComputeJobsExtended.forEach((job) => {
-        const did = job.inputDID[0]
-        const asset = assets.filter((x) => x.id === did)[0]
-        if (asset) {
+      providersComputeJobsExtended.forEach(async (job: any) => {
+        const did = job.assets ? job.assets[0].documentId : null
+        if (assets) {
+          const assetFiltered = assets.filter((x) => x.id === did)
+          const asset = assetFiltered.length > 0 ? assetFiltered[0] : null
+          if (asset) {
+            const compJob: ComputeJobMetaData = {
+              ...job,
+              assetName: asset.credentialSubject?.metadata?.name,
+              assetDtSymbol: asset.indexedMetadata?.stats[0].symbol,
+              networkId: asset.credentialSubject.chainId
+            }
+            computeJobs.push(compJob)
+          }
+        } else {
+          // const asset: Asset = await getAsset(did, cancelToken)
           const compJob: ComputeJobMetaData = {
             ...job,
-            assetName: asset.credentialSubject?.metadata?.name,
-            assetDtSymbol: asset.indexedMetadata?.stats[0].symbol,
-            networkId: asset.credentialSubject.chainId
+            assetName: 'name',
+            assetDtSymbol: 'symbol',
+            networkId: 11155111
           }
           computeJobs.push(compJob)
         }
@@ -263,7 +307,7 @@ export async function getComputeJobs(
 ): Promise<ComputeResults> {
   if (!accountId) return
   if (!service) return
-  const datatokenAddressList = [service.datatokenAddress]
+  const datatokenAddressList = [service?.datatokenAddress]
   const computeResult: ComputeResults = {
     computeJobs: [],
     isLoaded: false
@@ -276,11 +320,32 @@ export async function getComputeJobs(
   )
 
   const providerUrls: string[] = []
-  assets.forEach((asset: Asset) =>
+  assets?.forEach((asset: Asset) =>
     providerUrls.push(asset.credentialSubject.services[0].serviceEndpoint)
   )
-
   computeResult.computeJobs = await getJobs(providerUrls, accountId, assets)
+  computeResult.isLoaded = true
+
+  return computeResult
+}
+
+export async function getAllComputeJobs(
+  accountId: string,
+  cancelToken?: CancelToken
+): Promise<ComputeResults> {
+  if (!accountId) return
+  const computeResult: ComputeResults = {
+    computeJobs: [],
+    isLoaded: false
+  }
+
+  const providerUrls = [customProviderUrl]
+  computeResult.computeJobs = await getJobs(
+    providerUrls,
+    accountId,
+    null,
+    cancelToken
+  )
   computeResult.isLoaded = true
 
   return computeResult
@@ -324,11 +389,14 @@ export async function createTrustedAlgorithmList(
       svc.serviceEndpoint,
       true
     )
-    const containerChecksum =
-      asset.credentialSubject?.metadata.algorithm.container.entrypoint
+
+    const container = asset.credentialSubject?.metadata.algorithm.container
+    const containerSectionChecksum = getHash(
+      container?.entrypoint + container?.checksum
+    )
     const trustedAlgorithm: PublisherTrustedAlgorithms = {
       did: asset.id,
-      containerSectionChecksum: getHash(containerChecksum),
+      containerSectionChecksum,
       filesChecksum: filesChecksum?.[0]?.checksum,
       serviceId: svc.id
     }
@@ -344,7 +412,14 @@ export async function transformComputeFormToServiceComputeOptions(
   cancelToken: CancelToken
 ): Promise<Compute> {
   const publisherTrustedAlgorithms = values.allowAllPublishedAlgorithms
-    ? null
+    ? [
+        {
+          did: '*',
+          containerSectionChecksum: '*',
+          filesChecksum: '*',
+          serviceId: '*'
+        }
+      ]
     : await createTrustedAlgorithmList(
         values.publisherTrustedAlgorithms,
         assetChainId,
@@ -360,6 +435,5 @@ export async function transformComputeFormToServiceComputeOptions(
     publisherTrustedAlgorithms,
     publisherTrustedAlgorithmPublishers
   }
-
   return privacy
 }
