@@ -1,10 +1,11 @@
 :root {
   /* Portal brand color variables */
+  --brand-main-color: #bef500;
   --brand-white: #ffffff;
   --brand-black: #012037;
-  --brand-blue: #014f86;
-  --brand-blue-light: #2a6f97;
-  --brand-blue-lighter: #61a5c2;
+  --brand-blue: #064200;
+  --brand-blue-light: #000000;
+  --brand-blue-lighter: #bef500;
   --brand-red: #b32a61;
 
   --brand-gradient: linear-gradient(

@@ -10,7 +10,6 @@ import {
 import type { MouseEvent } from 'react'
 import styles from './index.module.css'
 import InputElement from '@shared/FormInput/InputElement'
-
 import Features from './Features/Features'
 import Upload from '@images/publish.svg'
 import SearchLogo from '@images/search.svg'
@@ -43,6 +42,7 @@ function HeroSection({
 }): ReactElement {
   const router = useRouter()
   const [value, setValue] = useState(initialValue || '')
+  const videoRef = useRef<HTMLVideoElement>(null)
   const parsed = router.query
   const searchBarRef = useRef<HTMLInputElement>(null)
   const {
@@ -107,17 +107,31 @@ function HeroSection({
 
   return (
     <section className={styles.hero}>
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        playsInline
+        onEnded={() => {
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0
+            videoRef.current.pause()
+          }
+        }}
+        className={styles.backgroundVideo}
+      >
+        <source src="/hero/ainin.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <div className={styles.contentContainer}>
         <header>
           <Menu />
         </header>
         <div className={styles.textContent}>
-          <h1 className={styles.title}>O V A L</h1>
+          <h1 className={styles.title}></h1>
           <div className={styles.subtitle}>
-            <p>
-              Publish, find, compare, manage and monetize proprietary data & AI
-              products in a secure, trusted and compliant environment
-            </p>
+            <p></p>
           </div>
           <div className={styles.ctaContainer}>
             <div className={styles.ctaBlock}>
@@ -189,10 +203,34 @@ export default function HomePage(): ReactElement {
           </Container>
         </>
       )}
+      <section className={styles.featuresIntro}>
+        <h1 className={styles.featuresTitle}>
+          Mobility Data Ecosystem Ingolstadt
+        </h1>
+        <p className={styles.featuresSubtitle}>
+          Publish, find, compare, manage and monetize proprietary data & AI
+          products in a secure, trusted and compliant environment
+        </p>
+      </section>
       <Features />
-      <section className={styles.svgSection}>
-        <div className={styles.svgWrapper}>
-          <Oval className={styles.svgImage} />
+      <section className={styles.imageSection}>
+        <div className={styles.imageCardRow}>
+          <img
+            src="/images/aininbot.png" // Pfad ggf. anpassen
+            alt="Futuristischer Roboter"
+            className={styles.hoverImage}
+          />
+          <div className={styles.textBlock}>
+            <h3>AININ</h3>
+            <p>
+              AININ is a non-profit organization dedicated to the coordination,
+              promotion, and execution of applied and fundamental research in
+              the field of information technology, with a focus on artificial
+              intelligence and machine learning. This includes the free
+              dissemination of the resulting knowledge to interested companies,
+              research institutions, and individuals.
+            </p>
+          </div>
         </div>
       </section>
     </>

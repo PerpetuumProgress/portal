@@ -6,12 +6,10 @@
   flex-wrap: wrap;
   background: linear-gradient(
     135deg,
-    #1f2c50 0%,
-    rgb(13 76 113) 27.47%,
-    rgb(10 81 121) 43.49%,
-    rgb(6 68 103 / 94%) 55.43%,
-    #1e2e52 100%
+    rgb(15, 75, 0) 0%,
+    rgba(190, 245, 0, 0.9) 100%
   );
+
   justify-content: center;
   /* padding: 0; */
   /* margin: 0; */
