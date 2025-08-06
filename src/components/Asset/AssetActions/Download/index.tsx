@@ -131,7 +131,6 @@ export default function Download({
 
       try {
         !orderPriceAndFees && setIsPriceLoading(true)
-
         const _orderPriceAndFees = await getOrderPriceAndFees(
           asset,
           service,
@@ -529,7 +528,7 @@ export default function Download({
             ))}
           <div className={styles.consumerParameters}>
             {/* TODO - */}
-            <ConsumerParameters service={service} isLoading={isLoading} />
+            <ConsumerParameters services={[service]} isLoading={isLoading} />
           </div>
           {isOwned && (
             <div className={styles.confettiContainer}>
