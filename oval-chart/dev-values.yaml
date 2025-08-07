@@ -9,8 +9,8 @@ image:
   pullPolicy: Always
   # Set environment variables
   env:
-    - name: 'NEXT_PUBLIC_INFURA_PROJECT_ID'
-      value: '5cf8427021d54278a026f0732b4e3ef2'
+    #- name: 'NEXT_PUBLIC_INFURA_PROJECT_ID'
+    #  value: '5cf8427021d54278a026f0732b4e3ef2'
   # Overrides the image tag whose default is the chart appVersion.
   tag: 'dev'
 
