@@ -205,11 +205,12 @@ export default function HomePage(): ReactElement {
       )}
       <section className={styles.featuresIntro}>
         <h1 className={styles.featuresTitle}>
-          Mobility Data Ecosystem Ingolstadt
+          MDI - Mobilitäts Daten Ökosystem Ingolstadt
         </h1>
         <p className={styles.featuresSubtitle}>
           Publish, find, compare, manage and monetize proprietary data & AI
-          products in a secure, trusted and compliant environment
+          products in a secure, trusted and compliant environment. Powered by
+          OVAL - Perpetuum Progress
         </p>
       </section>
       <Features />

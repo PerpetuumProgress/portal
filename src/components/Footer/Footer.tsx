@@ -22,7 +22,7 @@ export default function Footer(): ReactElement {
           <Logo className={styles.logo} />
           <div className={styles.socialLinks}>
             <a
-              href="https://www.linkedin.com/company/perpetuum-progress"
+              href="https://www.linkedin.com/company/ainin/"
               target="_blank"
               rel="noopener noreferrer"
             >
