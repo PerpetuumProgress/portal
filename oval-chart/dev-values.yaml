@@ -9,9 +9,8 @@ image:
   pullPolicy: Always
   # Set environment variables
   env:
-    # environment variable for auqrius uri
-    #- name: 'NEXT_PUBLIC_PROVIDER_URL'
-    #  value: 'https://ocean-node-vm3.oceanenterprise.io'
+    - name: 'NEXT_PUBLIC_INFURA_PROJECT_ID'
+      value: '5cf8427021d54278a026f0732b4e3ef2'
   # Overrides the image tag whose default is the chart appVersion.
   tag: 'dev'
 
