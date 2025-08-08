@@ -38,7 +38,8 @@
 .textContent {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
+  align-items: center;
   width: 1135px;
   height: 294px;
 }
@@ -78,6 +79,7 @@
   font-size: 56px;
   color: var(--brand-main-color);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 .subtitle {
@@ -85,6 +87,7 @@
   flex-direction: column;
   gap: 8px;
   max-width: 90%;
+  text-align: center;
 }
 
 .subtitle p {
