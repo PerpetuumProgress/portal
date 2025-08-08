@@ -1,6 +1,5 @@
 ---
 title: Imprint
-description: Thanks for using our product and services.
 ---
 
 # Perpetuum Progress GmbH
