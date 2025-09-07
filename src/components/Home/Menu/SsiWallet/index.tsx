@@ -241,15 +241,6 @@ export function SsiWallet(): ReactElement {
                 })}
               </select>
 
-              <Button
-                style="primary"
-                size="small"
-                className={`${styles.width100p} ${styles.resetButton} ${styles.marginBottom1}`}
-                onClick={handleResetWalletCache}
-              >
-                Reset Wallet Cache
-              </Button>
-
               {cachedCredentials?.length > 0 ? (
                 <div className={`${styles.marginBottom2}`}>
                   <label>Cached Credentials:</label>
@@ -265,18 +256,28 @@ export function SsiWallet(): ReactElement {
                 <div className={`${styles.marginBottom1}`} />
               )}
 
-              <Button
-                style="primary"
-                size="small"
-                className={`${styles.width100p} ${styles.closeButton}`}
-                onClick={() => selectorDialog.current.close()}
-              >
-                Close
-              </Button>
+              <div className={styles.buttonStyles}>
+                <Button
+                  style="primary"
+                  size="small"
+                  className={`${styles.width100p} ${styles.closeButton}`}
+                  onClick={() => selectorDialog.current.close()}
+                >
+                  Close
+                </Button>
+                <Button
+                  style="primary"
+                  size="small"
+                  className={`${styles.width100p} ${styles.resetButton} ${styles.marginBottom1}`}
+                  onClick={handleResetWalletCache}
+                >
+                  Reset Wallet Cache
+                </Button>
+              </div>
             </div>
           </dialog>
 
-          {sessionToken ? (
+          {sessionToken && isConnected && signer ? (
             <div
               className={`${styles.ssiPanel} ${styles.connected}`}
               onClick={handleOpenDialog}
@@ -292,10 +293,7 @@ export function SsiWallet(): ReactElement {
               className={`${styles.ssiPanel} ${styles.disconnected}`}
               onClick={handleReconnection}
             >
-              {' '}
-              <span className={styles.text}>
-                {isConnected && signer ? 'SSI' : 'SSI'}
-              </span>
+              <span className={styles.text}>SSI</span>
               <span className={styles.iconWrapper}>
                 <DisconnectedIcon className={styles.icon} />
               </span>
