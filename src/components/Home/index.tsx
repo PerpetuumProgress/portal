@@ -208,9 +208,8 @@ export default function HomePage(): ReactElement {
           MDI - Mobilitäts Daten Ökosystem Ingolstadt
         </h1>
         <p className={styles.featuresSubtitle}>
-          Publish, find, compare, manage and monetize proprietary data & AI
-          products in a secure, trusted and compliant environment. Powered by
-          OVAL - Perpetuum Progress
+          Publish, find, compare, manage and monetize Mobility & Testfield data
+          & services in a secure, trusted and compliant environment.
         </p>
       </section>
       <Features />
@@ -222,7 +221,7 @@ export default function HomePage(): ReactElement {
             className={styles.hoverImage}
           />
           <div className={styles.textBlock}>
-            <h3>AININ</h3>
+            <h3>A I N I N</h3>
             <p>
               AININ is a non-profit organization dedicated to the coordination,
               promotion, and execution of applied and fundamental research in
@@ -230,6 +229,25 @@ export default function HomePage(): ReactElement {
               intelligence and machine learning. This includes the free
               dissemination of the resulting knowledge to interested companies,
               research institutions, and individuals.
+            </p>
+          </div>
+        </div>
+        <div className={styles.imageCardRow}>
+          <img
+            src="/images/oval_logo.png" // Pfad ggf. anpassen
+            alt="Futuristischer Roboter"
+            className={styles.hoverImage}
+          />
+          <div className={styles.textBlock}>
+            <h3>O V A L</h3>
+            <p>
+              OVAL is at the forefront of creating a revolutionary ecosystem
+              designed for the secure and efficient exchange of data. Our
+              platform is built on the principle that data is the key to
+              unlocking a wealth of innovative products and services. By
+              facilitating the free flow of information, we enable our users to
+              develop solutions that tackle real-world problems, driving
+              progress and creativity across industries.
             </p>
           </div>
         </div>

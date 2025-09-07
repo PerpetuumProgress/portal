@@ -313,27 +313,29 @@
 }
 
 .imageSection {
+  padding: 2rem 1rem;
+  max-width: 1500px;
+  width: 100%;
+  margin: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 1rem;
+  flex-direction: row; /* Rows untereinander */
+  gap: 2rem;
 }
 
 .imageCardRow {
   display: flex;
-  align-items: stretch;
+  flex-direction: row; /* innerhalb einer Row: Bild + Text nebeneinander */
+  align-items: stretch; /* beide gleich hoch */
   gap: 3rem;
-  max-width: 800px;
   width: 100%;
+  min-height: 200px; /* Höhe anpassen nach Wunsch */
 }
 
 .hoverImage {
-  width: auto;
+  flex: 0 0 200px; /* Bild fix 200px breit */
   height: 200px;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
   object-fit: cover;
-  flex-shrink: 0;
+  border-radius: 12px;
 }
 
 .hoverImage:hover {
@@ -341,11 +343,11 @@
 }
 
 .textBlock {
-  flex: 1;
+  flex: 1; /* füllt den ganzen restlichen Platz */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0; /* kein Innenabstand */
+  justify-content: center; /* Text in der Mitte */
+  padding: 0;
 }
 
 .textBlock h3,
@@ -453,6 +455,17 @@
     display: none;
   }
 
+  .imageSection {
+    max-width: 1500px;
+    flex-direction: column;
+    padding: 2rem 3rem;
+  }
+
+  .imageCardRow {
+    display: flex;
+    flex-direction: column;
+  }
+
   .searchContainer {
     width: 100%;
   }
@@ -544,6 +557,12 @@
     display: none;
   }
 
+  .imageSection {
+    max-width: 1500px;
+    flex-direction: column;
+    padding: 2rem 4rem;
+  }
+
   .searchContainer {
     width: 100%;
     display: flex;
@@ -574,11 +593,19 @@
     width: 100%;
     height: auto;
   }
+  .imageSection {
+    max-width: 1500px;
+    padding: 2rem 4rem;
+  }
 }
 
 @media screen and (min-width: 1224px) and (max-width: 1549px) {
   .contentContainer {
     height: 590px;
+  }
+  .imageSection {
+    max-width: 1500px;
+    padding: 2rem 8rem;
   }
 }
 
@@ -594,6 +621,10 @@
   .ctaContainer {
     width: 1350px;
     height: 104px;
+  }
+  .imageSection {
+    max-width: 1500px;
+    padding: 2rem 2rem;
   }
 }
 
@@ -635,6 +666,10 @@
   }
   .ctaBlock {
     width: 224px;
+  }
+
+  .imageSection {
+    max-width: 1900px;
   }
 
   .logoImage {
