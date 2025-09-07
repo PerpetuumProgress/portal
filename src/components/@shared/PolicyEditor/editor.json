@@ -33,7 +33,7 @@
   },
   {
     "name": "name",
-    "label": "Name",
+    "label": "Custom Policy Name",
     "type": "text",
     "required": true
   },
@@ -107,7 +107,14 @@
   {
     "name": "staticPolicy",
     "label": "Static Policy",
-    "type": "text",
+    "type": "select",
+    "options": [
+      "signature",
+      "not-before",
+      "revoked-status-list",
+      "expired",
+      "signature_sd-jwt-vc"
+    ],
     "required": true
   },
   {
